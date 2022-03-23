@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
 
     //이동
     //얼만큼 빠른 속도로 이동 시킬 지.
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform fakeCube = null;
 
     //회전시킬 객체 진짜큐브./22.03.23 by승주
-    [SerializeField] Transform realCube =null;
+    [SerializeField] Transform realCube = null;
 
     void Start()
     {
@@ -51,12 +51,17 @@ public class PlayerController : MonoBehaviour
         //매 프레임 마다 키가 눌렸는지 확인해야함.
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
         {
-            // 판정 체크.
-            //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
-            if (theTimingManager.CheckTiming())
+            if (canMove)
             {
-                //올바른 판정일 때만 움직이게.
-                StartAction();
+
+                // 판정 체크.
+                //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
+                if (theTimingManager.CheckTiming())
+                {
+                    //올바른 판정일 때만 움직이게.
+                    StartAction();
+
+                }
 
             }
         }
@@ -90,18 +95,22 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveCo()
     {
+        canMove = false;
+
         //A 좌표와 B 좌표간의 거리차를 반환 SqrMagnitude: 제곱근을 리턴 ex: SqrMagnitude(4) =2
         while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
         {
             // 자연스럽게 목적지까지 큐브를 이동 /22.03.23 by 승주
             transform.position = Vector3.MoveTowards(transform.position, destPos, moveSpeed * Time.deltaTime);
-            
+
             //반복문안에서 한 프레임씩 쉬면서 돌려주게 만드는 함수 /22.03.23 by승주
             yield return null;
         }
 
         //while문을 빠져 나가면 아주 근소한 차이가 있을 수 있기 떄문에 자기 자신의 위치를 destPos값을 대체 /22.03.23 by승주
         transform.position = destPos;
+
+        canMove = true;
     }
 
     IEnumerator SpinCo()

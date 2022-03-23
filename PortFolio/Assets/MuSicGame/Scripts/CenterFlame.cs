@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class CenterFlame : MonoBehaviour
 {
-    AudioSource myAudio;
+    
     bool musicStart = false;
 
-    private void Start()
-    {
-        myAudio = GetComponent<AudioSource>();
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +18,7 @@ public class CenterFlame : MonoBehaviour
             //조건으로 자기에게 닿은 콜라이더에 태그가 Note라면 오디오 재생.
             if (collision.CompareTag("Note"))
             {
-                myAudio.Play();
+                AudioManager.instance.PlayBGM("BGM0");
                 musicStart = true;
             }
 
