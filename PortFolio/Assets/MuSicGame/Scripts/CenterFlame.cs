@@ -18,12 +18,12 @@ public class CenterFlame : MonoBehaviour
         if (!musicStart)
         {
 
-        //조건으로 자기에게 닿은 콜라이더에 태그가 Note라면 오디오 재생.
-        if (collision.CompareTag("Note"))
-        {
-            myAudio.Play();
-            musicStart = true;
-        }
+            //조건으로 자기에게 닿은 콜라이더에 태그가 Note라면 오디오 재생.
+            if (collision.CompareTag("Note"))
+            {
+                myAudio.Play();
+                musicStart = true;
+            }
 
         }
 

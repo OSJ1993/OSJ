@@ -45,7 +45,7 @@ public class NoteManager : MonoBehaviour
             //노트가 생성되는 순간 노트List에 해당 노트를 추가.
             theTimingManager.boxNoteList.Add(t_note);
 
-            //curentTime에 0이 아닌 60d/bpm을 빼주기.(0으로 하면 안되는 이유는 아주 작은 오차가 생기기 때문이다.
+            //curentTime에 0이 아닌 60d/bpm을 빼주기.(0으로 하면 안되는 이유는 아주 작은 오차가 생기기 때문이다.)
             curentTime -= 60d / bpm;
 
         }
