@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     Vector3 dir = new Vector3();
 
     //목적지.
-    Vector3 destPos = new Vector3();
+    public Vector3 destPos = new Vector3();
 
     
 
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if (canMove)
             {
+                Calc();
 
                 // 판정 체크.
                 //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
@@ -71,7 +72,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void StartAction()
+    //계산 22.03.24 by승주
+    void Calc()
     {
         //어느 방향으로 눌렸는 지 알기 위함.
         // 입력값 or 위 방향키 W키=1, or 아래 방향키 S키=-1 없을 시 =0
@@ -90,6 +92,11 @@ public class PlayerController : MonoBehaviour
 
         //fakeCube 결과 값을 destRot의 rotation에 넣어주기. /22.03.23 by 승주
         destRot = fakeCube.rotation;
+    }
+
+    void StartAction()
+    {
+       
 
 
         StartCoroutine(MoveCo());

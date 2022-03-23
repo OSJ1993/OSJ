@@ -22,6 +22,7 @@ public class TimingManager : MonoBehaviour
     ScoreManager theScoreManager;
     ComboManager theComboManager;
     StageManager theStageManager;
+    PlayerController thePlayer;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class TimingManager : MonoBehaviour
         theScoreManager = FindObjectOfType<ScoreManager>();
         theComboManager = FindObjectOfType<ComboManager>();
         theStageManager = FindObjectOfType<StageManager>();
+        thePlayer = FindObjectOfType<PlayerController>();
 
         //타이밍 박스 설정.
         //timingBoxs 별 크기는 timingRect 갯?으로 넣어주기.
@@ -69,7 +71,7 @@ public class TimingManager : MonoBehaviour
 
 
                     //해당 노트 인덱스를 이용해서 노트를 빼주는 코드.
-                   
+
                     boxNoteList.RemoveAt(i);
 
                     //이펙트 연출
@@ -78,13 +80,26 @@ public class TimingManager : MonoBehaviour
                     if (x < timingBoxs.Length - 1)
                         theEffect.NoteHitEffect();
 
-                    //파라미트 값을 x에게 넘겨주기.
-                    theEffect.JudgementEffect(x);
+                    
 
-                    //점수 증가
-                    theScoreManager.IncreasaseScore(x);
+                    
 
-                    theStageManager.ShowNextPlate();
+                    if (CheckCanNextPlate())
+                    {
+                        //점수 증가
+                        theScoreManager.IncreasaseScore(x);
+
+                        //발판 등장 /22.03.24 by승주
+                        theStageManager.ShowNextPlate();
+
+                        //파라미트 값을 x에게 넘겨주기.
+                        theEffect.JudgementEffect(x);
+
+                    }
+                    else
+                    {
+                        theEffect.JudgementEffect(5);
+                    }
                     return true;
                 }
             }
@@ -94,6 +109,35 @@ public class TimingManager : MonoBehaviour
         theComboManager.ResetCombo();
 
         theEffect.JudgementEffect(timingBoxs.Length);
+        return false;
+    }
+
+    //다음 발판이 가능한 지 확인하는 함수 22.03.24 by승주
+    bool CheckCanNextPlate()
+    {
+        //Physics.Raycast(): 가상의 광선을 쏴서 맞은 대상의 정보를 가져오는 함수 22.03.24 by승주
+        //(광선 위치, 방향, 충돌 정보, 길이) 22.03.24 by승주
+        // 플레이어에 destPos 위치에서 레이저를 아래방향으로 쏜다 그리고 부딪힌 결과를 내보내 준다 레이저에 부딪힌 정보는 t_hitInfo 담기게 된다.  22.03.24 by승주
+        if (Physics.Raycast(thePlayer.destPos, Vector3.down, out RaycastHit t_hitInfo, 1.1f))
+        {
+            //부딪힌 녀석이 BasicPlate 확인하기 위한 조건문 /22.03.24 by승주
+            if (t_hitInfo.transform.CompareTag("BasicPlate"))
+            {
+                //BasicPlate라면 가져와서 저장 /22.03.24 by승주
+                BasicPlate t_plate = t_hitInfo.transform.GetComponent<BasicPlate>();
+
+                // flag 이 값이 true 인지 확인  /22.03.24 by승주
+                if (t_plate.flag)
+                {
+                    //이미 밟은 발판은 또 다시 밟을 경우 새로운 발판나오는것을 막아준다.
+                    t_plate.flag = false;
+                    return true;
+                }
+
+            }
+        }
+
+        //모든 조건 걸리지 않고 빠져 나올 경우 return false 다음 발판을 나올 수 없다는 걸 알려준다./22.03.24 by승주
         return false;
     }
 }
