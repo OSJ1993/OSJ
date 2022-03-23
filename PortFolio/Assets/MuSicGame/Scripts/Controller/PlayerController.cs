@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     //목적지.
     Vector3 destPos = new Vector3();
 
-    TimingManager theTimingManager;
+    
 
     //회전 /22.03.23 by 승주
     [SerializeField] float spinSpeed = 270;
@@ -40,9 +40,13 @@ public class PlayerController : MonoBehaviour
     //회전시킬 객체 진짜큐브./22.03.23 by승주
     [SerializeField] Transform realCube = null;
 
+    TimingManager theTimingManager;
+    CameraController theCam;
+
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
+        theCam = FindObjectOfType<CameraController>();
     }
 
 
@@ -91,6 +95,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(MoveCo());
         StartCoroutine(SpinCo());
         StartCoroutine(RecoilCo());
+        StartCoroutine(theCam.ZoomCam());
     }
 
     IEnumerator MoveCo()
