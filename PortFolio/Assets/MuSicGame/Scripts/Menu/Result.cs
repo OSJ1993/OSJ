@@ -16,6 +16,7 @@ public class Result : MonoBehaviour
     ComboManager theCombo;
     TimingManager theTiming;
 
+    //
     void Start()
     {
         theScore = FindObjectOfType<ScoreManager>();
