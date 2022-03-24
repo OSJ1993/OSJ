@@ -12,6 +12,9 @@ public class ComboManager : MonoBehaviour
     //현재 몇 콤보인 지 나타낼 변수.
     int currentCombo = 0;
 
+    //실수해서 currentCombo가 0이되었지만 MaxCombo는 0이 되지 않게 하는 기능 /22.03.24 by승주
+    int maxCombo = 0;
+
     Animator myAnim;
     string animComboUp = "ComboUp";
 
@@ -35,8 +38,12 @@ public class ComboManager : MonoBehaviour
         //그렇게 해서 증가한 콤보 수를 텍스트로 표현 3자리마다 ,(콤마)를 찍어주겠다.
         txtCombo.text = string.Format("{0:,##0}", currentCombo);
 
+        //가장 높은 Combo를 기록한 다음에 현재 Combo가 MaxCombo를 넘어섰을 때 MaxCombo 교체 시켜주는 기능 /22.03.24 by승주
+        if (maxCombo < currentCombo)
+            maxCombo = currentCombo;
+
         //콤보 텍스트, 콤보 이미지는 3콤보 이상부터 등장하도록 조건문 작성.
-        if (currentCombo > 2)
+            if (currentCombo > 2)
         {
             txtCombo.gameObject.SetActive(true);
             goComboImage.SetActive(true);
@@ -60,5 +67,10 @@ public class ComboManager : MonoBehaviour
         txtCombo.text = "0";
         txtCombo.gameObject.SetActive(false);
         goComboImage.SetActive(false);
+    }
+
+    public int GetMaxCombo()
+    {
+        return maxCombo;
     }
 }

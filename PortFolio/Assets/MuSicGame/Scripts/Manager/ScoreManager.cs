@@ -60,4 +60,9 @@ public class ScoreManager : MonoBehaviour
         //애니 재생.
         myAnim.SetTrigger(animScoreUp);
     }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
+    }
 }

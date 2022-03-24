@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class TimingManager : MonoBehaviour
 {
+    //판정들을 기록할 배열 변수 선언 22.03.24 by승주
+    int[] judgementRecord = new int[5];
+
     //생성된 노트를 담는 List만들기. 판정범위에 있는 지 모든 노트를 비교해야함.
     public List<GameObject> boxNoteList = new List<GameObject>();
 
@@ -80,9 +83,9 @@ public class TimingManager : MonoBehaviour
                     if (x < timingBoxs.Length - 1)
                         theEffect.NoteHitEffect();
 
-                    
 
-                    
+
+
 
                     if (CheckCanNextPlate())
                     {
@@ -92,8 +95,11 @@ public class TimingManager : MonoBehaviour
                         //발판 등장 /22.03.24 by승주
                         theStageManager.ShowNextPlate();
 
-                        //파라미트 값을 x에게 넘겨주기.
+                        //파라미트 값을 x에게 넘겨주기. 판정연출
                         theEffect.JudgementEffect(x);
+
+                        //판정기록 /22.03.24 by승주
+                        judgementRecord[x]++;
 
                     }
                     else
@@ -109,6 +115,10 @@ public class TimingManager : MonoBehaviour
         theComboManager.ResetCombo();
 
         theEffect.JudgementEffect(timingBoxs.Length);
+
+        //판정 기록 /22.03.24 by승주
+        MissRecord();
+
         return false;
     }
 
@@ -139,5 +149,16 @@ public class TimingManager : MonoBehaviour
 
         //모든 조건 걸리지 않고 빠져 나올 경우 return false 다음 발판을 나올 수 없다는 걸 알려준다./22.03.24 by승주
         return false;
+    }
+
+    public int[] GetJudgementRecord()
+    {
+        return judgementRecord;
+    }
+
+    public void MissRecord()
+    {
+        //판정 기록 /22.03.24 by승주
+        judgementRecord[4]++;
     }
 }

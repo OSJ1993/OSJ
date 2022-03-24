@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public static bool s_canPressKey = true;
 
     //이동
     //얼만큼 빠른 속도로 이동 시킬 지.
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         //매 프레임 마다 키가 눌렸는지 확인해야함.
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
         {
-            if (canMove)
+            if (canMove && s_canPressKey)
             {
                 Calc();
 

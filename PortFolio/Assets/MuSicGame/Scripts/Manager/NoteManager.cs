@@ -11,6 +11,9 @@ public class NoteManager : MonoBehaviour
     //노트 생성을 위한 그 시간 체크해줄 변수.
     double curentTime = 0d;
 
+    //골인하면 Note생성 막아줄 기능 22.03.24 by승주
+    bool noteActive = true;
+
     //노트가 생성 될 위치 변수.
     [SerializeField] Transform tfNoteAppear = null;
 
@@ -30,25 +33,32 @@ public class NoteManager : MonoBehaviour
 
     void Update()
     {
-        //curentTime을 1초에 1씩 증가
-        curentTime += Time.deltaTime;
-
-        //그러다가 curentTime이 60s초 나누기 bpm보다 커지면 비트 1개당 등장속도.
-        if (curentTime >= 60d / bpm)
+        //NoteActive가 활성화 될 때만 Note를 생성시키는 기능 22.03.24 by승주
+        if (noteActive)
         {
-            GameObject t_note = ObjectPool.instnace.noteQueue.Dequeue();
-            t_note.transform.position = tfNoteAppear.position;
-            t_note.SetActive(true);
+
+            //curentTime을 1초에 1씩 증가
+            curentTime += Time.deltaTime;
+
+            //그러다가 curentTime이 60s초 나누기 bpm보다 커지면 비트 1개당 등장속도.
+            if (curentTime >= 60d / bpm)
+            {
+                GameObject t_note = ObjectPool.instnace.noteQueue.Dequeue();
+                t_note.transform.position = tfNoteAppear.position;
+                t_note.SetActive(true);
 
 
 
-            //노트가 생성되는 순간 노트List에 해당 노트를 추가.
-            theTimingManager.boxNoteList.Add(t_note);
+                //노트가 생성되는 순간 노트List에 해당 노트를 추가.
+                theTimingManager.boxNoteList.Add(t_note);
 
-            //curentTime에 0이 아닌 60d/bpm을 빼주기.(0으로 하면 안되는 이유는 아주 작은 오차가 생기기 때문이다.)
-            curentTime -= 60d / bpm;
+                //curentTime에 0이 아닌 60d/bpm을 빼주기.(0으로 하면 안되는 이유는 아주 작은 오차가 생기기 때문이다.)
+                curentTime -= 60d / bpm;
+
+            }
 
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -62,6 +72,7 @@ public class NoteManager : MonoBehaviour
             //부딛힌 객체의 노트 스크립을 가져와서 GetNoteFlag 함수 호출 true일 때만 연출실행.
             if (collision.GetComponent<Note>().GetNoteFlag())
             {
+                theTimingManager.MissRecord();
 
                 //노트가 화면 밖으로 나가면 그 구간에 숫자 4(miss)넘겨서 연출되게 하기.
                 theEffectManager.JudgementEffect(4);
@@ -85,6 +96,22 @@ public class NoteManager : MonoBehaviour
 
 
 
+        }
+    }
+
+    public void RemoveNote()
+    {
+        noteActive = false;
+
+        //나와있는 모든 Note를 파괴하는 기능 /22.03.24 by승주
+        for (int i = 0; i < theTimingManager.boxNoteList.Count; i++)
+        {
+            //theTimingManager.boxNoteList.Count만큼만 반복 시켜주고 나머지는 모두 비활성화 시키는 기능 /22.03.24 by승주
+            theTimingManager.boxNoteList[i].SetActive(false);
+
+            // ObjectPool에 반납 /22.03.24 by승주
+            //Queue: 대기열 데이터나 작업을 입력한 순서대로 처리할 때 사용 22.03.24 by승주
+            ObjectPool.instnace.noteQueue.Enqueue(theTimingManager.boxNoteList[i]);
         }
     }
 }
