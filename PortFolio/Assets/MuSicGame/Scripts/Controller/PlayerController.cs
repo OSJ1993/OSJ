@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
         theTimingManager = FindObjectOfType<TimingManager>();
         theCam = FindObjectOfType<CameraController>();
         myRigid = GetComponentInChildren<Rigidbody>();
+
+        //자기 위치 기억. 22.03.26 by승주
+        originPos = transform.position;
     }
 
 
@@ -172,10 +175,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    
     void CheckFalling()
     {
-        if (!isFalling)
+        //isFalling false일 때만 기능 사용 /22.03.25 by승주
+
+        if (!isFalling && canMove)
         {
+            //자기 자신 위치에서 아래 방향으로 레이져를 쏘는 기능 false일 때 추락. /22.03.25 by승주
             if (!Physics.Raycast(transform.position, Vector3.down, 1.1f))
             {
                 Falling();
@@ -184,11 +191,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //추락하는 기능 22.03.25
     void Falling()
     {
         isFalling = true;
+
+        
         myRigid.useGravity = true;
         myRigid.isKinematic = false;
+    }
+
+    //추락 전으로 되돌리는 기능 22.03.26 by승주
+    public void ResetFalling()
+    {
+        isFalling = false;
+        myRigid.useGravity = false;
+        myRigid.isKinematic = true;
+
+        transform.position = originPos;
+        //cube도 원위치 시켜줘야함 이유는 부모만 원위치 시키고 자식은 원위치 안 시키면 Rigidbody가 없는 부모 객체는 낭떠러지 위에. 자식 객체(그래픽)은 추락 하기 때문이다. /22.03.26 by승주
+        realCube.localPosition = new Vector3(0, 0, 0);
     }
 }
 

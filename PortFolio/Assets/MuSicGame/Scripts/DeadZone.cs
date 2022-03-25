@@ -8,7 +8,9 @@ public class DeadZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            //GetComponentInParent ºÎ¸ð °´Ã¼ÀÇ Æ¯Á¤ ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿È /22.03.26 by½ÂÁÖ
+            other.GetComponentInParent<PlayerController>().ResetFalling();
+            
         }
     }
 }
