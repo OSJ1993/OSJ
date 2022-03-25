@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     //목적지.
     public Vector3 destPos = new Vector3();
 
+    //원위치 시키기 위한 좌표값 /22.03.25 by승주
+    Vector3 originPos = new Vector3();
 
 
     //회전 /22.03.23 by 승주
