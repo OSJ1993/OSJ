@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     //목적지.
     public Vector3 destPos = new Vector3();
 
-    
+
 
     //회전 /22.03.23 by 승주
     [SerializeField] float spinSpeed = 270;
@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     //급발진 방지 굴러가는 동안 노트 판정을 막는 함수 /22.03.23 by승주
     bool canMove = true;
 
+    //추락 중인지 아닌 지 확인 하는 기능 /22.03.25 by승주
+    bool isFalling = false;
+
+
     //가짜큐브를 먼저 돌려 놓고 그 돌아간 만큼의 값으 목표 회전값으로 삼음. /22.03.23 by승주
     [SerializeField] Transform fakeCube = null;
 
@@ -42,20 +46,24 @@ public class PlayerController : MonoBehaviour
 
     TimingManager theTimingManager;
     CameraController theCam;
+    Rigidbody myRigid;
 
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
         theCam = FindObjectOfType<CameraController>();
+        myRigid = GetComponentInChildren<Rigidbody>();
     }
 
 
     void Update()
     {
+        CheckFalling();
+
         //매 프레임 마다 키가 눌렸는지 확인해야함.
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
         {
-            if (canMove && s_canPressKey)
+            if (canMove && s_canPressKey && !isFalling)
             {
                 Calc();
 
@@ -96,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
     void StartAction()
     {
-       
+
 
 
         StartCoroutine(MoveCo());
@@ -159,6 +167,26 @@ public class PlayerController : MonoBehaviour
         }
 
         realCube.localPosition = new Vector3(0, 0, 0);
+    }
+
+
+    void CheckFalling()
+    {
+        if (!isFalling)
+        {
+            if (!Physics.Raycast(transform.position, Vector3.down, 1.1f))
+            {
+                Falling();
+            }
+
+        }
+    }
+
+    void Falling()
+    {
+        isFalling = true;
+        myRigid.useGravity = true;
+        myRigid.isKinematic = false;
     }
 }
 
