@@ -49,10 +49,12 @@ public class PlayerController : MonoBehaviour
     TimingManager theTimingManager;
     CameraController theCam;
     Rigidbody myRigid;
+    StatusManager theStatus;
 
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
+        theStatus = FindObjectOfType<StatusManager>();
         theCam = FindObjectOfType<CameraController>();
         myRigid = GetComponentInChildren<Rigidbody>();
 
@@ -204,13 +206,22 @@ public class PlayerController : MonoBehaviour
     //추락 전으로 되돌리는 기능 22.03.26 by승주
     public void ResetFalling()
     {
-        isFalling = false;
-        myRigid.useGravity = false;
-        myRigid.isKinematic = true;
+        //체력감소 22.03.27 by승주
+        theStatus.DecreaseHP(1);
 
-        transform.position = originPos;
-        //cube도 원위치 시켜줘야함 이유는 부모만 원위치 시키고 자식은 원위치 안 시키면 Rigidbody가 없는 부모 객체는 낭떠러지 위에. 자식 객체(그래픽)은 추락 하기 때문이다. /22.03.26 by승주
-        realCube.localPosition = new Vector3(0, 0, 0);
+        //플레이어가 죽으면 추락으로 인한 위치 조정 막기 /22.03.27 by승주?
+        if (!theStatus.Isdead())
+        {
+            isFalling = false;
+            myRigid.useGravity = false;
+            myRigid.isKinematic = true;
+
+            transform.position = originPos;
+            //cube도 원위치 시켜줘야함 이유는 부모만 원위치 시키고 자식은 원위치 안 시키면 Rigidbody가 없는 부모 객체는 낭떠러지 위에. 자식 객체(그래픽)은 추락 하기 때문이다. /22.03.26 by승주
+            realCube.localPosition = new Vector3(0, 0, 0);
+        }
+
+       
     }
 }
 
