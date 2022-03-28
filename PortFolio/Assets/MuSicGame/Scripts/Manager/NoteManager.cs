@@ -11,8 +11,7 @@ public class NoteManager : MonoBehaviour
     //노트 생성을 위한 그 시간 체크해줄 변수.
     double curentTime = 0d;
 
-    //골인하면 Note생성 막아줄 기능 22.03.24 by승주
-    bool noteActive = true;
+    
 
     //노트가 생성 될 위치 변수.
     [SerializeField] Transform tfNoteAppear = null;
@@ -34,7 +33,7 @@ public class NoteManager : MonoBehaviour
     void Update()
     {
         //NoteActive가 활성화 될 때만 Note를 생성시키는 기능 22.03.24 by승주
-        if (noteActive)
+        if (GameManager.instance.isStartGame)
         {
 
             //curentTime을 1초에 1씩 증가
@@ -101,7 +100,7 @@ public class NoteManager : MonoBehaviour
 
     public void RemoveNote()
     {
-        noteActive = false;
+        GameManager.instance.isStartGame = false;
 
         //나와있는 모든 Note를 파괴하는 기능 /22.03.24 by승주
         for (int i = 0; i < theTimingManager.boxNoteList.Count; i++)

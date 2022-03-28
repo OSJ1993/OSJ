@@ -8,6 +8,7 @@ public class TitleMenu : MonoBehaviour
     
     public void BtnPlay()
     {
-
+        goStageUI.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

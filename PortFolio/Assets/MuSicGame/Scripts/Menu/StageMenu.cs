@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class StageMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] GameObject TitleMenu = null;
+
+    public void BtnBack()
     {
-        
+        TitleMenu.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+  
+    public void BtnPlay()
+    {
+        GameManager.instance.GameStart();
+        this.gameObject.SetActive(false);
     }
 }

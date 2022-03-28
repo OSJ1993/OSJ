@@ -65,24 +65,28 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        CheckFalling();
-
-        //매 프레임 마다 키가 눌렸는지 확인해야함.
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+        if (GameManager.instance.isStartGame)
         {
-            if (canMove && s_canPressKey && !isFalling)
-            {
-                Calc();
 
-                // 판정 체크.
-                //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
-                if (theTimingManager.CheckTiming())
+            CheckFalling();
+
+            //매 프레임 마다 키가 눌렸는지 확인해야함.
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+            {
+                if (canMove && s_canPressKey && !isFalling)
                 {
-                    //올바른 판정일 때만 움직이게.
-                    StartAction();
+                    Calc();
+
+                    // 판정 체크.
+                    //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
+                    if (theTimingManager.CheckTiming())
+                    {
+                        //올바른 판정일 때만 움직이게.
+                        StartAction();
+
+                    }
 
                 }
-
             }
         }
     }
@@ -177,7 +181,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    
+
     void CheckFalling()
     {
         //isFalling false일 때만 기능 사용 /22.03.25 by승주
@@ -198,7 +202,7 @@ public class PlayerController : MonoBehaviour
     {
         isFalling = true;
 
-        
+
         myRigid.useGravity = true;
         myRigid.isKinematic = false;
     }
@@ -223,7 +227,7 @@ public class PlayerController : MonoBehaviour
             realCube.localPosition = new Vector3(0, 0, 0);
         }
 
-       
+
     }
 }
 
