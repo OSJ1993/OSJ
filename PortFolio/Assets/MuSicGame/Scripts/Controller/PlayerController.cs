@@ -209,7 +209,9 @@ public class PlayerController : MonoBehaviour
         //체력감소 22.03.27 by승주
         theStatus.DecreaseHP(1);
 
-        //플레이어가 죽으면 추락으로 인한 위치 조정 막기 /22.03.27 by승주?
+        AudioManager.instance.PlaySFX("Falling");
+
+        //플레이어가 죽으면 리셋 시키면 안되기에 계속 추락시키는 기능 /22.03.27 by승주
         if (!theStatus.Isdead())
         {
             isFalling = false;

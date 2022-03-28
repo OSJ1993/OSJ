@@ -26,14 +26,19 @@ public class TimingManager : MonoBehaviour
     ComboManager theComboManager;
     StageManager theStageManager;
     PlayerController thePlayer;
+    StatusManager theStatusManager;
+    AudioManager theAudioManager;
 
     void Start()
     {
+        theAudioManager = AudioManager.instance;
         theEffect = FindObjectOfType<EffectManager>();
         theScoreManager = FindObjectOfType<ScoreManager>();
         theComboManager = FindObjectOfType<ComboManager>();
         theStageManager = FindObjectOfType<StageManager>();
         thePlayer = FindObjectOfType<PlayerController>();
+        theStatusManager = FindObjectOfType<StatusManager>();
+        
 
         //타이밍 박스 설정.
         //timingBoxs 별 크기는 timingRect 갯?으로 넣어주기.
@@ -101,11 +106,16 @@ public class TimingManager : MonoBehaviour
                         //판정기록 /22.03.24 by승주
                         judgementRecord[x]++;
 
+                        //쉴드 체크 22.03.28 by승주
+                        theStatusManager.CheckShield();
                     }
                     else
                     {
                         theEffect.JudgementEffect(5);
                     }
+
+                    theAudioManager.PlaySFX("Clap");
+
                     return true;
                 }
             }
@@ -160,5 +170,7 @@ public class TimingManager : MonoBehaviour
     {
         //판정 기록 /22.03.24 by승주
         judgementRecord[4]++;
+
+        theStatusManager.ResetShieldCombo();
     }
 }
