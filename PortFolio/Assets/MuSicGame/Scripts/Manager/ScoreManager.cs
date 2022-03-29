@@ -36,6 +36,13 @@ public class ScoreManager : MonoBehaviour
         txtScore.text = "0";
     }
 
+    //Reset시 남아있는 점수 제거 및 초기화 시키는 기능 22.03.29 by승주
+    public void Initialized()
+    {
+        currentScore = 0;
+        txtScore.text = "0";
+    }
+
     //어떤 노트 판정을 받아왔는 확인.
     public void IncreasaseScore(int p_JudgementState)
     {

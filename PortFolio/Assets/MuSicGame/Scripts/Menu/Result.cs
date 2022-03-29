@@ -26,6 +26,11 @@ public class Result : MonoBehaviour
 
     public void ShowResult()
     {
+        FindObjectOfType<CenterFlame>().ResetMusic();
+
+        //결과창이 나오면 오디오 종료 22.03.29 by승주
+        AudioManager.instance.StopBGM();
+
         goUI.SetActive(true);
 
         for (int i = 0; i < txtCount.Length; i++)
@@ -50,6 +55,15 @@ public class Result : MonoBehaviour
 
         txtScore.text = string.Format("{0:#,##0}", t_currentScore);
         txtMaxCombo.text = string.Format("{0:#,##0}", t_maxCombo);
+    }
+
+    public void BtnMainMenu()
+    {
+        goUI.SetActive(false);
+
+        GameManager.instance.MainMenu();
+
+        theCombo.ResetCombo();
     }
 
 }

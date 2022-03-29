@@ -112,5 +112,8 @@ public class NoteManager : MonoBehaviour
             //Queue: 대기열 데이터나 작업을 입력한 순서대로 처리할 때 사용 22.03.24 by승주
             ObjectPool.instnace.noteQueue.Enqueue(theTimingManager.boxNoteList[i]);
         }
+
+        //note 초기화 22.03.29 by승주
+        theTimingManager.boxNoteList.Clear();
     }
 }

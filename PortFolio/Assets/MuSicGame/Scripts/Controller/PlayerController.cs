@@ -62,6 +62,19 @@ public class PlayerController : MonoBehaviour
         originPos = transform.position;
     }
 
+    //처음 있던 위치로 돌려보내는 기능 22.03.29 by승주
+    public void Initialized()
+    {
+        transform.position = Vector3.zero;
+        destPos = Vector3.zero;
+        realCube.localPosition = Vector3.zero;
+        canMove = true;
+        s_canPressKey = true;
+        isFalling = false;
+        myRigid.useGravity = false;
+        myRigid.isKinematic = true;
+    }
+
 
     void Update()
     {

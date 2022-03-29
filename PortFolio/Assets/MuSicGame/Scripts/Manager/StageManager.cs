@@ -5,6 +5,7 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     [SerializeField] GameObject stage = null;
+    GameObject currentStage;
     Transform[] stagePlates;
 
     //길 나타는 연출 /22.03.23 by승주
@@ -18,10 +19,23 @@ public class StageManager : MonoBehaviour
     //총 plate갯수를 선언/22.03.23 by승주
     int totalPlateCount = 0;
 
-    void Start()
+
+    //게임 시작 하면 기존에 있던 Stage 제거 하는 기능. 22.03.29 by승주
+    public void RemoveStage()
     {
+        if (currentStage != null)
+            Destroy(currentStage);
+    }
+
+    public void SettingStage()
+    {
+        //Stage가 새로 생성되면 StepCount를 0으로게임 시작할 때 마다 초기화 기능. 22.03.29 by승주
+        stepCount = 0;
+
+        currentStage = Instantiate(stage, Vector3.zero, Quaternion.identity);
+
         // Stage에 있는 plates들을 꺼내와서 stagePlates 저장.  /22.03.23 by승주
-        stagePlates = stage.GetComponent<Stage>().plates;
+        stagePlates = currentStage.GetComponent<Stage>().plates;
 
         //배열 길이 만큼 넣어준다. //22.03.23 by승주
         totalPlateCount = stagePlates.Length;
@@ -44,7 +58,7 @@ public class StageManager : MonoBehaviour
 
             StartCoroutine(MovePlateCo(stepCount++));
 
-            
+
     }
 
     IEnumerator MovePlateCo(int p_num)
@@ -55,7 +69,7 @@ public class StageManager : MonoBehaviour
 
         //얼만큼 올라와야하는 지 목표값(목적지) /22.03.24 by승주
         Vector3 t_destPos = new Vector3(stagePlates[p_num].position.x,
-                                        stagePlates[p_num].position.y -offsetY,
+                                        stagePlates[p_num].position.y - offsetY,
                                         stagePlates[p_num].position.z);
 
         //반복문을 통해 천천히 올려주는 함수 /22.03.24 by승주

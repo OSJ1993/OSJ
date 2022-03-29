@@ -173,4 +173,14 @@ public class TimingManager : MonoBehaviour
 
         theStatusManager.ResetShieldCombo();
     }
+
+    //판정 기록 초기화 22.03.29 by승주
+    public void Initialized()
+    {
+        judgementRecord[0] = 0;
+        judgementRecord[1] = 0;
+        judgementRecord[2] = 0;
+        judgementRecord[3] = 0;
+        judgementRecord[4] = 0;
+    }
 }

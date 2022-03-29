@@ -50,6 +50,20 @@ public class StatusManager : MonoBehaviour
         theNote = FindObjectOfType<NoteManager>();
     }
 
+    // HP, Shield, shieldGauge 초기화 시키는 기능 22.03.29 by승주
+    // isDead 초기값으로 되돌림
+    public void Initialized()
+    {
+        currentHP = maxHp;
+        currentShield = 0;
+        currentShieldCombo = 0;
+        shieldGauge.fillAmount = 0;
+        isDead = false;
+        SettingHPObject();
+        SettingShieldObject();
+
+    }
+
     public void CheckShield()
     {
         currentShieldCombo++;
