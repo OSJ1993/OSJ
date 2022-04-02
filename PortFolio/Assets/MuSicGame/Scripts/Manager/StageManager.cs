@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] GameObject stage = null;
+    [SerializeField] GameObject[] stageArray = null;
     GameObject currentStage;
     Transform[] stagePlates;
 
@@ -27,12 +27,12 @@ public class StageManager : MonoBehaviour
             Destroy(currentStage);
     }
 
-    public void SettingStage()
+    public void SettingStage(int p_somgNum)
     {
         //Stage가 새로 생성되면 StepCount를 0으로게임 시작할 때 마다 초기화 기능. 22.03.29 by승주
         stepCount = 0;
 
-        currentStage = Instantiate(stage, Vector3.zero, Quaternion.identity);
+        currentStage = Instantiate(stageArray[p_somgNum], Vector3.zero, Quaternion.identity);
 
         // Stage에 있는 plates들을 꺼내와서 stagePlates 저장.  /22.03.23 by승주
         stagePlates = currentStage.GetComponent<Stage>().plates;

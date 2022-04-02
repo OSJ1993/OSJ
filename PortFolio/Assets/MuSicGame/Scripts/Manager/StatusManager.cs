@@ -25,15 +25,15 @@ public class StatusManager : MonoBehaviour
     [SerializeField] GameObject[] hpObject = null;
     [SerializeField] GameObject[] shieldObject = null;
 
-    
-    
-   
+
+
+
 
     // 몇 Combo 이상일 때 Shield가 하나 회복 될 지 정하는 기능 22.03.28 by승주
     [SerializeField] int shieldlncreaseCombo = 5;
     int currentShieldCombo = 0;
 
-    
+
 
     //Gauge 조절 22.03.28 by승주
     [SerializeField] Image shieldGauge = null;
@@ -75,7 +75,7 @@ public class StatusManager : MonoBehaviour
         }
 
         shieldGauge.fillAmount = (float)currentShieldCombo / shieldlncreaseCombo;
-;
+        ;
     }
 
     //miss 뜨면 Shield Combo 초기화 22.03.28 by승주
@@ -144,7 +144,7 @@ public class StatusManager : MonoBehaviour
                 SettingHPObject();
             }
 
-            currentHP -= p_num;
+           /* currentHP -= p_num;
 
             //currentHP가 0보다 같거나 작으면 22.03.27 by승주
             if (currentHP <= 0)
@@ -160,9 +160,9 @@ public class StatusManager : MonoBehaviour
                 StartCoroutine(BlinkCo());
             }
 
-            SettingHPObject();
+            SettingHPObject();*/
 
-            
+
         }
     }
 

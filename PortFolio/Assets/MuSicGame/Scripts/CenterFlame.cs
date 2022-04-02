@@ -7,6 +7,8 @@ public class CenterFlame : MonoBehaviour
     
     bool musicStart = false;
 
+    public string bgmName = "";
+
     public void ResetMusic()
     {
         musicStart = false;
@@ -21,7 +23,7 @@ public class CenterFlame : MonoBehaviour
             //조건으로 자기에게 닿은 콜라이더에 태그가 Note라면 오디오 재생.
             if (collision.CompareTag("Note"))
             {
-                AudioManager.instance.PlayBGM("BGM0");
+                AudioManager.instance.PlayBGM(bgmName);
                 musicStart = true;
             }
 
