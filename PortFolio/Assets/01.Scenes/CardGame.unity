@@ -322,7 +322,7 @@ Transform:
   m_Children:
   - {fileID: 1385618831}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793040465
 GameObject:
@@ -858,7 +858,7 @@ Transform:
   m_Children:
   - {fileID: 966184195}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151763732
 GameObject:
@@ -1030,6 +1030,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1247153962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247153964}
+  - component: {fileID: 1247153963}
+  m_Layer: 0
+  m_Name: CardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1247153963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247153962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041d05d83f06c194d9f3010eaaebbf7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 11400000, guid: 3f93ebfe2c4e2af48b5de597ff9f777d, type: 2}
+--- !u!4 &1247153964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247153962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292929462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,7 +1335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1385618830
 GameObject:
@@ -1456,7 +1500,7 @@ Transform:
   m_LocalScale: {x: 5.38, y: 5.38, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1437028118
 GameObject:
@@ -1468,6 +1512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1437028120}
   - component: {fileID: 1437028119}
+  - component: {fileID: 1437028122}
   - component: {fileID: 1437028121}
   m_Layer: 0
   m_Name: Card
@@ -1543,7 +1588,7 @@ Transform:
   - {fileID: 110450105}
   - {fileID: 1151763733}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1437028121
 MonoBehaviour:
@@ -1557,9 +1602,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c48f6e85f06db14ebc688ab30af1de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backRenderers: []
-  midleRenderers: []
-  sortingLayerName: 
+  backRenderers:
+  - {fileID: 1437028119}
+  midleRenderers:
+  - {fileID: 1106560415}
+  - {fileID: 793040468}
+  - {fileID: 110450107}
+  - {fileID: 1151763735}
+  sortingLayerName: Card
+--- !u!114 &1437028122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437028118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd204f9d776b904a8c7e89834e22340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 0}
+  character: {fileID: 0}
+  nameTMP: {fileID: 0}
+  attackTMP: {fileID: 0}
+  healthTMP: {fileID: 0}
+  cardFront: {fileID: 0}
+  cardBack: {fileID: 0}
+  item:
+    name: 
+    attack: 0
+    health: 0
+    sprite: {fileID: 0}
+    percent: 0
 --- !u!1 &1757709224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,5 +1716,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

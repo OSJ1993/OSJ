@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/MusicGame.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/01.Scenes/CardGame.unity
+    guid: 0d28c6a54fee7db4c87cc33b819c4abc
   m_configObjects: {}

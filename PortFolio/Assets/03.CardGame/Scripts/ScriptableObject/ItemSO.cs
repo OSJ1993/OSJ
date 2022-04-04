@@ -9,7 +9,7 @@ public class Item
     //이름 22.04.04 by승주
     public string name;
 
-    //공격 22.04.04 by승주
+    //공격력 22.04.04 by승주
     public int attack;
 
     //체력 22.04.04 by승주
