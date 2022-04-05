@@ -11,6 +11,8 @@ public class CardManager : MonoBehaviour
     //item을 가져오기 위해 Field로 선언 하고 인스팩트에 보이게 하는 기능 22.04.04 by승주
     [SerializeField] ItemSO itemSO;
 
+    [SerializeField] GameObject cardPrefab;
+
 
     List<Item> itemBuffer;
 
@@ -62,6 +64,15 @@ public class CardManager : MonoBehaviour
     {
         //숫자패드 1번을 누르면 popItem을 호출하여 아이템이 튕겨져 나오게 해주는 기능  22.04.04 by승주
         if (Input.GetKeyDown(KeyCode.Keypad1))
-            print(popItem().name);
+            AddCard(true);
+            
+    }
+
+    //MyPlayer와 OtherPlayer가 뽑은 카드가 다르기 때문에 MyPlayer면 앞면 OtherPlayer 뒷면 나오게 하는 기능 22.04.05 by승주
+    void AddCard(bool isMine)
+    {
+        var cardObject = Instantiate(cardPrefab, Vector3.zero, Quaternion.identity);
+        var card = cardObject.GetComponent<Card>();
+        card.Setup(popItem(), isMine);
     }
 }
