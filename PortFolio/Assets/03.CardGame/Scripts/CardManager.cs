@@ -87,6 +87,7 @@ public class CardManager : MonoBehaviour
     //isMine에 따라서 Count를 함 22.04.06 by승주
     void SetOriginOrder(bool isMine)
     {
+        
         int count = isMine ? myCards.Count : otherCards.Count;
 
         //for문을 통해 myCard인지 otherCard인지 알려면 targetCard를 알아야 하기 때문에  22.04.06 by승주
@@ -94,6 +95,7 @@ public class CardManager : MonoBehaviour
         //SetOriginOrder 불러오면 originOrder가 채워지게 되고 SetOrder를 통해서 정렬이 되는 기능  22.04.06 by승주
         for (int i = 0; i < count; i++)
         {
+           
             var targetCard = isMine ? myCards[i] : otherCards[i];
             targetCard?.GetComponent<Order>().SetOriginOrder(i);
         }

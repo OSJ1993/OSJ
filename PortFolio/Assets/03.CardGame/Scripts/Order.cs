@@ -29,18 +29,26 @@ public class Order : MonoBehaviour
         SetOrder(isMostFront ? 100 : originOrder);
     }
 
+    private void Start()
+    {
+        SetOrder(0);
+    }
+
 
     //public으로 외부에서 order만 입력 하면 22.04.04 by승주
     public void SetOrder(int order)
     {
+        
         // order에 10을 곱한다 카드가 0,1,2가 되면 겹치기 때문에 순서를 10정도 간격을 띄어주는 기능 22.04.04 by승주
         int mulOrder = order * 10;
 
         //맨 뒷쪽을 sortingLayerName과 곱해지는 order를 mulOrder에 대입 해주는 기능 22.04.04 by승주
         foreach (var renderer in backRenderers)
         {
+            
             renderer.sortingLayerName = sortingLayerName;
             renderer.sortingOrder = mulOrder;
+            
         }
 
         //맨 뒤 보다 앞쪽은 sortingLayerName은 똑같지만 mulOrder에 플러스 1을 해서 위에 foreach문 보다 한칸 더 앞에 보이게 하는 기능 22.04.04 by승주 

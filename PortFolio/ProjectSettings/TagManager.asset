@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Note
   - BasicPlate
+  - Border
+  - BorderBullet
+  - Enemy
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
