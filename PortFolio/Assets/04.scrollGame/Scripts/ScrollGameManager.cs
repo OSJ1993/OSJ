@@ -13,6 +13,8 @@ public class ScrollGameManager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
+    public GameObject player;
+
     void Update()
     {
         //curSpawnDelay는 현재 흐르고 있는 시간 22.04.07 by승주
@@ -34,11 +36,36 @@ public class ScrollGameManager : MonoBehaviour
     void SpawnEnemy()
     {
         int ranEnemy = Random.Range(0, 3);
-        int ranPoint = Random.Range(0, 5);
+        int ranPoint = Random.Range(0, 9);
 
         //Radom으로 정해진 enemy Prefab, 생성 위치를 정해주는 기능 22.04.07 by승주
-        Instantiate(enemyObjs[ranEnemy],
-                    spawnPoints[ranPoint].position,
-                    spawnPoints[ranPoint].rotation);
+        GameObject enemy = Instantiate(enemyObjs[ranEnemy],
+                                      spawnPoints[ranPoint].position,
+                                      spawnPoints[ranPoint].rotation);
+
+
+        Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
+        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+
+        //Prefab에 있는 enemy가 Scene에 있는 spawn에서 spawn되서 Scene에 있는 player에게 접근 할 수 있게 해주기 위한 변수  22.04.07 by승주
+        enemyLogic.player = player;
+
+        //enemy 속도를 GameManager가 관리 하는 기능 22.04.07 by승주
+        //enemy가 if는 오른쪽에서 else if는 왼쪽에서 spawn되게 해주는 기능 22.04.07 by승주
+        //else는 enemy가 위에서 아래로 spawn되게 해주는 기능 22.04.07 by승주
+        if (ranPoint == 5 || ranPoint == 6)
+        {
+            enemy.transform.Rotate(Vector3.back * 90);
+            rigid.velocity = new Vector2(enemyLogic.speed * (-1), -1);
+        }
+        else if (ranPoint == 7 || ranPoint == 8)
+        {
+            enemy.transform.Rotate(Vector3.forward * 90);
+            rigid.velocity = new Vector2(enemyLogic.speed, -1);
+        }
+        else
+        {
+            rigid.velocity = new Vector2(0, enemyLogic.speed * (-1));
+        }
     }
 }

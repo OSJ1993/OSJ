@@ -4,23 +4,86 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public string enemyName;
     public float speed;
     public int health;
     public Sprite[] sprites;
 
+    //bullet이 발사 되는 속도 딜레이를 위한 기능 max(최대 실제 딜레이), cur(현재 한발 발사한 후 충전되는 딜레이) 22.04.07 by승주
+    public float maxShotDealy;
+    public float curShotDelay;
+
+    //bullet Prefab을 저장할 수 있는 기능 22.04.07 by승주
+    public GameObject bulletObjA;
+    public GameObject bulletObjB;
+
+    public GameObject player;
+
     SpriteRenderer spriteRenderer;
-    Rigidbody2D rigid;
 
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
 
-        //Enemy speed를 설정하는 기능 22.04.07 by승주
-        rigid.velocity = Vector2.down * speed;
 
     }
+
+    void Update()
+    {
+
+        Fire();
+        Reload();
+    }
+
+    //Bullet 발사 기능 22.04.07 by승주
+    void Fire()
+    {
+        
+        //curShotDelay(현재) Shot 딜레이가 maxShotDelay를 넘지 않았다면 장전이 안된 걸 알 수 있게 해주는 기능 22.04.07 by승주
+        if (curShotDelay < maxShotDealy)
+            return;
+
+        if (enemyName == "S")
+        {
+            //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+            //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
+            GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+
+            //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            //enemy생성 직 후 player 변수를 넘겨줌으로써 enemy가 Prefab에서 나온 후 enemy가 playr에게 bullet을 쏘기 위한 기능 22.04.07 by승주
+            //목표물 방향 =목표물 위치-자신의 위치 22.04.07 by승주
+            Vector3 dirVec = player.transform.position-transform.position;
+
+            rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+        }
+        else if (enemyName == "L")
+        {
+
+        }
+
+        //bullet을 다 발사 헀을 경우 다시 재장전을 위해 딜레이 변수를 0으로 초기화 시키는 기능 22.04.07 by승주
+        curShotDelay = 0;
+
+    }
+
+
+
+
+
+    //Bullet 발사 후 장전 하는 기능 22.04.07 by승주
+    void Reload()
+    {
+
+        curShotDelay += Time.deltaTime;
+    }
+
+
+
+
 
 
     //player가 발사한 bullet을 맞으면 enemy가 데미지를 받게 하는 기능 22.04.07 by승주
