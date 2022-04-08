@@ -68,4 +68,11 @@ public class ScrollGameManager : MonoBehaviour
             rigid.velocity = new Vector2(0, enemyLogic.speed * (-1));
         }
     }
+
+    //player º¹±Í ½ÃÅ°´Â ±â´É 22.04.08 by½ÂÁÖ
+    public void RespawnPlayer()
+    {
+        player.transform.position = Vector3.down * 3;
+        player.SetActive(true);
+    }
 }

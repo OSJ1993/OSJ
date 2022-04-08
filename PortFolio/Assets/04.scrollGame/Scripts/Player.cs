@@ -178,6 +178,14 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        {
+            //player파괴 되지 않고 player 목숨 잃고 다시 나오는 기능 22.04.08 by승주
+            //player 복귀 시키는 기능은 ScroolGameManager에서 22.04.08 by승주
+            gameObject.SetActive(false);
+            
+        }
     }
     void OnTriggerExit2D(Collider2D collision)
     {

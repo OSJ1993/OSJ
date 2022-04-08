@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     //Bullet 발사 기능 22.04.07 by승주
     void Fire()
     {
-        
+
         //curShotDelay(현재) Shot 딜레이가 maxShotDelay를 넘지 않았다면 장전이 안된 걸 알 수 있게 해주는 기능 22.04.07 by승주
         if (curShotDelay < maxShotDealy)
             return;
@@ -55,13 +55,31 @@ public class Enemy : MonoBehaviour
 
             //enemy생성 직 후 player 변수를 넘겨줌으로써 enemy가 Prefab에서 나온 후 enemy가 playr에게 bullet을 쏘기 위한 기능 22.04.07 by승주
             //목표물 방향 =목표물 위치-자신의 위치 22.04.07 by승주
-            Vector3 dirVec = player.transform.position-transform.position;
+            Vector3 dirVec = player.transform.position - transform.position;
 
-            rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
 
         }
         else if (enemyName == "L")
         {
+            //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+            //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
+            GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.3f, transform.rotation);
+            GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.right * 0.3f, transform.rotation);
+
+            //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
+            Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
+
+            //enemy생성 직 후 player 변수를 넘겨줌으로써 enemy가 Prefab에서 나온 후 enemy가 playr에게 bullet을 쏘기 위한 기능 22.04.07 by승주
+            //목표물 방향 =목표물 위치-자신의 위치 22.04.07 by승주
+            Vector3 dirVecR = player.transform.position - (transform.position + Vector3.right * 0.3f);
+            Vector3 dirVecL = player.transform.position - (transform.position + Vector3.right * 0.3f);
+
+            //벡터가 단위 값(1)로 변환된 변수 22.04.08 by승주
+            rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 10, ForceMode2D.Impulse);
+
 
         }
 
