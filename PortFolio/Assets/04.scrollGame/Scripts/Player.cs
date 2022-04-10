@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public bool isTouchRight;
     public bool isTouchLeft;
 
+    public int life;
+    public int score;
+
     //Player의 speed(속도)를 지정해주는 기능 22.04.07 by승주
     public float speed;
 
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
     //bullet Prefab을 저장할 수 있는 기능 22.04.07 by승주
     public GameObject bulletObjA;
     public GameObject bulletObjB;
+
+    public ScrollGameManager scrollGameManager; 
 
     Animator anim;
 
@@ -183,6 +188,9 @@ public class Player : MonoBehaviour
         {
             //player파괴 되지 않고 player 목숨 잃고 다시 나오는 기능 22.04.08 by승주
             //player 복귀 시키는 기능은 ScroolGameManager에서 22.04.08 by승주
+
+            scrollGameManager.RespawnPlayer();
+
             gameObject.SetActive(false);
             
         }

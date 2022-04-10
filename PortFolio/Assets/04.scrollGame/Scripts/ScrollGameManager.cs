@@ -72,7 +72,15 @@ public class ScrollGameManager : MonoBehaviour
     //player 복귀 시키는 기능 22.04.08 by승주
     public void RespawnPlayer()
     {
+        //player 복귀 시키는 시간 차를 두기 위해 Invoke() 사용 //22.04.10 by승주
+        Invoke("RespawnPlayerExe", 2f);
+    }
+
+    void RespawnPlayerExe()
+    {
+
         player.transform.position = Vector3.down * 3;
         player.SetActive(true);
+
     }
 }

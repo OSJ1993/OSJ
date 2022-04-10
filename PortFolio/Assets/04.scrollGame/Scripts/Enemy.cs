@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
     //Bullet 발사 기능 22.04.07 by승주
     void Fire()
     {
-
+        
+        
         //curShotDelay(현재) Shot 딜레이가 maxShotDelay를 넘지 않았다면 장전이 안된 걸 알 수 있게 해주는 기능 22.04.07 by승주
         if (curShotDelay < maxShotDealy)
             return;
@@ -59,7 +60,9 @@ public class Enemy : MonoBehaviour
 
             rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
 
+            
         }
+
         else if (enemyName == "L")
         {
             //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
