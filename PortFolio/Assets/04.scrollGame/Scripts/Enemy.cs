@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
+    public GameObject itemCoim;
+    public GameObject itemPower;
+    public GameObject itemBoom;
+
     public GameObject player;
 
     SpriteRenderer spriteRenderer;
@@ -40,8 +44,8 @@ public class Enemy : MonoBehaviour
     //Bullet 발사 기능 22.04.07 by승주
     void Fire()
     {
-        
-        
+
+
         //curShotDelay(현재) Shot 딜레이가 maxShotDelay를 넘지 않았다면 장전이 안된 걸 알 수 있게 해주는 기능 22.04.07 by승주
         if (curShotDelay < maxShotDealy)
             return;
@@ -61,7 +65,7 @@ public class Enemy : MonoBehaviour
 
             rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
 
-            
+
         }
 
         else if (enemyName == "L")
@@ -81,8 +85,9 @@ public class Enemy : MonoBehaviour
             Vector3 dirVecL = player.transform.position - (transform.position + Vector3.left * 0.3f);
 
             //벡터가 단위 값(1)로 변환된 변수 22.04.08 by승주
-            rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
-            rigidL.AddForce(dirVecL.normalized * 10, ForceMode2D.Impulse);
+            //Enemy Bullet Speed 설정 기능 22.04.08 by승주
+            rigidR.AddForce(dirVecR.normalized * 6, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 6, ForceMode2D.Impulse);
 
 
         }
@@ -111,6 +116,9 @@ public class Enemy : MonoBehaviour
     //player가 발사한 bullet을 맞으면 enemy가 데미지를 받게 하는 기능 22.04.07 by승주
     public void OnHit(int dmg)
     {
+        if (health < 0)
+            return;
+
         health -= dmg;
 
         //피격시 enemy의 spriteRenderer가 하얀색으로 바뀌게 하는 기능 22.04.07 by승주
@@ -120,17 +128,49 @@ public class Enemy : MonoBehaviour
         //바꾼 sprite를 시간 차를 주고 다시 되돌리는 기능 (Invoke) 22.04.07 by승주
         Invoke("ReturnSprite", 0.1f);
 
-        //만약에 health가 0보다 같거나 작게 됬을 경우 파괴 되는 기능 22.04.07 by승주
+        //만약에 health가 0이하 일 경우 파괴 되는 기능 22.04.07 by승주
         if (health <= 0)
         {
+            
 
             //enemy가 Destory가 되면 player에게 score를 더해주는 기능 22.04.11 by승주
             Player playerLogic = player.GetComponent<Player>();
             playerLogic.score += enemyScore;
-            
+
+
+            //health가 zero일 떄 item을 Drop 할 수 있게(Radom) 하는 기능 22.04.12 by승주
+            int ran = Random.Range(0, 10);
+
+            //item Drop 활률 기능 22.04.12 by승주
+            if (ran < 3)
+            {
+                //Not Item 30%
+                Debug.Log("Not Item");
+            }
+            else if (ran < 6)
+            {
+                //Coin  30%
+                Instantiate(itemCoim, transform.position, itemCoim.transform.rotation);
+            }
+            else if (ran < 8)
+            {
+                //Power 20%
+                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+            }
+            else if (ran < 10)
+            {
+                //Boom 20%
+                Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
+            }
+
+
             Destroy(gameObject);
+            
         }
     }
+
+
+
 
     //피격시 enemy의 spritRenderer가 바뀌었던 하얀색이 다시 원래 상태로 돌아오게 해주는 기능 22.04.07 by승주
     void ReturnSprite()
@@ -157,7 +197,9 @@ public class Enemy : MonoBehaviour
             //bullet이 enemy에게 피격시 bullet도 삭제시키는 기능 22.04.07 by승주
             Destroy(collision.gameObject);
 
+
         }
+
 
     }
 }

@@ -20,8 +20,11 @@ public class ScrollGameManager : MonoBehaviour
     //UI 22.04.11 by승주
     public Text scoreText;
     public Image[] lifeImage;
+    public Image[] boomImage;
     public GameObject gameOverSet;
 
+
+   
     void Update()
     {
         //curSpawnDelay는 현재 흐르고 있는 시간 22.04.07 by승주
@@ -90,12 +93,35 @@ public class ScrollGameManager : MonoBehaviour
             lifeImage[index].color = new Color(1, 1, 1, 0);
         }
 
+        
+
+
         //현재 index는 0이고 index는 OnTriggerEnter2D있는 현재 life까지  22.04.11 by승주
         //남아있는 life갯수만큼만 활성화 시켜주는 기능  22.04.11 by승주
+
         for (int index = 0; index < life; index++)
         {
 
-            lifeImage[index].color = new Color(1, 1, 1, 1);
+            lifeImage[index].color = new Color(1, 1, 1, 1f);
+        }
+    }
+
+
+
+    public void UpdateBoomIcon(int boom)
+    {
+        //Image를 일단 투명 상태로 두고 목숨대로 반투명 시켜주는 기능  22.04.11 by승주
+        for (int index = 0; index < 3; index++)
+        {
+            boomImage[index].color = new Color(1, 1, 1, 0.3f);
+        }
+
+        //현재 index는 0이고 index는 OnTriggerEnter2D있는 현재 life까지  22.04.11 by승주
+        //남아있는 boom갯수만큼만 활성화 시켜주는 기능  22.04.11 by승주
+        for (int index = 0; index < boom; index++)
+        {
+
+            boomImage[index].color = new Color(1, 1, 1, 1);
         }
     }
 

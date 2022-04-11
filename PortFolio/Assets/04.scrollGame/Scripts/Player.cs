@@ -18,9 +18,13 @@ public class Player : MonoBehaviour
     //Player의 speed(속도)를 지정해주는 기능 22.04.07 by승주
     public float speed;
 
-    //Player의 bulletObjB를 발사하기 위해 power값 기능 22.04.07 by승주
+    //Player의 power 최대값 현재값 기능 22.04.07 by승주
     public int maxPower;
     public int power;
+
+    //player의 boom 최대값 현재값 기능 22.04.11 by승주
+    public int maxBoom;
+    public int boom;
 
     //bullet이 발사 되는 속도 딜레이를 위한 기능 max(최대 실제 딜레이), cur(현재 한발 발사한 후 충전되는 딜레이) 22.04.07 by승주
     public float maxShotDealy;
@@ -37,6 +41,8 @@ public class Player : MonoBehaviour
     //피격 중복 방지 위한 기능 22.04.11 by승주
     public bool isHit;
 
+    public bool isBoomTime;
+
     Animator anim;
 
     void Awake()
@@ -48,6 +54,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+        Boom();
         Reload();
     }
 
@@ -168,6 +175,51 @@ public class Player : MonoBehaviour
         curShotDelay += Time.deltaTime;
     }
 
+
+    void Boom()
+    {
+        if (!Input.GetButton("Fire2"))
+            return;
+
+        //이미 폭탄을 쏘고 있는 지 확인 하기 위한 기능 22.04.11 by승주
+        if (isBoomTime)
+            return;
+
+        if (boom == 0)
+            return;
+
+        boom--;
+        isBoomTime = true;
+        scrollGameManager.UpdateBoomIcon(boom);
+        
+
+        //boomEffect 보이게 해주는 기능 22.04.11 by승주
+        boomEffect.SetActive(true);
+
+        //boom Sprite 시간차 비활성화 시키는 기능 22.04.12 by승주
+        Invoke("OffBoomEffect", 3f);
+
+        //Boom 맞고 Enemy 제거 하는 기능 22.04.11 by승주
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int index = 0; index < enemies.Length; index++)
+        {
+            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+
+            //enemy에게 dmg를 주는 기능 22.04.11 by승주
+            enemyLogic.OnHit(1000);
+
+            
+
+        }
+
+        //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        for (int index = 0; index < bullets.Length; index++)
+        {
+            Destroy(bullets[index]);
+        }
+
+    }
     //Player가 Boder Collider2D에 닿으면 뚫리지 않게 해주는 기능 22.04.07 by승주
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -247,41 +299,27 @@ public class Player : MonoBehaviour
 
                 //필살기 기능 22.04.11 by승주
                 case "Boom":
-                    //boomEffect 보이게 해주는 기능 22.04.11 by승주
-                    boomEffect.SetActive(true);
-
-                    Invoke("OffBoomEffect", 4f);
-
-                    //Boom 맞고 Enemy 제거 하는 기능 22.04.11 by승주
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    for (int index = 0; index < enemies.Length; index++)
+                    if (boom == maxBoom)
+                        score += 700;
+                    else
                     {
-                        Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
-
-                        //enemy에게 dmg를 주는 기능 22.04.11 by승주
-                        enemyLogic.OnHit(1000);
-
-
-
+                        boom++;
+                        scrollGameManager.UpdateBoomIcon(boom);
                     }
-
-                    //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
-                    GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-                    for (int index = 0; index < bullets.Length; index++)
-                    {
-                        Destroy(bullets[index]);
-                    }
+                        
                     break;
             }
 
             //item 먹으면 item 삭제 시키는 기능 22.04.11 by승주
             Destroy(collision.gameObject);
         }
+        
     }
 
     void OffBoomEffect()
     {
         boomEffect.SetActive(false);
+        isBoomTime = false;
     }
 
     void OnTriggerExit2D(Collider2D collision)
