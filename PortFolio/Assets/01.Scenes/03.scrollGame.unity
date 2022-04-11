@@ -302,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &300884023
 Animator:
   serializedVersion: 3
@@ -1866,12 +1866,13 @@ MonoBehaviour:
   life: 3
   score: 0
   speed: 3
-  maxPower: 0
-  power: 0
+  maxPower: 3
+  power: 1
   maxShotDealy: 0.15
   curShotDelay: 0
   bulletObjA: {fileID: 2928159325310403161, guid: e287012f9e0a1cd4baea584e651c93c5, type: 3}
   bulletObjB: {fileID: 4304580302125582194, guid: 1c6749982b6ec2b4d9033df050a3f376, type: 3}
+  boomEffect: {fileID: 300884022}
   scrollGameManager: {fileID: 1596066381}
   isHit: 0
 --- !u!212 &1337446124

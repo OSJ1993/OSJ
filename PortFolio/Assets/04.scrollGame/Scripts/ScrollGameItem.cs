@@ -12,7 +12,7 @@ public class ScrollGameItem : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         //Item speed 추가 기능 22.04.11 by승주
-        rigid.velocity = Vector2.down * 3f;
+        rigid.velocity = Vector2.down * 0.3f;
     }
 
    

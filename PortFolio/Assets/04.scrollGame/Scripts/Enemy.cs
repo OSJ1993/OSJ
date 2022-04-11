@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
 
 
     //player가 발사한 bullet을 맞으면 enemy가 데미지를 받게 하는 기능 22.04.07 by승주
-    void OnHit(int dmg)
+    public void OnHit(int dmg)
     {
         health -= dmg;
 

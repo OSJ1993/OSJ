@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
+    public GameObject boomEffect;
+
     public ScrollGameManager scrollGameManager;
 
     //피격 중복 방지 위한 기능 22.04.11 by승주
@@ -245,11 +247,43 @@ public class Player : MonoBehaviour
 
                 //필살기 기능 22.04.11 by승주
                 case "Boom":
+                    //boomEffect 보이게 해주는 기능 22.04.11 by승주
+                    boomEffect.SetActive(true);
 
+                    Invoke("OffBoomEffect", 4f);
+
+                    //Boom 맞고 Enemy 제거 하는 기능 22.04.11 by승주
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    for (int index = 0; index < enemies.Length; index++)
+                    {
+                        Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+
+                        //enemy에게 dmg를 주는 기능 22.04.11 by승주
+                        enemyLogic.OnHit(1000);
+
+
+
+                    }
+
+                    //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
+                    GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+                    for (int index = 0; index < bullets.Length; index++)
+                    {
+                        Destroy(bullets[index]);
+                    }
                     break;
             }
+
+            //item 먹으면 item 삭제 시키는 기능 22.04.11 by승주
+            Destroy(collision.gameObject);
         }
     }
+
+    void OffBoomEffect()
+    {
+        boomEffect.SetActive(false);
+    }
+
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
