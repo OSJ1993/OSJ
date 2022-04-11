@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScrollGameManager : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class ScrollGameManager : MonoBehaviour
     public float curSpawnDelay;
 
     public GameObject player;
+
+    //UI 22.04.11 by승주
+    public Text scoreText;
+    public Image[] lifeImage;
+    public GameObject gameOverSet;
 
     void Update()
     {
@@ -30,6 +37,11 @@ public class ScrollGameManager : MonoBehaviour
 
             curSpawnDelay = 0;
         }
+
+        //UI Score Update 기능 22.04.11 by승주
+        Player playerLogic = player.GetComponent<Player>();
+        scoreText.text = string.Format("{0:n0}", playerLogic.score);
+
     }
 
     //enemy 소환 시키는 기능 22.04.07 by승주
@@ -69,6 +81,24 @@ public class ScrollGameManager : MonoBehaviour
         }
     }
 
+    //
+    public void UpdateLifeIcon(int life)
+    {
+        //Image를 일단 투명 상태로 두고 목숨대로 반투명 시켜주는 기능  22.04.11 by승주
+        for (int index = 0; index < 3; index++)
+        {
+            lifeImage[index].color = new Color(1, 1, 1, 0);
+        }
+
+        //현재 index는 0이고 index는 OnTriggerEnter2D있는 현재 life까지  22.04.11 by승주
+        //남아있는 life갯수만큼만 활성화 시켜주는 기능  22.04.11 by승주
+        for (int index = 0; index < life; index++)
+        {
+
+            lifeImage[index].color = new Color(1, 1, 1, 1);
+        }
+    }
+
     //player 복귀 시키는 기능 22.04.08 by승주
     public void RespawnPlayer()
     {
@@ -82,5 +112,19 @@ public class ScrollGameManager : MonoBehaviour
         player.transform.position = Vector3.down * 3;
         player.SetActive(true);
 
+        //Player에서 선언한 bool 변수를 다시 초기화 시켜주는 기능 22.04.11 by승주
+        Player playerLogic = player.GetComponent<Player>();
+        playerLogic.isHit = false;
+
+    }
+
+    public void GameOver()
+    {
+        gameOverSet.SetActive(true);
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene("03.scrollGame");
     }
 }

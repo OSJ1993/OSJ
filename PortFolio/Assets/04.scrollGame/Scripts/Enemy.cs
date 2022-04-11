@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public string enemyName;
+    public int enemyScore;
     public float speed;
     public int health;
     public Sprite[] sprites;
@@ -67,8 +68,8 @@ public class Enemy : MonoBehaviour
         {
             //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
             //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-            GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.3f, transform.rotation);
-            GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.right * 0.3f, transform.rotation);
+            GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right * 0.3f, transform.rotation);
+            GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left * 0.3f, transform.rotation);
 
             //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
             Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
@@ -77,7 +78,7 @@ public class Enemy : MonoBehaviour
             //enemy생성 직 후 player 변수를 넘겨줌으로써 enemy가 Prefab에서 나온 후 enemy가 playr에게 bullet을 쏘기 위한 기능 22.04.07 by승주
             //목표물 방향 =목표물 위치-자신의 위치 22.04.07 by승주
             Vector3 dirVecR = player.transform.position - (transform.position + Vector3.right * 0.3f);
-            Vector3 dirVecL = player.transform.position - (transform.position + Vector3.right * 0.3f);
+            Vector3 dirVecL = player.transform.position - (transform.position + Vector3.left * 0.3f);
 
             //벡터가 단위 값(1)로 변환된 변수 22.04.08 by승주
             rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
@@ -122,6 +123,11 @@ public class Enemy : MonoBehaviour
         //만약에 health가 0보다 같거나 작게 됬을 경우 파괴 되는 기능 22.04.07 by승주
         if (health <= 0)
         {
+
+            //enemy가 Destory가 되면 player에게 score를 더해주는 기능 22.04.11 by승주
+            Player playerLogic = player.GetComponent<Player>();
+            playerLogic.score += enemyScore;
+            
             Destroy(gameObject);
         }
     }

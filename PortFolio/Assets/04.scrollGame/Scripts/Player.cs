@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public float speed;
 
     //Player의 bulletObjB를 발사하기 위해 power값 기능 22.04.07 by승주
-    public float power;
+    public int maxPower;
+    public int power;
 
     //bullet이 발사 되는 속도 딜레이를 위한 기능 max(최대 실제 딜레이), cur(현재 한발 발사한 후 충전되는 딜레이) 22.04.07 by승주
     public float maxShotDealy;
@@ -29,7 +30,10 @@ public class Player : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
-    public ScrollGameManager scrollGameManager; 
+    public ScrollGameManager scrollGameManager;
+
+    //피격 중복 방지 위한 기능 22.04.11 by승주
+    public bool isHit;
 
     Animator anim;
 
@@ -123,7 +127,7 @@ public class Player : MonoBehaviour
 
                 break;
 
-                //power three 세발 짜리 파워(기본 두발 + 강한 한발 bullet) 22.04.07 by승주
+            //power three 세발 짜리 파워(기본 두발 + 강한 한발 bullet) 22.04.07 by승주
             case 3:
 
                 //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
@@ -186,13 +190,64 @@ public class Player : MonoBehaviour
 
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
-            //player파괴 되지 않고 player 목숨 잃고 다시 나오는 기능 22.04.08 by승주
-            //player 복귀 시키는 기능은 ScroolGameManager에서 22.04.08 by승주
+            //한번에 두번 맞는 걸 못 하게 하기 위한 기능 22.04.11 by승주
+            //Hit시 로직 실행 못 하게 하는 기능 22.04.11 by승주
+            if (isHit) return;
 
-            scrollGameManager.RespawnPlayer();
+            //Hit가 아니면 로직 실행 시키는 기능 22.04.11 by승주
+            isHit = true;
+
+            //player의 life 기능 ScrollGameManager에 UpdateLifeIcon를 받아서 실행(UI부분) 22.04.11 by승주
+            life--;
+            scrollGameManager.UpdateLifeIcon(life);
+
+            //만약에 life가 zero라면 GameOver 실행 시키는 기능 22.04.11 by승주
+            if (life == 0)
+            {
+                scrollGameManager.GameOver();
+            }
+            //life가 zero가 아니고 life가 남아있다면 RespawnPlayer를 실행 시키는 기능  22.04.11 by승주
+            else
+            {
+                //player파괴 되지 않고 player 목숨 잃고 다시 나오는 기능 22.04.08 by승주
+                //player 복귀 시키는 기능은 ScroolGameManager에서 22.04.08 by승주
+
+                scrollGameManager.RespawnPlayer();
+
+            }
+
 
             gameObject.SetActive(false);
-            
+            Destroy(collision.gameObject);
+
+        }
+
+        //item 기능 22.04.11 by승주
+        else if (collision.gameObject.tag == "Item")
+        {
+            ScrollGameItem item = collision.gameObject.GetComponent<ScrollGameItem>();
+
+            switch (item.type)
+            {
+                case "Coin":
+                    score += 1000;
+                    break;
+
+                case "Power":
+                    //power와 maxPower가 같다면 점수를 올려주는 기능 22.04.11 by승주
+                    //maxPower로 무한정 power가 강해지는 것을 막아주는 기능 22.04.11 by승주
+                    if (power == maxPower)
+                        score += 500;
+                    //maxPower가 아닐 경우 power를 up 시켜주는 기능 22.04.11 by승주
+                    else
+                        power++;
+                    break;
+
+                //필살기 기능 22.04.11 by승주
+                case "Boom":
+
+                    break;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
