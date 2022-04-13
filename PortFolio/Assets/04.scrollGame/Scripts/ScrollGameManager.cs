@@ -90,7 +90,7 @@ public class ScrollGameManager : MonoBehaviour
         //Image를 일단 투명 상태로 두고 목숨대로 반투명 시켜주는 기능  22.04.11 by승주
         for (int index = 0; index < 3; index++)
         {
-            lifeImage[index].color = new Color(1, 1, 1, 0);
+            lifeImage[index].color = new Color(1, 1, 1, 0f);
         }
 
         
@@ -110,7 +110,7 @@ public class ScrollGameManager : MonoBehaviour
 
     public void UpdateBoomIcon(int boom)
     {
-        //Image를 일단 투명 상태로 두고 목숨대로 반투명 시켜주는 기능  22.04.11 by승주
+        //Image를 일단 투명 상태로 두고 boom image 반투명 시켜주는 기능  22.04.11 by승주
         for (int index = 0; index < 3; index++)
         {
             boomImage[index].color = new Color(1, 1, 1, 0.3f);
