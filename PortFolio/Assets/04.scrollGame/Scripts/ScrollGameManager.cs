@@ -121,6 +121,7 @@ public class ScrollGameManager : MonoBehaviour
     //enemy 소환 시키는 기능 22.04.07 by승주
     void SpawnEnemy()
     {
+        
         int enemyIndex = 0;
 
         switch (spawnList[spawnIndex].type)
@@ -136,8 +137,8 @@ public class ScrollGameManager : MonoBehaviour
             case "L":
                 enemyIndex = 2;
                 break;
-
         }
+       
 
 
         int enemyPoint = spawnList[spawnIndex].point;
