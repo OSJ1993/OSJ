@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject boomEffect;
 
     public ScrollGameManager scrollGameManager;
+    public ScrollGameObjectManager scrollobjectManager;
 
     //피격 중복 방지 위한 기능 22.04.11 by승주
     public bool isHit;
@@ -107,9 +108,10 @@ public class Player : MonoBehaviour
             //power one 한발 짜리 파워(기본 한발 bullet) 22.04.07 by승주
             case 1:
 
-                //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+
                 //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-                GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+                GameObject bullet = scrollobjectManager.MakeObj("BulletPlayerA");
+                bullet.transform.position = transform.position;
 
                 //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
                 Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -121,10 +123,15 @@ public class Player : MonoBehaviour
             //power two 두발 짜리 파워(기본 두발 bullet) 22.04.07 by승주
             case 2:
 
-                //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+
                 //bullet의 위치를 지정 해주는 기능 그냥 쏘면 위치가 겹치기 때문에 Vector3.right * 0.1f, Vector3.left * 0.1f로 총알 위치를 오른쪽, 왼쪽으로 이동시켜서 발사 시켜주는 기능  22.04.07 by승주
-                GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.1f, transform.rotation);
-                GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
+                GameObject bulletR = scrollobjectManager.MakeObj("BulletPlayerA");
+                bulletR.transform.position = transform.position + Vector3.right * 0.1f;
+
+
+                GameObject bulletL = scrollobjectManager.MakeObj("BulletPlayerA");
+                bulletL.transform.position = transform.position + Vector3.left * 0.1f;
+
 
                 //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
                 //bullet의 위치를 지정 해주는 기능 그냥 쏘면 위치가 겹치기 때문에 Vector3.right * 0.1f, Vector3.left * 0.1f로 총알 위치를 오른쪽, 왼쪽으로 이동시켜서 발사 시켜주는 기능  22.04.07 by승주
@@ -139,11 +146,18 @@ public class Player : MonoBehaviour
             //power three 세발 짜리 파워(기본 두발 + 강한 한발 bullet) 22.04.07 by승주
             case 3:
 
-                //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
                 //bullet의 위치를 지정 해주는 기능 그냥 쏘면 위치가 겹치기 때문에 Vector3.right * 0.1f, Vector3.left * 0.1f로 총알 위치를 오른쪽, 왼쪽으로 이동시켜서 발사 시켜주는 기능  22.04.07 by승주
-                GameObject bulletRR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.35f, transform.rotation);
-                GameObject bulletCC = Instantiate(bulletObjB, transform.position, transform.rotation);
-                GameObject bulletLL = Instantiate(bulletObjA, transform.position + Vector3.left * 0.35f, transform.rotation);
+                GameObject bulletRR = scrollobjectManager.MakeObj("BulletPlayerA");
+                bulletRR.transform.position = transform.position + Vector3.right * 0.35f;
+
+
+                GameObject bulletCC = scrollobjectManager.MakeObj("BulletPlayerB");
+                bulletCC.transform.position = transform.position;
+
+
+                GameObject bulletLL = scrollobjectManager.MakeObj("BulletPlayerA");
+                bulletLL.transform.position = transform.position + Vector3.left * 0.35f;
+
 
 
                 //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
@@ -191,7 +205,7 @@ public class Player : MonoBehaviour
         boom--;
         isBoomTime = true;
         scrollGameManager.UpdateBoomIcon(boom);
-        
+
 
         //boomEffect 보이게 해주는 기능 22.04.11 by승주
         boomEffect.SetActive(true);
@@ -200,24 +214,59 @@ public class Player : MonoBehaviour
         Invoke("OffBoomEffect", 3f);
 
         //Boom 맞고 Enemy 제거 하는 기능 22.04.11 by승주
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int index = 0; index < enemies.Length; index++)
+        GameObject[] enemiesL = scrollobjectManager.GetPool("EnemyL");
+        GameObject[] enemiesM = scrollobjectManager.GetPool("EnemyM");
+        GameObject[] enemiesS = scrollobjectManager.GetPool("EnemyS");
+
+        for (int index = 0; index < enemiesL.Length; index++)
         {
-            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+            if (enemiesL[index].activeSelf)
+            {
 
-            //enemy에게 dmg를 주는 기능 22.04.11 by승주
-            enemyLogic.OnHit(1000);
+                Enemy enemyLogic = enemiesL[index].GetComponent<Enemy>();
 
-            
-
+                //enemy에게 dmg를 주는 기능 22.04.11 by승주
+                enemyLogic.OnHit(1000);
+            }
         }
+        for (int index = 0; index < enemiesM.Length; index++)
+        {
+            if (enemiesM[index].activeSelf)
+            {
+
+                Enemy enemyLogic = enemiesM[index].GetComponent<Enemy>();
+
+                //enemy에게 dmg를 주는 기능 22.04.11 by승주
+                enemyLogic.OnHit(1000);
+            }
+        }
+        for (int index = 0; index < enemiesS.Length; index++)
+        {
+            if (enemiesS[index].activeSelf)
+            {
+
+                Enemy enemyLogic = enemiesS[index].GetComponent<Enemy>();
+
+                //enemy에게 dmg를 주는 기능 22.04.11 by승주
+                enemyLogic.OnHit(1000);
+            }
+        }
+
 
         //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for (int index = 0; index < bullets.Length; index++)
-        {
-            Destroy(bullets[index]);
-        }
+        GameObject[] bulletsA = scrollobjectManager.GetPool("BulletEnemyA");
+        GameObject[] bulletsB = scrollobjectManager.GetPool("BulletEnemyB");
+        
+        for (int index = 0; index < bulletsA.Length; index++)
+            if (bulletsA[index].activeSelf)
+            {
+                bulletsA[index].SetActive(false);
+            }
+        for (int index = 0; index < bulletsB.Length; index++)
+            if (bulletsB[index].activeSelf)
+            {
+                bulletsB[index].SetActive(false);
+            }
 
     }
     //Player가 Boder Collider2D에 닿으면 뚫리지 않게 해주는 기능 22.04.07 by승주
@@ -272,7 +321,7 @@ public class Player : MonoBehaviour
 
 
             gameObject.SetActive(false);
-            Destroy(collision.gameObject);
+
 
         }
 
@@ -306,14 +355,14 @@ public class Player : MonoBehaviour
                         boom++;
                         scrollGameManager.UpdateBoomIcon(boom);
                     }
-                        
+
                     break;
             }
 
             //item 먹으면 item 삭제 시키는 기능 22.04.11 by승주
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
-        
+
     }
 
     void OffBoomEffect()

@@ -149,3 +149,4 @@ MonoBehaviour:
   itemPower: {fileID: 10073192667195321, guid: ee07fad263190b54681c7d2eb2c5457e, type: 3}
   itemBoom: {fileID: 2729965116044051517, guid: 9c730e0823b334d4ca203dc28598b183, type: 3}
   player: {fileID: 0}
+  scrollObjectManager: {fileID: 0}

@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    public ScrollGameObjectManager scrollObjectManager;
+
     SpriteRenderer spriteRenderer;
 
 
@@ -32,6 +34,26 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
 
+    }
+
+    //소모되는 변수는 활성화 될 때, 다시 초기화 시켜주는 기능 22.04.13 by승주
+    //OnEnable() 컴포넌트가 활성화 될 때 호출되는 생명주기 함수 기능 22.04.13 by승주
+    void OnEnable()
+    {
+        switch (enemyName)
+        {
+            case "L":
+                health = 40;
+                break;
+
+            case "M":
+                health = 10;
+                break;
+
+            case "S":
+                health = 3;
+                break;
+        }
     }
 
     void Update()
@@ -54,7 +76,9 @@ public class Enemy : MonoBehaviour
         {
             //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
             //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-            GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+            GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyA");
+            bullet.transform.position = transform.position;
+
 
             //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -72,8 +96,12 @@ public class Enemy : MonoBehaviour
         {
             //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
             //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-            GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right * 0.3f, transform.rotation);
-            GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left * 0.3f, transform.rotation);
+            GameObject bulletR = scrollObjectManager.MakeObj("BulletEnemyB");
+            bulletR.transform.position = transform.position + Vector3.right * 0.3f;
+
+            GameObject bulletL = scrollObjectManager.MakeObj("BulletEnemyB");
+            bulletL.transform.position = transform.position + Vector3.left * 0.3f;
+
 
             //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
             Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
@@ -131,7 +159,7 @@ public class Enemy : MonoBehaviour
         //만약에 health가 0이하 일 경우 파괴 되는 기능 22.04.07 by승주
         if (health <= 0)
         {
-            
+
 
             //enemy가 Destory가 되면 player에게 score를 더해주는 기능 22.04.11 by승주
             Player playerLogic = player.GetComponent<Player>();
@@ -150,22 +178,33 @@ public class Enemy : MonoBehaviour
             else if (ran < 6)
             {
                 //Coin  30%
-                Instantiate(itemCoim, transform.position, itemCoim.transform.rotation);
+                GameObject itemCoin= scrollObjectManager.MakeObj("ItemCoin");
+                itemCoin.transform.position = transform.position;
+                Rigidbody2D rigid = itemCoin.GetComponent<Rigidbody2D>();
+                rigid.velocity = Vector2.down * 1.5f;
+
+                
             }
             else if (ran < 8)
             {
                 //Power 20%
-                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+                GameObject itemPower= scrollObjectManager.MakeObj("ItemPower");
+                itemPower.transform.position = transform.position;
+                Rigidbody2D rigid = itemPower.GetComponent<Rigidbody2D>();
+                rigid.velocity = Vector2.down * 1.5f;
             }
             else if (ran < 10)
             {
                 //Boom 20%
-                Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
+                GameObject itemBoom= scrollObjectManager.MakeObj("ItemBoom");
+                itemBoom.transform.position = transform.position;
+                Rigidbody2D rigid = itemBoom.GetComponent<Rigidbody2D>();
+                rigid.velocity = Vector2.down * 1.5f;
             }
 
 
-            Destroy(gameObject);
-            
+            gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity;
         }
     }
 
@@ -184,7 +223,10 @@ public class Enemy : MonoBehaviour
     {
         //bullet과 마찬가지로 바깥으로 나간 후에는 삭제 시키는 기능 22.04.07 by승주
         if (collision.gameObject.tag == "BorderBullet")
-            Destroy(gameObject);
+        {
+            gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity;
+        }
 
         //player의 bullet과 부딪히면 삭제 시키는 기능 22.04.07 by승주
         else if (collision.gameObject.tag == "PlayerBullet")
@@ -195,7 +237,7 @@ public class Enemy : MonoBehaviour
             OnHit(bullet.dmg);
 
             //bullet이 enemy에게 피격시 bullet도 삭제시키는 기능 22.04.07 by승주
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
 
         }
