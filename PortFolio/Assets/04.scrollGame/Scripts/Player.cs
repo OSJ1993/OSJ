@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
 
@@ -37,12 +38,14 @@ public class Player : MonoBehaviour
     public GameObject boomEffect;
 
     public ScrollGameManager scrollGameManager;
-    public ScrollGameObjectManager scrollobjectManager;
+    public ScrollGameObjectManager scrollObjectManager;
 
     //피격 중복 방지 위한 기능 22.04.11 by승주
     public bool isHit;
 
     public bool isBoomTime;
+
+    public GameObject[] followers;
 
     Animator anim;
 
@@ -110,7 +113,7 @@ public class Player : MonoBehaviour
 
 
                 //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-                GameObject bullet = scrollobjectManager.MakeObj("BulletPlayerA");
+                GameObject bullet = scrollObjectManager.MakeObj("BulletPlayerA");
                 bullet.transform.position = transform.position;
 
                 //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
@@ -125,11 +128,11 @@ public class Player : MonoBehaviour
 
 
                 //bullet의 위치를 지정 해주는 기능 그냥 쏘면 위치가 겹치기 때문에 Vector3.right * 0.1f, Vector3.left * 0.1f로 총알 위치를 오른쪽, 왼쪽으로 이동시켜서 발사 시켜주는 기능  22.04.07 by승주
-                GameObject bulletR = scrollobjectManager.MakeObj("BulletPlayerA");
+                GameObject bulletR = scrollObjectManager.MakeObj("BulletPlayerA");
                 bulletR.transform.position = transform.position + Vector3.right * 0.1f;
 
 
-                GameObject bulletL = scrollobjectManager.MakeObj("BulletPlayerA");
+                GameObject bulletL = scrollObjectManager.MakeObj("BulletPlayerA");
                 bulletL.transform.position = transform.position + Vector3.left * 0.1f;
 
 
@@ -144,18 +147,18 @@ public class Player : MonoBehaviour
                 break;
 
             //power three 세발 짜리 파워(기본 두발 + 강한 한발 bullet) 22.04.07 by승주
-            case 3:
+            default:
 
                 //bullet의 위치를 지정 해주는 기능 그냥 쏘면 위치가 겹치기 때문에 Vector3.right * 0.1f, Vector3.left * 0.1f로 총알 위치를 오른쪽, 왼쪽으로 이동시켜서 발사 시켜주는 기능  22.04.07 by승주
-                GameObject bulletRR = scrollobjectManager.MakeObj("BulletPlayerA");
+                GameObject bulletRR = scrollObjectManager.MakeObj("BulletPlayerA");
                 bulletRR.transform.position = transform.position + Vector3.right * 0.35f;
 
 
-                GameObject bulletCC = scrollobjectManager.MakeObj("BulletPlayerB");
+                GameObject bulletCC = scrollObjectManager.MakeObj("BulletPlayerB");
                 bulletCC.transform.position = transform.position;
 
 
-                GameObject bulletLL = scrollobjectManager.MakeObj("BulletPlayerA");
+                GameObject bulletLL = scrollObjectManager.MakeObj("BulletPlayerA");
                 bulletLL.transform.position = transform.position + Vector3.left * 0.35f;
 
 
@@ -214,9 +217,9 @@ public class Player : MonoBehaviour
         Invoke("OffBoomEffect", 3f);
 
         //Boom 맞고 Enemy 제거 하는 기능 22.04.11 by승주
-        GameObject[] enemiesL = scrollobjectManager.GetPool("EnemyL");
-        GameObject[] enemiesM = scrollobjectManager.GetPool("EnemyM");
-        GameObject[] enemiesS = scrollobjectManager.GetPool("EnemyS");
+        GameObject[] enemiesL = scrollObjectManager.GetPool("EnemyL");
+        GameObject[] enemiesM = scrollObjectManager.GetPool("EnemyM");
+        GameObject[] enemiesS = scrollObjectManager.GetPool("EnemyS");
 
         for (int index = 0; index < enemiesL.Length; index++)
         {
@@ -254,9 +257,9 @@ public class Player : MonoBehaviour
 
 
         //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
-        GameObject[] bulletsA = scrollobjectManager.GetPool("BulletEnemyA");
-        GameObject[] bulletsB = scrollobjectManager.GetPool("BulletEnemyB");
-        
+        GameObject[] bulletsA = scrollObjectManager.GetPool("BulletEnemyA");
+        GameObject[] bulletsB = scrollObjectManager.GetPool("BulletEnemyB");
+
         for (int index = 0; index < bulletsA.Length; index++)
             if (bulletsA[index].activeSelf)
             {
@@ -343,7 +346,10 @@ public class Player : MonoBehaviour
                         score += 500;
                     //maxPower가 아닐 경우 power를 up 시켜주는 기능 22.04.11 by승주
                     else
+                    {
                         power++;
+                        AddFollower();
+                    }
                     break;
 
                 //필살기 기능 22.04.11 by승주
@@ -370,6 +376,18 @@ public class Player : MonoBehaviour
         boomEffect.SetActive(false);
         isBoomTime = false;
     }
+
+    void AddFollower()
+    {
+        //player의 power가 4라면 첫번쨰 follower를 활성화 시키는 기능 22.04.14 by승주
+        if (power == 4)
+            followers[0].SetActive(true);
+        else if (power == 5)
+            followers[1].SetActive(true);
+        else if (power == 6)
+            followers[2].SetActive(true);
+    }
+
 
     void OnTriggerExit2D(Collider2D collision)
     {

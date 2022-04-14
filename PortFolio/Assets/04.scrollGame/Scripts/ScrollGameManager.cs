@@ -71,7 +71,7 @@ public class ScrollGameManager : MonoBehaviour
             //ReadLine(): 텍스트 데이터를 한 줄씩 반환(자동 줄 바꿈) 하는 기능 22.04.13 by승주
             string line = stringReader.ReadLine();
 
-            Debug.Log(line);
+            
 
             if (line == null)
                 break;

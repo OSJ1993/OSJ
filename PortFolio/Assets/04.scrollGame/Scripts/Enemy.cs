@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
             if (ran < 3)
             {
                 //Not Item 30%
-                Debug.Log("Not Item");
+                
             }
             else if (ran < 6)
             {
