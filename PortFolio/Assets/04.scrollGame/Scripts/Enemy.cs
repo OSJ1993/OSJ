@@ -30,13 +30,18 @@ public class Enemy : MonoBehaviour
 
     Animator anim;
 
+    //pattern 흐름에 필요한 변수 생성 22.04.15 by승주
+    public int patternIndex;
+    public int curPatternCount;
+    public int[] maxPatternCount;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (enemyName == "B")
             anim = GetComponent<Animator>();
-        Debug.Log(enemyName == "B");
+        
     }
 
     //소모되는 변수는 활성화 될 때, 다시 초기화 시켜주는 기능 22.04.13 by승주
@@ -47,8 +52,9 @@ public class Enemy : MonoBehaviour
         {
             case "B":
                 health = 4000;
-                Stop();
+                Invoke("Stop", 3.5f);
                 break;
+
             case "L":
                 health = 40;
                 break;
@@ -65,9 +71,106 @@ public class Enemy : MonoBehaviour
 
     void Stop()
     {
+        //stop 함수가 두 번 사용되지 않도록 하는 기능 22.04.15by승주
+        if (!gameObject.activeSelf)
+            return;
+
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.velocity = Vector2.zero;
+
+        Invoke("Think", 2);
     }
+
+    //pattern을 돌리기 위한 생각 기능 22.04.15 by승주
+    void Think()
+    {
+        patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+
+        curPatternCount = 0;
+
+        switch (patternIndex)
+        {
+            case 0:
+                FireFoward();
+                break;
+
+            case 1:
+                FireShot();
+                break;
+
+            case 2:
+                FireArc();
+                break;
+
+            case 3:
+                FireAround();
+                break;
+        }
+    }
+
+    void FireFoward()
+    {
+        Debug.LogError("앞으로 4발 발사.");
+
+        curPatternCount++;
+
+        //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireFoward"를 다시 실행 시키는 기능 22.04.16 by승주
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireFoward", 2);
+
+        //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
+        else
+            Invoke("Think", 3);
+
+        
+    }
+
+    void FireShot()
+    {
+        Debug.LogError("player 방향으로 샷건.");
+
+        curPatternCount++;
+
+        //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireShot"를 다시 실행 시키는 기능 22.04.16 by승주
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireShot", 3.5f);
+
+        //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
+        else
+            Invoke("Think", 3);
+    }
+
+    void FireArc()
+    {
+        Debug.LogError("부채모양으로 발사.");
+
+        curPatternCount++;
+
+        //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireArc"를 다시 실행 시키는 기능 22.04.16 by승주
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireArc", 0.15f);
+
+        //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
+        else
+            Invoke("Think", 3);
+    }
+
+    void FireAround()
+    {
+        Debug.LogError("원 형태로 전체 공격.");
+
+        curPatternCount++;
+
+        //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireAround"를 다시 실행 시키는 기능 22.04.16 by승주
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireAround", 0.7f);
+
+        //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
+        else
+            Invoke("Think", 3);
+    }
+
+
 
     void Update()
     {
