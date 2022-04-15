@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class ScrollGameObjectManager : MonoBehaviour
 {
+
+    public GameObject enemyBPrefab;
     public GameObject enemyLPrefab;
     public GameObject enemyMPrefab;
     public GameObject enemySPrefab;
@@ -21,8 +23,11 @@ public class ScrollGameObjectManager : MonoBehaviour
     public GameObject bulletEnemyAPrefab;
     public GameObject bulletEnemyBPrefab;
     public GameObject bulletFollowerPrefab;
+    public GameObject bulletBossAPrefab;
+    public GameObject bulletBossBPrefab;
 
     //Prefab을 생성 하여 저장할 배열 생성 22.04.13 by승주
+    GameObject[] enemyB;
     GameObject[] enemyL;
     GameObject[] enemyM;
     GameObject[] enemyS;
@@ -36,12 +41,15 @@ public class ScrollGameObjectManager : MonoBehaviour
     GameObject[] bulletEnemyA;
     GameObject[] bulletEnemyB;
     GameObject[] bulletFollower;
+    GameObject[] bulletBossA;
+    GameObject[] bulletBossB;
 
     GameObject[] targetPool;
 
     void Awake()
     {
         //한번에 등장할 개수를 고려하여 배열 길이 할당 22.04.13 by승주
+        enemyB = new GameObject[1];
         enemyL = new GameObject[10];
         enemyM = new GameObject[10];
         enemyS = new GameObject[20];
@@ -55,6 +63,8 @@ public class ScrollGameObjectManager : MonoBehaviour
         bulletEnemyA = new GameObject[100];
         bulletEnemyB = new GameObject[100];
         bulletFollower = new GameObject[100];
+        bulletBossA = new GameObject[50];
+        bulletBossB = new GameObject[1000];
 
         Generate();
     }
@@ -62,6 +72,13 @@ public class ScrollGameObjectManager : MonoBehaviour
     void Generate()
     {
         //Enemy
+        for (int index = 0; index < enemyB.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.13 by승주
+            enemyB[index] = Instantiate(enemyBPrefab);
+            enemyB[index].SetActive(false);
+
+        }
         for (int index = 0; index < enemyL.Length; index++)
         {
             //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.13 by승주
@@ -130,11 +147,26 @@ public class ScrollGameObjectManager : MonoBehaviour
             bulletEnemyB[index] = Instantiate(bulletEnemyBPrefab);
             bulletEnemyB[index].SetActive(false);
 
-        }  for (int index = 0; index < bulletFollower.Length; index++)
+        }  
+        for (int index = 0; index < bulletFollower.Length; index++)
         {
             //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.14 by승주
             bulletFollower[index] = Instantiate(bulletFollowerPrefab);
             bulletFollower[index].SetActive(false);
+
+        }
+        for (int index = 0; index < bulletBossA.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.13 by승주
+            bulletBossA[index] = Instantiate(bulletBossAPrefab);
+            bulletBossA[index].SetActive(false);
+
+        }
+        for (int index = 0; index < bulletBossB.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.14 by승주
+            bulletBossB[index] = Instantiate(bulletBossBPrefab);
+            bulletBossB[index].SetActive(false);
 
         }
     }
@@ -146,6 +178,9 @@ public class ScrollGameObjectManager : MonoBehaviour
         switch (type)
         {
             //Enemy
+            case "EnemyB":
+                targetPool = enemyB;
+                break;
             case "EnemyL":
                 targetPool = enemyL;
                 break;
@@ -182,6 +217,12 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletFollower":
                 targetPool = bulletFollower;
+                break;
+            case "BulletBossA":
+                targetPool = bulletBossA;
+                break;
+            case "BulletBossB":
+                targetPool = bulletBossB;
                 break;
         }
 
@@ -204,6 +245,9 @@ public class ScrollGameObjectManager : MonoBehaviour
         switch (type)
         {
             //Enemy
+            case "EnemyB":
+                targetPool = enemyL;
+                break; 
             case "EnemyL":
                 targetPool = enemyL;
                 break;
@@ -240,6 +284,12 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletFollower":
                 targetPool = bulletFollower;
+                break;
+            case "BulletBossA":
+                targetPool = bulletBossA;
+                break;
+            case "BulletBossB":
+                targetPool = bulletBossB;
                 break;
         }
                 return targetPool;

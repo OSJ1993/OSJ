@@ -28,12 +28,15 @@ public class Enemy : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    Animator anim;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-
+        if (enemyName == "B")
+            anim = GetComponent<Animator>();
+        Debug.Log(enemyName == "B");
     }
 
     //소모되는 변수는 활성화 될 때, 다시 초기화 시켜주는 기능 22.04.13 by승주
@@ -42,6 +45,10 @@ public class Enemy : MonoBehaviour
     {
         switch (enemyName)
         {
+            case "B":
+                health = 4000;
+                Stop();
+                break;
             case "L":
                 health = 40;
                 break;
@@ -56,8 +63,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Stop()
+    {
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        rigid.velocity = Vector2.zero;
+    }
+
     void Update()
     {
+        if (enemyName == "B")
+            return;
 
         Fire();
         Reload();
@@ -149,12 +164,22 @@ public class Enemy : MonoBehaviour
 
         health -= dmg;
 
-        //피격시 enemy의 spriteRenderer가 하얀색으로 바뀌게 하는 기능 22.04.07 by승주
-        //평소에는 sprite는 0 피격시 sprite는 1 시켜주는 기능 22.04.07 by승주
-        spriteRenderer.sprite = sprites[1];
+        if (enemyName == "B")
+        {
+            anim.SetTrigger("OnHit");
+        }
+        else
+        {
 
-        //바꾼 sprite를 시간 차를 주고 다시 되돌리는 기능 (Invoke) 22.04.07 by승주
-        Invoke("ReturnSprite", 0.1f);
+            //피격시 enemy의 spriteRenderer가 하얀색으로 바뀌게 하는 기능 22.04.07 by승주
+            //평소에는 sprite는 0 피격시 sprite는 1 시켜주는 기능 22.04.07 by승주
+            spriteRenderer.sprite = sprites[1];
+
+            //바꾼 sprite를 시간 차를 주고 다시 되돌리는 기능 (Invoke) 22.04.07 by승주
+            Invoke("ReturnSprite", 0.1f);
+
+        }
+
 
         //만약에 health가 0이하 일 경우 파괴 되는 기능 22.04.07 by승주
         if (health <= 0)
@@ -167,28 +192,29 @@ public class Enemy : MonoBehaviour
 
 
             //health가 zero일 떄 item을 Drop 할 수 있게(Radom) 하는 기능 22.04.12 by승주
-            int ran = Random.Range(0, 10);
+            //Boss가 아이템 떨어트릴 확률 0으로 만드는 기능 22.04.15 by승주
+            int ran = enemyName == "B" ? 0 : Random.Range(0, 10);
 
             //item Drop 활률 기능 22.04.12 by승주
             if (ran < 3)
             {
                 //Not Item 30%
-                
+
             }
             else if (ran < 6)
             {
                 //Coin  30%
-                GameObject itemCoin= scrollObjectManager.MakeObj("ItemCoin");
+                GameObject itemCoin = scrollObjectManager.MakeObj("ItemCoin");
                 itemCoin.transform.position = transform.position;
                 Rigidbody2D rigid = itemCoin.GetComponent<Rigidbody2D>();
                 rigid.velocity = Vector2.down * 1.5f;
 
-                
+
             }
             else if (ran < 8)
             {
                 //Power 20%
-                GameObject itemPower= scrollObjectManager.MakeObj("ItemPower");
+                GameObject itemPower = scrollObjectManager.MakeObj("ItemPower");
                 itemPower.transform.position = transform.position;
                 Rigidbody2D rigid = itemPower.GetComponent<Rigidbody2D>();
                 rigid.velocity = Vector2.down * 1.5f;
@@ -196,7 +222,7 @@ public class Enemy : MonoBehaviour
             else if (ran < 10)
             {
                 //Boom 20%
-                GameObject itemBoom= scrollObjectManager.MakeObj("ItemBoom");
+                GameObject itemBoom = scrollObjectManager.MakeObj("ItemBoom");
                 itemBoom.transform.position = transform.position;
                 Rigidbody2D rigid = itemBoom.GetComponent<Rigidbody2D>();
                 rigid.velocity = Vector2.down * 1.5f;
@@ -222,7 +248,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //bullet과 마찬가지로 바깥으로 나간 후에는 삭제 시키는 기능 22.04.07 by승주
-        if (collision.gameObject.tag == "BorderBullet")
+        if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
         {
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;

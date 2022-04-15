@@ -44,7 +44,7 @@ public class ScrollGameManager : MonoBehaviour
     {
         spawnList = new List<Spawn>();
 
-        enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL" };
+        enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
         ReadSpawnFile();
     }
@@ -71,7 +71,7 @@ public class ScrollGameManager : MonoBehaviour
             //ReadLine(): 텍스트 데이터를 한 줄씩 반환(자동 줄 바꿈) 하는 기능 22.04.13 by승주
             string line = stringReader.ReadLine();
 
-            
+
 
             if (line == null)
                 break;
@@ -121,7 +121,7 @@ public class ScrollGameManager : MonoBehaviour
     //enemy 소환 시키는 기능 22.04.07 by승주
     void SpawnEnemy()
     {
-        
+
         int enemyIndex = 0;
 
         switch (spawnList[spawnIndex].type)
@@ -137,8 +137,12 @@ public class ScrollGameManager : MonoBehaviour
             case "L":
                 enemyIndex = 2;
                 break;
+
+            case "B":
+                enemyIndex = 3;
+                break;
         }
-       
+
 
 
         int enemyPoint = spawnList[spawnIndex].point;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6669777366786837817}
   - component: {fileID: 3425614944944399625}
   - component: {fileID: -1818444752355437882}
-  - component: {fileID: 8816576978788650398}
+  - component: {fileID: 2373597786150308698}
   m_Layer: 0
   m_Name: Enemy Bullet D
   m_TagString: EnemyBullet
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4304580302125582194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 2, z: 1.2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
---- !u!70 &8816576978788650398
-CapsuleCollider2D:
+  isRotate: 1
+--- !u!61 &2373597786150308698
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -129,9 +130,19 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.167, y: 0.51}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16666667, y: 0.5}
+    newSize: {x: 0.16666667, y: 0.29166666}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 0.4}
+  m_EdgeRadius: 0
