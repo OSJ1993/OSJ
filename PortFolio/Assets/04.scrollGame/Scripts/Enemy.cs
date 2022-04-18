@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyName == "B")
             anim = GetComponent<Animator>();
-        
+
     }
 
     //소모되는 변수는 활성화 될 때, 다시 초기화 시켜주는 기능 22.04.13 by승주
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
         else
             Invoke("Think", 3);
 
-        
+
     }
 
     void FireShot()
@@ -302,6 +302,7 @@ public class Enemy : MonoBehaviour
             if (ran < 3)
             {
                 //Not Item 30%
+                Debug.Log("Not Item");
 
             }
             else if (ran < 6)
