@@ -110,7 +110,38 @@ public class Enemy : MonoBehaviour
 
     void FireFoward()
     {
-        Debug.LogError("앞으로 4발 발사.");
+        Debug.Log("FireFoward");
+
+        //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+        //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
+        GameObject bulletR = scrollObjectManager.MakeObj("BulletBossA");
+        bulletR.transform.position = transform.position + Vector3.right * 0.3f;
+        GameObject bulletRR = scrollObjectManager.MakeObj("BulletBossA");
+        bulletRR.transform.position = transform.position + Vector3.right * 0.45f;
+
+        GameObject bulletL = scrollObjectManager.MakeObj("BulletBossA");
+        bulletL.transform.position = transform.position + Vector3.left * 0.3f;
+        GameObject bulletLL = scrollObjectManager.MakeObj("BulletBossA");
+        bulletLL.transform.position = transform.position + Vector3.left * 0.45f;
+
+
+
+        //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
+        Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidRR = bulletRR.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
+
+        
+
+        //벡터가 단위 값(1)로 변환된 변수 22.04.08 by승주
+        //Enemy Bullet Speed 설정 기능 22.04.08 by승주
+        rigidR.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+        rigidRR.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+        rigidL.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+        rigidLL.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+
+       
 
         curPatternCount++;
 
@@ -127,13 +158,37 @@ public class Enemy : MonoBehaviour
 
     void FireShot()
     {
-        Debug.LogError("player 방향으로 샷건.");
+        Debug.Log("FireShot");
+        for (int index = 0; index < 5; index++)
+        {
+
+            //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
+            //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
+            GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyB");
+            bullet.transform.position = transform.position;
+
+
+            //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            //enemy생성 직 후 player 변수를 넘겨줌으로써 enemy가 Prefab에서 나온 후 enemy가 playr에게 bullet을 쏘기 위한 기능 22.04.07 by승주
+            //목표물 방향 =목표물 위치-자신의 위치 22.04.07 by승주
+            Vector2 dirVec = player.transform.position - transform.position;
+
+            //위치가 겹치지 않게 랜덤 Vector를 더하는 기능 22.01.19 by승주
+            Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 2f));
+            dirVec += ranVec;
+
+            rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+
+
+        }
 
         curPatternCount++;
 
         //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireShot"를 다시 실행 시키는 기능 22.04.16 by승주
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireShot", 3.5f);
+            Invoke("FireShot", 2);
 
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
@@ -142,13 +197,13 @@ public class Enemy : MonoBehaviour
 
     void FireArc()
     {
-        Debug.LogError("부채모양으로 발사.");
+
 
         curPatternCount++;
 
         //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireArc"를 다시 실행 시키는 기능 22.04.16 by승주
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireArc", 0.15f);
+            Invoke("FireArc", 2);
 
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
@@ -157,13 +212,13 @@ public class Enemy : MonoBehaviour
 
     void FireAround()
     {
-        Debug.LogError("원 형태로 전체 공격.");
+
 
         curPatternCount++;
 
         //curPatternCount이 maxPatternCount[patternIndex]보다 작다면 다시 "FireAround"를 다시 실행 시키는 기능 22.04.16 by승주
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireAround", 0.7f);
+            Invoke("FireAround", 2);
 
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
@@ -349,7 +404,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+     void OnTriggerEnter2D(Collider2D collision)
     {
         //bullet과 마찬가지로 바깥으로 나간 후에는 삭제 시키는 기능 22.04.07 by승주
         if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
