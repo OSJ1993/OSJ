@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    public ScrollGameManager scrollGameManager;
     public ScrollGameObjectManager scrollObjectManager;
 
     SpriteRenderer spriteRenderer;
@@ -87,7 +88,7 @@ public class Enemy : MonoBehaviour
         patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
 
         curPatternCount = 0;
-        //patternIndex = 2;
+        
 
         switch (patternIndex)
         {
@@ -117,11 +118,11 @@ public class Enemy : MonoBehaviour
         GameObject bulletR = scrollObjectManager.MakeObj("BulletBossA");
         bulletR.transform.position = transform.position + Vector3.right * 0.3f;
         GameObject bulletRR = scrollObjectManager.MakeObj("BulletBossA");
-        bulletRR.transform.position = transform.position + Vector3.right * 0.45f;
+        bulletRR.transform.position = transform.position + Vector3.right * 0.6f;
         GameObject bulletL = scrollObjectManager.MakeObj("BulletBossA");
         bulletL.transform.position = transform.position + Vector3.left * 0.3f;
         GameObject bulletLL = scrollObjectManager.MakeObj("BulletBossA");
-        bulletLL.transform.position = transform.position + Vector3.left * 0.45f;
+        bulletLL.transform.position = transform.position + Vector3.left * 0.6f;
 
 
         //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
@@ -133,10 +134,10 @@ public class Enemy : MonoBehaviour
 
         //벡터가 단위 값(1)로 변환된 변수 22.04.08 by승주
         //Enemy Bullet Speed 설정 기능 22.04.08 by승주
-        rigidR.AddForce(Vector2.down * 7, ForceMode2D.Impulse);
-        rigidRR.AddForce(Vector2.down * 7, ForceMode2D.Impulse);
-        rigidL.AddForce(Vector2.down * 7, ForceMode2D.Impulse);
-        rigidLL.AddForce(Vector2.down * 7, ForceMode2D.Impulse);
+        rigidR.AddForce(Vector2.down * 9, ForceMode2D.Impulse);
+        rigidRR.AddForce(Vector2.down * 9, ForceMode2D.Impulse);
+        rigidL.AddForce(Vector2.down * 9, ForceMode2D.Impulse);
+        rigidLL.AddForce(Vector2.down * 9, ForceMode2D.Impulse);
 
 
         curPatternCount++;
@@ -237,7 +238,7 @@ public class Enemy : MonoBehaviour
 
 
             Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / roundNum)
-                                                               , (Mathf.Sin(Mathf.PI * 2 * index / roundNum)));
+                                                   ,(Mathf.Sin(Mathf.PI * 2 * index / roundNum)));
 
             rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
 
@@ -426,6 +427,15 @@ public class Enemy : MonoBehaviour
 
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;
+
+            scrollGameManager.CallExplosion(transform.position, enemyName);
+
+            //Boss Kill하면 Stage Clear 기능 22.04.21 by승주
+            if (enemyName == "B")
+            {
+                scrollGameManager.StageEnd();
+            }
+
         }
     }
 

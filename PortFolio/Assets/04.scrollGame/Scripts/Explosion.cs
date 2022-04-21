@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Explosion : MonoBehaviour
+{
+    Animator anim;
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    //폭발 오브젝트가 스스로 비활성회 되도록 해주는 기능 22.04.21 by승주
+     void OnEnable()
+    {
+        Invoke("Disable", 2f);
+    }
+
+    void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void StartExplosion(string target)
+    {
+        anim.SetTrigger("OnExplosion");
+
+        //비활성화 되는 대상의 크기에 따라 스케일 변화 주는 기능 22.04.21 by승주
+        switch (target)
+        {
+
+
+            case "S":
+                transform.localScale = Vector3.one * 0.7f;
+                break;
+
+            case "M":
+            case "P":
+                transform.localScale = Vector3.one * 1f;
+                break;
+
+            case "L":
+                transform.localScale = Vector3.one * 2f;
+                break;
+
+            case "B":
+                transform.localScale = Vector3.one * 3f;
+                break;
+
+        }
+    }
+}

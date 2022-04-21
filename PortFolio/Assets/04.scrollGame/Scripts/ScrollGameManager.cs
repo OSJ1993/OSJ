@@ -9,6 +9,15 @@ using System.IO;
 
 public class ScrollGameManager : MonoBehaviour
 {
+    //stage 숫자 변수 추가 기능 22.04.21 by승주
+    public int stage;
+
+    public Animator stageAnim;
+    public Animator clearAnim;
+    public Animator fadeAnim;
+
+    public Transform playerPos;
+
     public string[] enemyObjs;
 
     //enmey Prefab 배열과 생성 위치 기능 22.04.07 by승주
@@ -46,7 +55,45 @@ public class ScrollGameManager : MonoBehaviour
 
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
+        StageStart();
+    }
+
+    public void StageStart()
+    {
+        //Stage UI Load 22.04.21 by승주
+        stageAnim.SetTrigger("On");
+
+        stageAnim.GetComponent<Text>().text = "Stage " + stage + "\nSTART";
+        clearAnim.GetComponent<Text>().text = "Stage " + stage + "\nCEAR!";
+
+        //Enemy Spawn File Read 22.04.21 by승주
         ReadSpawnFile();
+
+        //Fade In 22.04.21 by승주
+        fadeAnim.SetTrigger("In");
+    }
+
+    public void StageEnd()
+    {
+        //Clear UI Load 22.04.21 by승주
+        clearAnim.SetTrigger("On");
+
+
+
+        //Fade Out 22.04.21 by승주
+        fadeAnim.SetTrigger("Out");
+
+        //Player RePos 22.04.21 by승주
+        player.transform.position = playerPos.position;
+
+        //Stage Increament 22.04.21 by승주
+        stage++;
+
+        //구현된 Stage를 넘기면 GameOver로 ReStart 하는 기능 22.04.21 by승주
+        if (stage > 2)
+            Invoke("GameOver", 6);
+        else
+            Invoke("StageStart", 5);
     }
 
     // Spawn Scrtps에서 만들었던 text(메모장) 불러오는 기능 22.04.13 by승주
@@ -59,8 +106,7 @@ public class ScrollGameManager : MonoBehaviour
 
         //ReadSpawnFile 읽기 기능 22.04.13 by승주
         //as:  Spawn에서 만들었던 textFile(메모장)이 맞는 지 아닌 지 확인 하는 기능 22.04.13 by승주
-        TextAsset textFile = Resources.Load("Stage_0") as TextAsset;
-
+        TextAsset textFile = Resources.Load("Scroll_Stage " + stage) as TextAsset;
 
         //StringReader: File 내의 문자열 데이터 읽기 Class 기능(using System.IO에서 나온 Class) 22.04.13 by승주 
         StringReader stringReader = new StringReader(textFile.text);
@@ -156,6 +202,7 @@ public class ScrollGameManager : MonoBehaviour
 
         //Prefab에 있는 enemy가 Scene에 있는 spawn에서 spawn되서 Scene에 있는 player에게 접근 할 수 있게 해주기 위한 변수  22.04.07 by승주
         enemyLogic.player = player;
+        enemyLogic.scrollGameManager = this;
         enemyLogic.scrollObjectManager = scrollObjectManager;
 
         //enemy 속도를 GameManager가 관리 하는 기능 22.04.07 by승주
@@ -246,6 +293,16 @@ public class ScrollGameManager : MonoBehaviour
         Player playerLogic = player.GetComponent<Player>();
         playerLogic.isHit = false;
 
+    }
+
+    public void CallExplosion(Vector3 pos, string type)
+    {
+        GameObject explosion = scrollObjectManager.MakeObj("Explosion");
+        Explosion explosionLogic = explosion.GetComponent<Explosion>();
+
+        //터진 위치에 이팩트를 가져다 놓는 기능 22.04.21 by승주
+        explosion.transform.position = pos;
+        explosionLogic.StartExplosion(type);
     }
 
     public void GameOver()

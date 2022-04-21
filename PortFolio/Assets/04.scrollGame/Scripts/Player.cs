@@ -47,11 +47,59 @@ public class Player : MonoBehaviour
 
     public GameObject[] followers;
 
+    //player가 죽고 respawn됬을 때 잠깐 무적상태 기능 22.04.21 by승주
+    public bool isRespawnTime;
+
     Animator anim;
+
+    SpriteRenderer spriteRenderer;
+
+    //어디를 눌렀는 지 알려주는 기능 22.04.21 by승주
+    public bool[] joyControl;
+
+    //버튼을 눌렀는 지 알려주는 기능 22.04.21 by승주 
+    public bool isControl;
+
+    public bool isButtonA;
+    public bool isButtonB;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void OnEnable()
+    {
+
+        Unbeatable();
+        Invoke("Unbeatable", 3);
+    }
+
+    void Unbeatable()
+    {
+
+        isRespawnTime = !isRespawnTime;
+        if (isRespawnTime)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+
+            for (int index = 0; index < followers.Length; index++)
+            {
+                followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            }
+
+        }
+        else
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+            for (int index = 0; index < followers.Length; index++)
+            {
+                followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            }
+
+        }
+
     }
 
     void Update()
@@ -62,19 +110,67 @@ public class Player : MonoBehaviour
         Reload();
     }
 
+    public void JoyPanel(int type)
+    {
+        for (int index = 0; index < 9; index++)
+        {
+            joyControl[index] = index == type;
+        }
+    }
+
+    public void JoyDown()
+    {
+        isControl = true;
+    }
+
+    public void JoyUp()
+    {
+        isControl = false;
+    }
+
     //Player 움직임 기능 22.04.07 by승주
     void Move()
     {
         //GetAxisRaw()를 통한 방향 값 추출 22.04.07 by승주
         float h = Input.GetAxisRaw("Horizontal");
-
-        //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
-        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1)) h = 0;
-
         float v = Input.GetAxisRaw("Vertical");
 
+        if (joyControl[0] ||
+            joyControl[1] ||
+            joyControl[2] ||
+            joyControl[3] ||
+            joyControl[4] ||
+            joyControl[5] ||
+            joyControl[6] ||
+            joyControl[7] ||
+            joyControl[8]
+            )
+        {
+            //Joy control Value 22.04.21 by 승주
+            if (joyControl[0]) { h = -1; v = 1; }
+            if (joyControl[1]) { h = 0; v = 1; }
+            if (joyControl[2]) { h = 1; v = 1; }
+            if (joyControl[3]) { h = -1; v = 0; }
+            if (joyControl[4]) { h = 0; v = 0; }
+            if (joyControl[5]) { h = 1; v = 0; }
+            if (joyControl[6]) { h = -1; v = -1; }
+            if (joyControl[7]) { h = 0; v = -1; }
+            if (joyControl[8]) { h = 1; v = -1; }
+
+
+        }
+        {
+
+            anim.SetInteger("Input", (int)h);
+
+        }
+
         //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
-        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1)) v = 0;
+        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl) h = 0;
+
+
+        //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
+        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1 || !isControl)) v = 0;
 
         //Player의 현재 위치를 가져오는 기능 22.04.07 by승주
         Vector3 curPos = transform.position;
@@ -94,11 +190,33 @@ public class Player : MonoBehaviour
 
     }
 
+    public void ButtonADown()
+    {
+        isButtonA = true;
+    }
+
+    public void ButtonAUp()
+    {
+        isButtonA = false;
+    }
+
+    public void ButtonBDown()
+    {
+        isButtonB = true;
+    } 
+    public void ButtonBUp()
+    {
+        isButtonB = false;
+    }
+
     //Bullet 발사 기능 22.04.07 by승주
     void Fire()
     {
         //Button을 누르지 않았을 경우 Bullet이 나가지 않게 하는 기능 22.04.07 by승주
-        if (!Input.GetButton("Fire1"))
+        //if (!Input.GetButton("Fire1"))
+        //   return;
+
+        if (!isButtonA)
             return;
 
         //curShotDelay(현재) Shot 딜레이가 maxShotDelay를 넘지 않았다면 장전이 안된 걸 알 수 있게 해주는 기능 22.04.07 by승주
@@ -195,11 +313,16 @@ public class Player : MonoBehaviour
 
     void Boom()
     {
-        if (!Input.GetButton("Fire2"))
+
+        //if (!Input.GetButton("Fire2"))
+        //return;
+
+        if (!isButtonB)
             return;
 
         //이미 폭탄을 쏘고 있는 지 확인 하기 위한 기능 22.04.11 by승주
         if (isBoomTime)
+           
             return;
 
         if (boom == 0)
@@ -208,10 +331,12 @@ public class Player : MonoBehaviour
         boom--;
         isBoomTime = true;
         scrollGameManager.UpdateBoomIcon(boom);
+        
 
 
         //boomEffect 보이게 해주는 기능 22.04.11 by승주
         boomEffect.SetActive(true);
+        
 
         //boom Sprite 시간차 비활성화 시키는 기능 22.04.12 by승주
         Invoke("OffBoomEffect", 3f);
@@ -252,7 +377,9 @@ public class Player : MonoBehaviour
 
                 //enemy에게 dmg를 주는 기능 22.04.11 by승주
                 enemyLogic.OnHit(1000);
+
             }
+            
         }
 
 
@@ -264,12 +391,15 @@ public class Player : MonoBehaviour
             if (bulletsA[index].activeSelf)
             {
                 bulletsA[index].SetActive(false);
+
             }
         for (int index = 0; index < bulletsB.Length; index++)
             if (bulletsB[index].activeSelf)
             {
                 bulletsB[index].SetActive(false);
+
             }
+
 
     }
     //Player가 Boder Collider2D에 닿으면 뚫리지 않게 해주는 기능 22.04.07 by승주
@@ -296,9 +426,15 @@ public class Player : MonoBehaviour
 
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
+            //RespawnTime때 맞지 않게 하는 기능 22.04.21 by승주
+            if (isRespawnTime)
+                return;
+
+
             //한번에 두번 맞는 걸 못 하게 하기 위한 기능 22.04.11 by승주
             //Hit시 로직 실행 못 하게 하는 기능 22.04.11 by승주
-            if (isHit) return;
+            if (isHit)
+                return;
 
             //Hit가 아니면 로직 실행 시키는 기능 22.04.11 by승주
             isHit = true;
@@ -306,6 +442,7 @@ public class Player : MonoBehaviour
             //player의 life 기능 ScrollGameManager에 UpdateLifeIcon를 받아서 실행(UI부분) 22.04.11 by승주
             life--;
             scrollGameManager.UpdateLifeIcon(life);
+            scrollGameManager.CallExplosion(transform.position, "P");
 
             //만약에 life가 zero라면 GameOver 실행 시키는 기능 22.04.11 by승주
             if (life == 0)

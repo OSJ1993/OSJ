@@ -26,6 +26,8 @@ public class ScrollGameObjectManager : MonoBehaviour
     public GameObject bulletBossAPrefab;
     public GameObject bulletBossBPrefab;
 
+    public GameObject explosionPrefab;
+
     //Prefab을 생성 하여 저장할 배열 생성 22.04.13 by승주
     GameObject[] enemyB;
     GameObject[] enemyL;
@@ -43,6 +45,8 @@ public class ScrollGameObjectManager : MonoBehaviour
     GameObject[] bulletFollower;
     GameObject[] bulletBossA;
     GameObject[] bulletBossB;
+
+    GameObject[] explosion;
 
     GameObject[] targetPool;
 
@@ -65,6 +69,8 @@ public class ScrollGameObjectManager : MonoBehaviour
         bulletFollower = new GameObject[100];
         bulletBossA = new GameObject[50];
         bulletBossB = new GameObject[1000];
+
+        explosion = new GameObject[20];
 
         Generate();
     }
@@ -169,6 +175,13 @@ public class ScrollGameObjectManager : MonoBehaviour
             bulletBossB[index].SetActive(false);
 
         }
+        for (int index = 0; index < explosion.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.14 by승주
+            explosion[index] = Instantiate(explosionPrefab);
+            explosion[index].SetActive(false);
+
+        }
     }
 
     //Pool 활용 22.04.13 by승주 
@@ -223,6 +236,9 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletBossB":
                 targetPool = bulletBossB;
+                break;  
+            case "Explosion":
+                targetPool = explosion;
                 break;
         }
 
@@ -290,6 +306,9 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletBossB":
                 targetPool = bulletBossB;
+                break;
+            case "Explosion":
+                targetPool = explosion;
                 break;
         }
                 return targetPool;
