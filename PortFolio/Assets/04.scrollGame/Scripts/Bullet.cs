@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (isRotate) transform.Rotate(Vector3.forward * 10);
+        if (isRotate) transform.Rotate(Vector3.forward * 0);
     }
 
     //bullet¿Ã BorderBulletø° ¥Í¿∏∏È bullet¡¶∞≈ 22.04.07 byΩ¬¡÷

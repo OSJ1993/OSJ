@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         {
             case "B":
                 health = 4000;
-                Invoke("Stop", 3.5f);
+                Invoke("Stop", 2.5f);
                 break;
 
             case "L":
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
 
         curPatternCount = 0;
-        patternIndex = 2;
+        //patternIndex = 2;
 
         switch (patternIndex)
         {
@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
 
-        Vector2 dirVec = new Vector2(Mathf.Sin(Mathf.PI * curPatternCount / maxPatternCount[patternIndex]), -1);
+        Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 10 * curPatternCount / maxPatternCount[patternIndex]), -1);
 
         rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
 
@@ -221,6 +221,33 @@ public class Enemy : MonoBehaviour
 
     void FireAround()
     {
+        int roundNumA = 50;
+        int roundNumB = 40;
+        int roundNum = curPatternCount % 2 == 0 ? roundNumA : roundNumB;
+
+        for (int index = 0; index < roundNum; index++)
+        {
+            GameObject bullet = scrollObjectManager.MakeObj("BulletBossB");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+
+
+            //Rigidbody2D를 가져와 Addforce()로 총알 발사를 시켜주는 기능 22.04.07 by승주
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+
+            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / roundNum)
+                                                               , (Mathf.Sin(Mathf.PI * 2 * index / roundNum)));
+
+            rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+
+            Vector3 rotVec = Vector3.forward * 360 * index / roundNum + Vector3.forward * 90;
+            bullet.transform.Rotate(rotVec);
+
+
+        }
+
+
 
 
         curPatternCount++;
