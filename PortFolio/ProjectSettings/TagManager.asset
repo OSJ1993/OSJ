@@ -12,6 +12,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Item
+  - BossGame_HitBox_Enemy
   layers:
   - Default
   - TransparentFX
