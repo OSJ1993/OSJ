@@ -12,12 +12,21 @@ public class BossGameCamContrallor : MonoBehaviour
     [HideInInspector] public float mouseY;
     [HideInInspector] public float wheel;
 
+
+
+    
+
     void Start()
     {
         //game이 시작 될 때 카메리 위치 지정 기능 22.04.26 by승주
         wheel = -10;
         mouseY = 5;
+
+        
+        
     }
+
+     
 
     void CamMove()
     {
@@ -49,9 +58,13 @@ public class BossGameCamContrallor : MonoBehaviour
         cam.localPosition = new Vector3(0, 0, wheel);
     }
 
+   
+
     void Update()
     {
         CamMove();
         Zoom();
     }
+
+   
 }

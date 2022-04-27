@@ -13,6 +13,11 @@ TagManager:
   - EnemyBullet
   - Item
   - BossGame_HitBox_Enemy
+  - BossGame_Col_EnemyAtk
+  - BossGameHitBoxPlayer
+  - BossGameDefense
+  - BossGameParrying
+  - BossGameCounter
   layers:
   - Default
   - TransparentFX

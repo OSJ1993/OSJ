@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossGameCombo : MonoBehaviour
 {
 
-   
+
 
     Animator playerAnim;
 
@@ -18,6 +18,11 @@ public class BossGameCombo : MonoBehaviour
     //Smash 키 여부 기능 22.04.26 by승주
     bool inputSmash;
 
+    
+
+   
+
+    
 
 
     void Start()
@@ -25,7 +30,7 @@ public class BossGameCombo : MonoBehaviour
 
         playerAnim = GetComponent<Animator>();
 
-
+        
 
 
     }
@@ -84,7 +89,7 @@ public class BossGameCombo : MonoBehaviour
                 //무차별 공격 방지 기능 22.04.26 by승주
                 comboPossible = false;
                 comboStep += 1;
-                
+
             }
         }
     }
@@ -105,7 +110,17 @@ public class BossGameCombo : MonoBehaviour
 
 
         if (Input.GetMouseButtonDown(1)) SmashAttack();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            playerAnim.Play("Defense");
     }
 
-    
+
+    //hitBox의 tag를 변경하는 기능 22.04.27 승주
+    public GameObject hitbox;
+
+    void ChangeTag(string t)
+    {
+        hitbox.tag = t;
+    }
 }

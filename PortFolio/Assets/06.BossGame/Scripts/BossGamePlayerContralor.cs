@@ -70,7 +70,7 @@ public class BossGamePlayerContralor : MonoBehaviour
         {
             PlayerMove();
         }
-        //PlayerMove();
+        ///PlayerMove();
        
     }
     

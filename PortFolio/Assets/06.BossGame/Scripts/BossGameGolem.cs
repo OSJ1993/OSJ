@@ -43,7 +43,7 @@ public class BossGameGolem : MonoBehaviour
             transform.Translate(Vector3.forward * golemSpeed * Time.deltaTime, Space.Self);
 
         }
-        
+
         //target과의 거리가 10이하일 때는 정지 하는 기능 22.04.26 승주
         if ((target.position - transform.position).magnitude < 10)
         {
@@ -67,7 +67,9 @@ public class BossGameGolem : MonoBehaviour
         //target과 거리가 10이하라면 공격 단계에 따라 패턴 공격하는 기능 22.04.26 승주 
         if ((target.position - transform.position).magnitude < 10)
         {
-            switch (atkStep)
+
+            
+            switch (Random.Range(0, 3))
             {
                 case 0:
                     atkStep += 1;
@@ -84,6 +86,8 @@ public class BossGameGolem : MonoBehaviour
                     golemAni.Play("Golem_Atk3");
                     break;
             }
+
+
         }
     }
 
