@@ -10,6 +10,10 @@ public class BossGamePlayerContralor : MonoBehaviour
     public Transform player;
     public float playerSpeed;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     //player 이동방향 기능 22.04.26 by승주
     public Vector3 movement;
@@ -21,7 +25,11 @@ public class BossGamePlayerContralor : MonoBehaviour
 
     public Animator animator;
 
+<<<<<<< Updated upstream
    
+=======
+
+>>>>>>> Stashed changes
 
     void Start()
     {
@@ -29,6 +37,7 @@ public class BossGamePlayerContralor : MonoBehaviour
 
 
         //animator = GetComponent<Animator>();
+
     }
 
     public void PlayerMove()
@@ -71,6 +80,7 @@ public class BossGamePlayerContralor : MonoBehaviour
 
     }
 
+<<<<<<< Updated upstream
     
 
     void Update()
@@ -79,18 +89,38 @@ public class BossGamePlayerContralor : MonoBehaviour
             animator.GetCurrentAnimatorStateInfo(0).IsName("Knight_Running") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk1") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk2") ||
+=======
+
+    void Update()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Knight_Running") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk1") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk2") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk2") ||
+>>>>>>> Stashed changes
             animator.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk3") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk1") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk2") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk3") ||
+<<<<<<< Updated upstream
             animator.GetCurrentAnimatorStateInfo(0).IsName("Rigidity") ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("Knigth_Counter") 
+=======
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Defense") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Rigidity") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Knigth_Counter")
+
+>>>>>>> Stashed changes
             )
         {
-            PlayerMove();
+            
         }
 
+<<<<<<< Updated upstream
        
+=======
+>>>>>>> Stashed changes
 
         ///PlayerMove();
 

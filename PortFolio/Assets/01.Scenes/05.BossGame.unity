@@ -2125,4 +2125,8 @@ MonoBehaviour:
   speed: 0
   bossGamePlayerContralor: {fileID: 2094650518}
   movePoint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+  mainCamera: {fileID: 138786532}
+>>>>>>> Stashed changes
   cameraoffset: {x: 0, y: 0, z: 0}
