@@ -28,9 +28,12 @@ public class BossGameHitBoxPlayer : MonoBehaviour
 
             if (gameObject.tag == "BossGameParrying")
             {
+                
                 playerAni.Play("Knigth_Counter");
                 message.text = "Parrying";
                 message.gameObject.SetActive(true);
+
+                
             }
         }
     }

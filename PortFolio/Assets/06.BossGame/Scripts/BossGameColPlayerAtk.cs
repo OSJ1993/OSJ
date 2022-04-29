@@ -37,6 +37,8 @@ public class BossGameColPlayerAtk : MonoBehaviour
             dmgtext.gameObject.SetActive(true);
 
             hitStop.StopTime();
+
+           
         }
     }
 }

@@ -18,6 +18,8 @@ TagManager:
   - BossGameDefense
   - BossGameParrying
   - BossGameCounter
+  - SwordManPlayerAtk
+  - SwordManEnemyAtk
   layers:
   - Default
   - TransparentFX

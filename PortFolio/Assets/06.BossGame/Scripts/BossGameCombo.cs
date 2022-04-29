@@ -10,7 +10,7 @@ public class BossGameCombo : MonoBehaviour
     Animator playerAnim;
 
     //combo 입력 가능 여부 체크 기능 22.04.26 by승주
-    bool comboPossible;
+    public bool comboPossible;
 
     //combo 진행단계 기능 22.04.26 by승주
     public int comboStep;
@@ -18,11 +18,13 @@ public class BossGameCombo : MonoBehaviour
     //Smash 키 여부 기능 22.04.26 by승주
     bool inputSmash;
 
-    
+    bool inputCount;
+
+    public bool comboStart = false;
+
 
    
 
-    
 
 
     void Start()
@@ -47,6 +49,7 @@ public class BossGameCombo : MonoBehaviour
     //입력 키와 combo단계에 따라서 다음 동작 재생 기능 22.04.26 by승주
     public void NextAtk()
     {
+
         if (!inputSmash)
         {
             if (comboStep == 2) playerAnim.Play("NomalAtk2");
@@ -55,10 +58,10 @@ public class BossGameCombo : MonoBehaviour
         if (inputSmash)
         {
             if (comboStep == 1) playerAnim.Play("SmashAtk1");
-            if (comboStep == 2) playerAnim.Play("SmashAtk2");
+            if (comboStep == 2)playerAnim.Play("SmashAtk2");
             if (comboStep == 3) playerAnim.Play("SmashAtk3");
         }
-
+        
     }
 
     //combo 단계를 다시 처음으로 초기화 시키는 기능 22.04.26 by승주
@@ -75,6 +78,8 @@ public class BossGameCombo : MonoBehaviour
         //최초 입력시 첫번째 공격 모션 재생 기능 22.04.26 by승주
         if (comboStep == 0)
         {
+            
+
             playerAnim.Play("NomalAtk1");
 
             comboStep = 1;
@@ -107,7 +112,7 @@ public class BossGameCombo : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) NormalAttack();
-
+        
 
         if (Input.GetMouseButtonDown(1)) SmashAttack();
 
@@ -123,4 +128,6 @@ public class BossGameCombo : MonoBehaviour
     {
         hitbox.tag = t;
     }
+
+    
 }

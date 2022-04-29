@@ -281,7 +281,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215039948}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.08947927, y: 0.04292868, z: 0.086834855}
@@ -433,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 649549726b969f04a90c485f68a97ffe, type: 3}
       propertyPath: m_Name
       value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 649549726b969f04a90c485f68a97ffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 649549726b969f04a90c485f68a97ffe, type: 3}
       propertyPath: m_TagString
@@ -589,13 +593,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37089e81ea9b9894bb3898a74ee8ee91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboPossible: 0
   comboStep: 0
+  comboStart: 0
   hitbox: {fileID: 1039192911}
 --- !u!95 &477645670 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: fe88f5892aad39c499fb27138351f7e6, type: 3}
   m_PrefabInstance: {fileID: 883712693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1818360608 &477645671
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477645668}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 345657442}
+    weight: 1
 --- !u!1 &487178586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039192911}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1346,8 +1371,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 12, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 6, z: 1}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!54 &1039192914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1358,8 +1383,8 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_AngularDrag: 0
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1709,6 +1734,68 @@ MonoBehaviour:
   dmg: 
   dmgtext: {fileID: 487178588}
   hitStop: {fileID: 2037802255}
+--- !u!1 &1581451463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581451464}
+  - component: {fileID: 1581451466}
+  - component: {fileID: 1581451465}
+  m_Layer: 0
+  m_Name: Col_Count
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1581451464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581451463}
+  m_LocalRotation: {x: -0.0076592998, y: -0.6708591, z: 0.741513, w: 0.006919786}
+  m_LocalPosition: {x: 0.00009943014, y: 0.0009441006, z: 0.000030269995}
+  m_LocalScale: {x: 0.021422436, y: 0.021422444, z: 0.021422423}
+  m_Children: []
+  m_Father: {fileID: 813333417}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1581451465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581451463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0f09684397df24dafd71c8af2310a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combo: {fileID: 477645669}
+  type_Atk: Count
+  dmg: 
+  dmgtext: {fileID: 487178588}
+  hitStop: {fileID: 2037802255}
+--- !u!65 &1581451466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581451463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.15, z: 0.35}
+  m_Center: {x: 0, y: -0.4, z: 0}
 --- !u!1 &1826325809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +2038,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopTime: 0.2
   shakeCam: {fileID: 1826325810}
-  shake: {x: 0, y: 0, z: 1}
+  shake: {x: 0, y: 0, z: 2}
+  slowTime: 0.3
+  playerAni: {fileID: 477645670}
 --- !u!4 &2037802256
 Transform:
   m_ObjectHideFlags: 0
@@ -1999,7 +2088,7 @@ MonoBehaviour:
   playerAxis: {fileID: 1044685336}
   player: {fileID: 346745991}
   playerSpeed: 10
-  movement: {x: 0, y: 0, z: 0}
+  movement: {x: 0, y: 0, z: 1}
   animator: {fileID: 477645670}
 --- !u!4 &2094650519
 Transform:
@@ -2033,3 +2122,7 @@ MonoBehaviour:
   mouseX: 0
   mouseY: 0
   wheel: 0
+  speed: 0
+  bossGamePlayerContralor: {fileID: 2094650518}
+  movePoint: {x: 0, y: 0, z: 0}
+  cameraoffset: {x: 0, y: 0, z: 0}

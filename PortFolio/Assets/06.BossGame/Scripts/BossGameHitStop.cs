@@ -4,42 +4,87 @@ using UnityEngine;
 
 public class BossGameHitStop : MonoBehaviour
 {
-    //scrpts 중복실행 방지 기능 22.04.26 승주
+    //scrpts 중복실행방지기능22.04.26 승주
     bool stop;
 
-    //타격시 멈춰 있을 시간 기능 22.04.26 승주
+    //타격시멈춰있을시간기능22.04.26 승주
     public float stopTime;
 
-    //camera를 흔들기 위한 축과 움직일 좌표 기능 22.04.26 승주
+    //camera를흔들기위한축과움직일좌표기능22.04.26 승주
     public Transform shakeCam;
     public Vector3 shake;
 
 
+    public float slowTime;
+    public Animator playerAni;
+
+
+
     public void StopTime()
     {
-        //stop이 false일 때만 작동 시키는 기능 22.04.26 승주
+        //stop이false일때만작동시키는기능22.04.26 승주
         if (!stop)
         {
             stop = true;
 
-            //camera를 흔들 좌표로 움직이고 timeScale을 0으로 바꾸는 기능 22.04.26 승주
+            //camera를흔들좌표로움직이고timeScale을0으로바꾸는기능22.04.26 승주
             shakeCam.localPosition = shake;
             Time.timeScale = 0;
 
             StartCoroutine("ReturnTimeScale");
+
+
+
         }
+
     }
+
 
     IEnumerator ReturnTimeScale()
     {
-        //stopTime실행 후에 
+        //stopTime실행후에
         yield return new WaitForSecondsRealtime(stopTime);
 
-        //timeScale은 다시 1이 되고 
+        //parrying시 슬로우 모션 기능 22.04.28 승주
+        if (!playerAni.GetCurrentAnimatorStateInfo(0).IsName("Idle") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("Knight_Running") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk1") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk2") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("NomalAtk3") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk1") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk2") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("SmashAtk3") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("Rigidity") &&
+            !playerAni.GetCurrentAnimatorStateInfo(0).IsName("Defense"))
+
+
+        {
+            Time.timeScale = 0.01f;
+
+
+            yield return new WaitForSecondsRealtime(slowTime);
+
+        }
+
+
+        //timeScale은다시1이되고
         Time.timeScale = 1;
 
-        //camera 좌표도 다시 돌아오게 하는 기능 22.04.26 승주
+        //camera 좌표도다시돌아오게하는기능22.04.26 승주
         shakeCam.localPosition = Vector3.zero;
-        stop = false; 
+        stop = false;
+
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        StopTime();
+    }
+
 }
+
+
+
+
+
+
