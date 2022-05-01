@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManGamePlayer : MonoBehaviour
 {
@@ -20,6 +22,13 @@ public class ManGamePlayer : MonoBehaviour
 
     //액션 취하는 동안 움직이지 못하게 하는 기능 22.04.29 승주
     public bool enableMove;
+
+    public Image hpBar;
+    public GameObject controlPanel;
+
+    public GameObject hitSound;
+
+    public GameObject gameover;
 
     private void Start()
     {
@@ -80,5 +89,30 @@ public class ManGamePlayer : MonoBehaviour
     void DisableMove()
     {
         enableMove = false;
+    }
+
+    //player가 enemy한테 맞는 기능 22.05.01 승주
+   private void OnTriggerEnter(Collider otrher)
+    {
+        if (otrher.gameObject.tag == "SwordManEnemyAtk")
+        {
+            hitSound.SetActive(true);
+            curHp -= otrher.GetComponentInParent<ManGameEnemy>().curAtk;
+            hpBar.fillAmount = curHp / hp;
+
+            if (curHp <= 0)
+            {
+                controlPanel.SetActive(false);
+                playerAni.Play("Player_Death");
+                gameover.SetActive(true);
+
+                Invoke("GameRestart", 3f);
+            }
+        }
+    }
+
+    void GameRestart()
+    {
+        SceneManager.LoadScene("05-1Sword ManGmae");
     }
 }
