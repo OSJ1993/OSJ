@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class CardManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> otherCards;
 
     [SerializeField] Transform cardSpawnPoint;
+    [SerializeField] Transform otherCardSpawnPoint;
     [SerializeField] Transform myCardLeft;
     [SerializeField] Transform myCardRight;
     [SerializeField] Transform otherCardLeft;
@@ -33,7 +35,9 @@ public class CardManager : MonoBehaviour
     bool onMyCardArea;
 
     //어떨 때 card를 올리고 어떨 때 drag를 해야 하는 지 정하는 상태머신 기능 22.05.02 승주
-    enum ECardState { Nothing, CanMouseOver,CanMouseDrag}
+    enum ECardState { Nothing, CanMouseOver, CanMouseDrag }
+
+    int myPutCount;
 
     //itemBuffer에서 item을 하나씩 뽑아서 올 수 있게 해주는 기능 22.04.04 by승주
     //우리 또는 적이 카드를 뽑을 때마다
@@ -80,12 +84,24 @@ public class CardManager : MonoBehaviour
 
         //card추가 기능 22.05.02 승주
         CardTrunManager.onAddCard += AddCard;
+
+        CardTrunManager.OnTurnStarted += OnTurnStated;
     }
 
     void OnDestroy()
     {
         //card 제거 기능 22.05.02 승주
         CardTrunManager.onAddCard -= AddCard;
+
+        CardTrunManager.OnTurnStarted -= OnTurnStated;
+
+    }
+
+    void OnTurnStated(bool myTurn)
+    {
+        //myTurn이라면 myTurn이 막 다시 돌아 왔을 때 myPutCount를 초기화 시켜주는 기능 22.05.04 승주
+        if (myTurn)
+            myPutCount = 0;
     }
 
     void Update()
@@ -97,7 +113,7 @@ public class CardManager : MonoBehaviour
         SetEcardState();
     }
 
-    
+
 
 
 
@@ -198,13 +214,58 @@ public class CardManager : MonoBehaviour
         return results;
     }
 
+    //spwan 호출 기능 22.05.04 승ㅈ
+    public bool TryPutCard(bool isMine)
+    {
+        //이미 card를 냈으면 더 이상 card를 낼 수 없게 하는 기능 22.05.04 승주
+        if (isMine && myPutCount >= 1)
+            return false;
+
+        //다른 사람이 card를 내고 다른 사람에 Count가 0보다 작으면 return false를 하는 기능 22.05.04 승주
+        if (!isMine && otherCards.Count <= 0)
+            return false;
+
+        Card card = isMine ? selectCard : otherCards[Random.Range(0, otherCards.Count)];
+        var spawnPos = isMine ? Utils.MousePos : otherCardSpawnPoint.position;
+        var targetCards = isMine ? myCards : otherCards;
+
+        if (CardGameEntityManager.Inst.SpawnEntity(isMine, card.item, spawnPos))
+        {
+            //넘겨준 card를 targetCads<List>에서 빼는 기능(썼기 때문에 뺀다) 22.05.04 승주
+            targetCards.Remove(card);
+            card.transform.DOKill();
+
+            //즉시 card gameObject를 제거 하는 기능 22.05.04 승주
+            //Destroy로 하면 if문이 다 끝나고(한 프래임) 나서야 파괴가 되기 때문에 selectCard = null; 헀지만 또 retun이 되기 때문에 체크를 할 수 없어서 DestroyImmediate로 즉시 파괴 시키는 기능 22.05.04 승주
+            DestroyImmediate(card.gameObject);
+            if (isMine)
+            {
+                selectCard = null;
+
+                //필드에 card를 놨다 증가 기능 22.05.04 승주
+                myPutCount++;
+            }
+            //card 정렬 기능 22.05.04 승주
+            CardAlignment(isMine);
+            return true;
+        }
+        else
+        {
+            targetCards.ForEach(x => x.GetComponent<Order>().SetMostFrontOrder(false));
+            CardAlignment(isMine);
+            return false;
+        }
+
+
+    }
+
     //모든 card에 올리고 내리고 하는 정보를 gameManager에 넘겨주기 위한 기능 22.05.02 승주
 
     #region MyCard
 
     public void CardMouseOver(Card card)
     {
-        if(eCardState == ECardState.Nothing)
+        if (eCardState == ECardState.Nothing)
             return;
 
         selectCard = card;
@@ -232,15 +293,30 @@ public class CardManager : MonoBehaviour
 
         if (eCardState != ECardState.CanMouseDrag)
             return;
+
+        //만약에 onMyCardArea존재를 한다면 다시 card패에 넣는 기능 22.05.04 승주
+        if (onMyCardArea)
+            CardGameEntityManager.Inst.RemoveMyEmptyEntity();
+
+        //my card 영역이 아니라 필드 영역에 있을 떄 TryPutCard를 하는 기능 22.05.04 승주
+        else
+            TryPutCard(true);
     }
 
     //drag해서 card가 필드에 가 있다면 
     private void cardDrag()
     {
+        //eCardState가 MouseDrag상태 아닐 동안에 return해서 mousedrag상태에서만  if (!onMyCardArea) 실행 되게 하는 기능 22.05.04 승주
+        if (eCardState != ECardState.CanMouseDrag)
+            return;
+
+        //필드에 mouse가 가있을 떄 기능 22.05.04승주
         if (!onMyCardArea)
         {
             //위치를 옮겨주는 기능 22.05.02 승주
             selectCard.MoveTransform(new PRS(Utils.MousePos, Utils.QI, selectCard.originPRS.scale), false);
+
+            CardGameEntityManager.Inst.InsertMyEmptyEntity(Utils.MousePos.x);
         }
     }
 
@@ -255,11 +331,11 @@ public class CardManager : MonoBehaviour
     //card 확대하는 기능 22.05.02 승주
     void EnlargeCard(bool isEnlarge, Card card)
     {
-        
+
         if (isEnlarge)
         {
             //확대 했을 때 카드 위치 기능 22.05.02 승주
-            Vector3 enlargePos = new Vector3(card.originPRS.pos.x-0.9f, -3.0f, -10f);
+            Vector3 enlargePos = new Vector3(card.originPRS.pos.x - 0.9f, -3.0f, -10f);
 
             //card에 마우스를 올렸을 때 card를 얼만큼 확대시킬 지 기능 22.05.02 승주
             card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 1.9f), false);
@@ -270,18 +346,18 @@ public class CardManager : MonoBehaviour
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
     }
 
-     void SetEcardState()
+    void SetEcardState()
     {
         //game이 시작 되기도 전에 mouse 올려도 실행 되지 않게 하는 기능 22.05.02 승주
         if (CardTrunManager.Inst.isLoading)
             eCardState = ECardState.Nothing;
 
         //mytrun이 아니라면 mouse만 올릴 수 있게 해주는 기능 22.05.02 승주
-        else if (!CardTrunManager.Inst.myTurn)
+        else if (!CardTrunManager.Inst.myTurn || myPutCount == 1 || CardGameEntityManager.Inst.IsFullmyEntities)
             eCardState = ECardState.CanMouseOver;
 
         //mytrun일 동안에는 mouse를 drag할 수 있는 기능 22.05.02 승주
-        else if (CardTrunManager.Inst.myTurn)
+        else if (CardTrunManager.Inst.myTurn && myPutCount == 0)
             eCardState = ECardState.CanMouseDrag;
     }
     #endregion

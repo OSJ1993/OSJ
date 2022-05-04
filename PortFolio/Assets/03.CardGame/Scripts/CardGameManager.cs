@@ -37,6 +37,10 @@ public class CardGameManager : MonoBehaviour
         //trun 넘기는 기능 22.05.02 승주
         if (Input.GetKeyDown(KeyCode.Keypad3))
             CardTrunManager.Inst.EndTurn();
+
+        //적이 card를 강제로 내게 하는 기능 22.05.04 승주
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+            CardManager.Inst.TryPutCard(false);
     }
 
     public void StartGame()

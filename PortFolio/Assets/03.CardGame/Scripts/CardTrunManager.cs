@@ -38,6 +38,10 @@ public class CardTrunManager : MonoBehaviour
     
     public static Action<bool> onAddCard;
 
+    //trun 시작 이벤트 기능 22.05.04 승주
+    public static event Action<bool> OnTurnStarted;
+
+
     //card 뽑는 순서 정하는 기능 22.05.02 승주
     void GameSetup()
     {
@@ -87,12 +91,16 @@ public class CardTrunManager : MonoBehaviour
         if (myTurn)
             CardGameManager.Inst.Notification("My Trun");
 
+        //card 배분 기능 22.05.04 승주
         yield return delay07;
-
         //turn 차례에 card를 하나 추가시켜주는 기능 22.05.02 승주
         onAddCard?.Invoke(myTurn);
+
         yield return delay07;
         isLoading = false;
+
+
+        OnTurnStarted?.Invoke(myTurn);
     }
 
     public void EndTurn()
