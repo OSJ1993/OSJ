@@ -1,37 +1,46 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.24f1 (79c78de19888) revision 7980941'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 16266 MB
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 8125 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-D:\Unity\2020.3.24f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-D:/Unity/github/OSJ/PortFolio
+D:/Unity/GitHub/OSJ/PortFolio
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< Updated upstream
 54274
 Successfully changed project path to: D:/Unity/github/OSJ/PortFolio
 D:/Unity/github/OSJ/PortFolio
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 58.77 ms, found 3 plugins.
+=======
+56898
+Successfully changed project path to: D:/Unity/GitHub/OSJ/PortFolio
+D:/Unity/GitHub/OSJ/PortFolio
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 57.04 ms, found 3 plugins.
+>>>>>>> Stashed changes
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.24f1 (79c78de19888)
-[Subsystems] Discovering subsystems at path D:/Unity/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Unity/github/OSJ/PortFolio/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity/GitHub/OSJ/PortFolio/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1060 3GB (ID=0x1b84)
+    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c81)
     Vendor:   
-    VRAM:     2988 MB
+    VRAM:     1977 MB
     Driver:   27.21.14.5671
 Initialize mono
+<<<<<<< Updated upstream
 Mono path[0] = 'D:/Unity/2020.3.24f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
@@ -50,11 +59,32 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (769ms)
 		BeginReloadAssembly (70ms)
+=======
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56364
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003752 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 98.65 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.021 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1022ms)
+		BeginReloadAssembly (71ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< Updated upstream
 		EndReloadAssembly (607ms)
 			LoadAssemblies (69ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -69,12 +99,29 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (22ms)
 				ProcessInitializeOnLoadAttributes (103ms)
 				ProcessInitializeOnLoadMethodAttributes (38ms)
+=======
+		EndReloadAssembly (843ms)
+			LoadAssemblies (68ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (219ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (382ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (99ms)
+				BeforeProcessingInitializeOnLoad (37ms)
+				ProcessInitializeOnLoadAttributes (169ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+>>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< Updated upstream
 Registered in 0.004866 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
@@ -121,6 +168,54 @@ System memory in use after: 117.1 MB.
 
 Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2538.
 Total: 4.013900 ms (FindLiveObjects: 0.243200 ms CreateObjectMapping: 0.123900 ms MarkObjects: 3.595700 ms  DeleteObjects: 0.049500 ms)
+=======
+Registered in 0.008561 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.380 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1381ms)
+		BeginReloadAssembly (220ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (13ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1072ms)
+			LoadAssemblies (120ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (392ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (51ms)
+			SetupLoadedEditorAssemblies (395ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (86ms)
+				ProcessInitializeOnLoadAttributes (280ms)
+				ProcessInitializeOnLoadMethodAttributes (13ms)
+				AfterProcessingInitializeOnLoad (9ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2075 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.1 MB.
+System memory in use after: 97.2 MB.
+
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2513.
+Total: 3.859500 ms (FindLiveObjects: 0.318700 ms CreateObjectMapping: 0.162100 ms MarkObjects: 3.288500 ms  DeleteObjects: 0.088500 ms)
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,6 +229,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
+<<<<<<< Updated upstream
   path: Assets/03.CardGame/Scripts/CardManager.cs
   artifactKey: Guid(041d05d83f06c194d9f3010eaaebbf7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/03.CardGame/Scripts/CardManager.cs using Guid(041d05d83f06c194d9f3010eaaebbf7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '163dd67013f73c153886606906b2f1b7') in 0.052295 seconds 
@@ -6338,3 +6434,35 @@ Received Import Request.
 Start importing Assets/01.Scenes/05.Ending.unity using Guid(57cf72ccb2aad83458285c55bed19100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bde270b95762773072d80d369549cfb9') in 0.007028 seconds 
   Import took 0.011673 seconds .
 
+=======
+  path: Assets/01.Scenes/02.CardGame.unity
+  artifactKey: Guid(0d28c6a54fee7db4c87cc33b819c4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/01.Scenes/02.CardGame.unity using Guid(0d28c6a54fee7db4c87cc33b819c4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b4ccda429f79b83c56be991127310d4') in 0.031893 seconds 
+  Import took 0.053004 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15613.156144 seconds.
+  path: Assets/03.CardGame/Scripts/Utils.cs
+  artifactKey: Guid(e2ad5283f329634488620476a4e1a009) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/03.CardGame/Scripts/Utils.cs using Guid(e2ad5283f329634488620476a4e1a009) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d15436a8d40dda125e12602a0b55623') in 0.053793 seconds 
+  Import took 0.112674 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 176.561196 seconds.
+  path: Assets/03.CardGame/Scripts/Card.cs
+  artifactKey: Guid(ecd204f9d776b904a8c7e89834e22340) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/03.CardGame/Scripts/Card.cs using Guid(ecd204f9d776b904a8c7e89834e22340) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bb9e210635f719f4a4d78a0119c1b60') in 0.006376 seconds 
+  Import took 0.024234 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.676284 seconds.
+  path: Assets/03.CardGame/Scripts/CardManager.cs
+  artifactKey: Guid(041d05d83f06c194d9f3010eaaebbf7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/03.CardGame/Scripts/CardManager.cs using Guid(041d05d83f06c194d9f3010eaaebbf7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '148bc508030c8dbb0df9bb83e435c840') in 0.004782 seconds 
+  Import took 0.008261 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+>>>>>>> Stashed changes
