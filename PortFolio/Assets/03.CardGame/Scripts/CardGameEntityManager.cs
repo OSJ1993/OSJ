@@ -29,11 +29,19 @@ public class CardGameEntityManager : MonoBehaviour
 
     int MyEmptyEntityIndex => myEntities.FindIndex(x => x == myEmptyEntity);
 
+    //CanMouseInput만드는데 myTurn이면서 isLoading이 false이면 mouse에 입력을 받을 수 있게 해주는 기능 22.05.06 승주
+    bool CanMouseInput => CardTrunManager.Inst.myTurn && !CardTrunManager.Inst.isLoading;
+
+    //공격할 것을 선택하는 기능 22.05.06 승주
+    CardGameEntity selectEntity;
+
+    //mouse를 끌어다가 대상을 선택하게 되는 기능 22.05.06 승주
+    CardGameEntity targetPickEntity;
 
     WaitForSeconds delay1 = new WaitForSeconds(1);
 
-    
-     void Start()
+
+    void Start()
     {
         CardTrunManager.OnTurnStarted += OnTurnStarted;
     }
@@ -42,7 +50,7 @@ public class CardGameEntityManager : MonoBehaviour
     {
         CardTrunManager.OnTurnStarted -= OnTurnStarted;
     }
-    
+
     void OnTurnStarted(bool myTurn)
     {
         //myTurn이 넘겨지면 적Turn이라면 StartCoroutine
@@ -58,7 +66,7 @@ public class CardGameEntityManager : MonoBehaviour
 
         //공격 기능 22.05.04 승주
         CardTrunManager.Inst.EndTurn();
-        
+
     }
 
     //Entity를  내가 spawn하면 내 필드에 Entity를 상대가 spawn 하면 상대 필드에 위치 하게 하는 기능 22.05.04 승주
@@ -72,7 +80,7 @@ public class CardGameEntityManager : MonoBehaviour
             float targetX = (targetEntities.Count - 1) * 0.05f + i * 4f;
 
             var targetEntity = targetEntities[i];
-            targetEntity.originPos = new Vector3(targetX-6, targetY, 0);
+            targetEntity.originPos = new Vector3(targetX - 6, targetY, 0);
             targetEntity.MoveTransform(targetEntity.originPos, true, 0.5f);
             targetEntity.GetComponent<Order>()?.SetOriginOrder(i);
         }
@@ -150,5 +158,43 @@ public class CardGameEntityManager : MonoBehaviour
 
         return true;
 
+    }
+
+    public void EntityMouseDown(CardGameEntity entity)
+    {
+        if (!CanMouseInput)
+            return;
+
+        selectEntity = entity;
+    }
+
+    public void EntityMouseUp()
+    {
+        if (!CanMouseInput)
+            return;
+
+        selectEntity = null;
+        targetPickEntity = null;
+    }
+
+    public void EntityMouseDrag()
+    {
+        if (!CanMouseInput || selectEntity == null)
+            return;
+
+        //other targetEntity 찾기 기능 22.05.06 승주
+        bool existTarget = false;
+        foreach(var hit in Physics2D.RaycastAll(Utils.MousePos, Vector3.forward))
+        {
+            CardGameEntity entity = hit.collider?.GetComponent<CardGameEntity>();
+            if(entity != null && !entity.isMine && selectEntity.attackable)
+            {
+                targetPickEntity = entity;
+                existTarget = true;
+                break;
+            }
+        }
+        if (!existTarget)
+            targetPickEntity = null;
     }
 }

@@ -24,17 +24,20 @@ public class CardGameEntity : MonoBehaviour
     //boss인지 파악하는 기능 22.05.03 승주
     public bool isBossOrEmpty;
 
+    //때릴 수 있는 상태인지 알기 위한 기능 22.05.06 승주
+    public bool attackable;
+
     //??(무슨 정렬??) 정렬을 위한 기능 22.05.04 승주
     public Vector3 originPos;
 
     int liveCount;
 
-     void Start()
+    void Start()
     {
         CardTrunManager.OnTurnStarted += OnTurnStated;
     }
 
-     void OnDestroy()
+    void OnDestroy()
     {
         CardTrunManager.OnTurnStarted -= OnTurnStated;
     }
@@ -65,6 +68,24 @@ public class CardGameEntity : MonoBehaviour
         nameTMP.text = this.item.name;
         attackTMP.text = attack.ToString();
         healthTMP.text = health.ToString();
+    }
+
+    void OnMouseDown()
+    {
+        if (isMine)
+            CardGameEntityManager.Inst.EntityMouseDown(this);
+    }
+
+    void OnMouseUp()
+    {
+        if (isMine)
+            CardGameEntityManager.Inst.EntityMouseUp();
+    }
+
+     void OnMouseDrag()
+    {
+        if (isMine)
+            CardGameEntityManager.Inst.EntityMouseDrag();
     }
 
     //pos에 원하는 위치 useDotween를 사용하면 Dotween를 사용해서 dotweenTime 만큼 이동 하는 기능 22.05.04 승주
