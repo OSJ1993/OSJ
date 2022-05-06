@@ -475,4 +475,9 @@ public class Enemy : MonoBehaviour
 
 
     }
+
+    public static implicit operator Enemy(CardGameEntity v)
+    {
+        throw new System.NotImplementedException();
+    }
 }
