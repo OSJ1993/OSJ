@@ -29,14 +29,6 @@ public class CardGameEntityManager : MonoBehaviour
 
     int MyEmptyEntityIndex => myEntities.FindIndex(x => x == myEmptyEntity);
 
-    //myTurn이면서 isLoading이 false 라면 CanMouseInput를 받을 수 있다 기능 22.05.06 승주
-    bool CanMouseInput => CardTrunManager.Inst.myTurn && !CardTrunManager.Inst.isLoading;
-
-    //공격 할 것을 정하는 기능 22.05.06 승주
-    Enemy selectEntity;
-
-    //mouse를 끌어다가 대상을 선택 하게 되면 그게 targetPickEntity 기능 22.05.06 승주
-    Enemy targetPickEntity;
 
     WaitForSeconds delay1 = new WaitForSeconds(1);
 
@@ -158,45 +150,5 @@ public class CardGameEntityManager : MonoBehaviour
 
         return true;
 
-    }
-
-    public void EntityMouseDown(CardGameEntity entity)
-    {
-        if (!CanMouseInput)
-            return;
-
-        selectEntity = entity;
-    }
-
-    public void EntityMouseUp()
-    {
-        if (!CanMouseInput)
-            return;
-
-        selectEntity = null;
-        targetPickEntity = null;
-    }
-
-    public void EntityMouseDrag()
-    {
-        if (!CanMouseInput || selectEntity == null)
-            return;
-
-        //other targetEntity 찾기 기능 22.05.06 승주
-        bool existTarget = false;
-        foreach(var hit in Physics2D.RaycastAll(Utils.MousePos, Vector3.forward))
-        {
-
-            CardGameEntity entity = hit.collider?.GetComponent<CardGameEntity>();
-            if( entity != null && !entity.isMine&& selectEntity.attackable)
-            {
-
-                targetPickEntity = entity;
-                existTarget = true;
-                break;
-            }
-            if (!existTarget)
-                targetPickEntity = null;
-        }
     }
 }
