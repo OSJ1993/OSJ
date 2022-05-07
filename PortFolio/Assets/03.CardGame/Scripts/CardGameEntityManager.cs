@@ -184,17 +184,30 @@ public class CardGameEntityManager : MonoBehaviour
 
         //other targetEntity 찾기 기능 22.05.06 승주
         bool existTarget = false;
-        foreach(var hit in Physics2D.RaycastAll(Utils.MousePos, Vector3.forward))
+
+        // Physics2D.RaycastAll 쏴서 mousedrag중일 때 Utils.MousePos부터 camera앞쪽을 발사하게 되며 거기에 충돌 된  모든 RaycastAll 가져오는 기능 22.05.07 승주
+        foreach (var hit in Physics2D.RaycastAll(Utils.MousePos, Vector3.forward))
         {
+            //var hit로 들어가고 그 떄  foreach문을 돌 때 hit에 collider가 존재를 한다면 GetComponent<CardGameEntity> 가져오는 기능 22.05.07 승주
             CardGameEntity entity = hit.collider?.GetComponent<CardGameEntity>();
-            if(entity != null && !entity.isMine && selectEntity.attackable)
+
+            //entity가 null이 아니고 entity가 isMine도 아니고 selectEntity.attackable가 true라면 공격할 수 있는 상태 기능 22.05.07 승주
+            if (entity != null && !entity.isMine && selectEntity.attackable)
             {
+
                 targetPickEntity = entity;
                 existTarget = true;
                 break;
             }
         }
+
         if (!existTarget)
             targetPickEntity = null;
+    }
+
+    public void AttackableReset(bool isMine)
+    {
+        var targetEntites = isMine ? myEntities : otherEntities;
+        targetEntites.ForEach(x => x.attackable = true);
     }
 }
