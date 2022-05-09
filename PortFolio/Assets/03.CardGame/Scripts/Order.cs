@@ -29,10 +29,7 @@ public class Order : MonoBehaviour
         SetOrder(isMostFront ? 100 : originOrder);
     }
 
-    private void Start()
-    {
-        SetOrder(0);
-    }
+   
 
 
     //public으로 외부에서 order만 입력 하면 22.04.04 by승주

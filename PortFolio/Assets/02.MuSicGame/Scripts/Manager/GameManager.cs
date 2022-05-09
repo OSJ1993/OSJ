@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     //Title화면 보여주기
     [SerializeField] GameObject goTitleUI = null;
+
+    
 
     //싱글턴
     public static GameManager instance;
@@ -71,4 +75,10 @@ public class GameManager : MonoBehaviour
 
         goTitleUI.SetActive(true);
     }
+
+    public void ReStartBtn()
+    {
+        
+    }
+
 }

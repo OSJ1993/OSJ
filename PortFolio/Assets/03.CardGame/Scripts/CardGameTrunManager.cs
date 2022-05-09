@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-public class CardTrunManager : MonoBehaviour
+public class CardGameTrunManager : MonoBehaviour
 {
     //싱글턴 기능 22.05.02 승주
-    public static CardTrunManager Inst { get; private set; }
+    public static CardGameTrunManager Inst { get; private set; }
     void Awake() => Inst = this;
 
 
@@ -25,7 +25,6 @@ public class CardTrunManager : MonoBehaviour
 
     //game 끝나면 isLoading을 true로 하면 카드와 엔티티 클릭 방지 기능 22.05.02 승주
     public bool isLoading;
-
     public bool myTurn;
 
     //최초로 시작 할 때 누구 turn으로 할 지 정하는 기능 22.05.02 승주

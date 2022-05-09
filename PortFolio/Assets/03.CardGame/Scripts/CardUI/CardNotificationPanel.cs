@@ -44,8 +44,5 @@ public class CardNotificationPanel : MonoBehaviour
 
 
 
-    void Update()
-    {
-
-    }
+    
 }

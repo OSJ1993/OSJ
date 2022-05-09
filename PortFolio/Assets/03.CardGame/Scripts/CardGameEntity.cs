@@ -21,6 +21,9 @@ public class CardGameEntity : MonoBehaviour
     //자기 자신인지 파악하는 기능 22.05.03 승주
     public bool isMine;
 
+    //죽음읖 판단하는 기능 22.05.09 승주
+    public bool isDie;
+
     //boss인지 파악하는 기능 22.05.03 승주
     public bool isBossOrEmpty;
 
@@ -34,12 +37,12 @@ public class CardGameEntity : MonoBehaviour
 
     void Start()
     {
-        CardTrunManager.OnTurnStarted += OnTurnStated;
+        CardGameTrunManager.OnTurnStarted += OnTurnStated;
     }
 
     void OnDestroy()
     {
-        CardTrunManager.OnTurnStarted -= OnTurnStated;
+        CardGameTrunManager.OnTurnStarted -= OnTurnStated;
     }
 
     //myTurn일 때 
@@ -86,6 +89,21 @@ public class CardGameEntity : MonoBehaviour
     {
         if (isMine)
             CardGameEntityManager.Inst.EntityMouseDrag();
+    }
+
+    public bool Damaged(int damage)
+    {
+        health -= damage;
+        healthTMP.text = health.ToString();
+
+        if (health <= 0)
+        {
+            isDie = true;
+
+            //true면 죽음 false면 안죽음으로 다른 곳에서 죽었는지 안 죽었는지 확인 하는 기능 22.05.09 승주
+            return true;
+        }
+        return false;
     }
 
     //pos에 원하는 위치 useDotween를 사용하면 Dotween를 사용해서 dotweenTime 만큼 이동 하는 기능 22.05.04 승주

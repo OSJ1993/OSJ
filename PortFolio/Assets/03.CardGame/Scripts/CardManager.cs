@@ -83,17 +83,17 @@ public class CardManager : MonoBehaviour
         SetupItemBuffer();
 
         //card추가 기능 22.05.02 승주
-        CardTrunManager.onAddCard += AddCard;
+        CardGameTrunManager.onAddCard += AddCard;
 
-        CardTrunManager.OnTurnStarted += OnTurnStated;
+        CardGameTrunManager.OnTurnStarted += OnTurnStated;
     }
 
     void OnDestroy()
     {
         //card 제거 기능 22.05.02 승주
-        CardTrunManager.onAddCard -= AddCard;
+        CardGameTrunManager.onAddCard -= AddCard;
 
-        CardTrunManager.OnTurnStarted -= OnTurnStated;
+        CardGameTrunManager.OnTurnStarted -= OnTurnStated;
 
     }
 
@@ -214,7 +214,7 @@ public class CardManager : MonoBehaviour
         return results;
     }
 
-    //spwan 호출 기능 22.05.04 승ㅈ
+    //spwan 호출 기능 22.05.04 승주
     public bool TryPutCard(bool isMine)
     {
         //이미 card를 냈으면 더 이상 card를 낼 수 없게 하는 기능 22.05.04 승주
@@ -349,15 +349,15 @@ public class CardManager : MonoBehaviour
     void SetEcardState()
     {
         //game이 시작 되기도 전에 mouse 올려도 실행 되지 않게 하는 기능 22.05.02 승주
-        if (CardTrunManager.Inst.isLoading)
+        if (CardGameTrunManager.Inst.isLoading)
             eCardState = ECardState.Nothing;
 
         //mytrun이 아니라면 mouse만 올릴 수 있게 해주는 기능 22.05.02 승주
-        else if (!CardTrunManager.Inst.myTurn || myPutCount == 1 || CardGameEntityManager.Inst.IsFullmyEntities)
+        else if (!CardGameTrunManager.Inst.myTurn || myPutCount == 1 || CardGameEntityManager.Inst.IsFullmyEntities)
             eCardState = ECardState.CanMouseOver;
 
         //mytrun일 동안에는 mouse를 drag할 수 있는 기능 22.05.02 승주
-        else if (CardTrunManager.Inst.myTurn && myPutCount == 0)
+        else if (CardGameTrunManager.Inst.myTurn && myPutCount == 0)
             eCardState = ECardState.CanMouseDrag;
     }
     #endregion

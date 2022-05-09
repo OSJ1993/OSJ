@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CardGameEntityManager : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class CardGameEntityManager : MonoBehaviour
     void Awake() => Inst = this;
 
     [SerializeField] GameObject entityPrefab;
+    [SerializeField] GameObject damagePrefab;
     [SerializeField] List<CardGameEntity> myEntities;
     [SerializeField] List<CardGameEntity> otherEntities;
+
+    [SerializeField] GameObject TargetPicker;
 
     [SerializeField] CardGameEntity myEmptyEntity;
     [SerializeField] CardGameEntity myBossEntity;
@@ -24,13 +28,15 @@ public class CardGameEntityManager : MonoBehaviour
     //other같은 경우는 mouse Drag 기능이 없으므로 바로 내면 되니까 otherEntities.Count가 MAX_ENTITY_COUNT 이상이면  IsFullOtherEntities이 되는 기능 22.05.04 승주
     bool IsFullOtherEntities => otherEntities.Count >= MAX_ENTITY_COUNT;
 
+    bool ExistTargetPickEntity => targetPickEntity != null;
+
     //MyEmptyEntity가 존재하는 것은 myEntities.Exists해서 x가 myEmptyEntity가 존재를 하는 지 안 하는 지  ExistMyEmptyEntity로 판단하는 기능 22.05.04 승주
     bool ExistMyEmptyEntity => myEntities.Exists(x => x == myEmptyEntity);
 
     int MyEmptyEntityIndex => myEntities.FindIndex(x => x == myEmptyEntity);
 
     //CanMouseInput만드는데 myTurn이면서 isLoading이 false이면 mouse에 입력을 받을 수 있게 해주는 기능 22.05.06 승주
-    bool CanMouseInput => CardTrunManager.Inst.myTurn && !CardTrunManager.Inst.isLoading;
+    bool CanMouseInput => CardGameTrunManager.Inst.myTurn && !CardGameTrunManager.Inst.isLoading;
 
     //공격할 것을 선택하는 기능 22.05.06 승주
     CardGameEntity selectEntity;
@@ -40,23 +46,35 @@ public class CardGameEntityManager : MonoBehaviour
 
     WaitForSeconds delay1 = new WaitForSeconds(1);
 
+    //boss 죽음 처리 판단 기능 22.05.09 승주
+    WaitForSeconds delay2 = new WaitForSeconds(2);
+
 
     void Start()
     {
-        CardTrunManager.OnTurnStarted += OnTurnStarted;
+        CardGameTrunManager.OnTurnStarted += OnTurnStarted;
     }
 
     private void OnDestroy()
     {
-        CardTrunManager.OnTurnStarted -= OnTurnStarted;
+        CardGameTrunManager.OnTurnStarted -= OnTurnStarted;
     }
 
     void OnTurnStarted(bool myTurn)
     {
+        AttackableReset(myTurn);
+
         //myTurn이 넘겨지면 적Turn이라면 StartCoroutine
         if (!myTurn)
             StartCoroutine(AICo());
     }
+
+    void Update()
+    {
+        ShowTargetPicker(ExistTargetPickEntity);
+    }
+
+
 
     //적 card 내기 기능 22.05.04 승주
     IEnumerator AICo()
@@ -64,8 +82,37 @@ public class CardGameEntityManager : MonoBehaviour
         CardManager.Inst.TryPutCard(false);
         yield return delay1;
 
-        //공격 기능 22.05.04 승주
-        CardTrunManager.Inst.EndTurn();
+        //공격 로직 기능 22.05.04 승주
+
+        //attackable이 true인 모든 otherEntites를 가져와 순서를 섞어주는 기능 22.05.09 승주
+        //new List를 한 이유는 otherEntities 순서를 바꾸면 안되기 때문 22.05.09 승주
+        var attackers = new List<CardGameEntity>(otherEntities.FindAll(x => x.attackable == true));
+        
+        //list의 순서 섞는 기능 22.05.09승주
+        for (int i = 0; i < attackers.Count; i++)
+        {
+            int rand = Random.Range(i, attackers.Count);
+            CardGameEntity temp = attackers[i];
+            attackers[i] = attackers[rand];
+            attackers[rand] = temp;
+        }
+
+        //보스를 포함한 myEntities를 random하게 시간차 공격 하는 기능 22.05.09 승주
+        foreach(var attacker in attackers)
+        {
+            //myEntities를 새로운 공간을 할당하는 이유는 myBossEntity까지 추가 할 것 이기 때문 22.05.09승주
+            var defenders = new List<CardGameEntity>(myEntities);
+            defenders.Add(myBossEntity);
+            int rand = Random.Range(0, defenders.Count);
+            Attack(attacker, defenders[rand]);
+
+            if (CardGameTrunManager.Inst.isLoading)
+                yield break;
+
+            yield return new WaitForSeconds(2);
+        }
+
+        CardGameTrunManager.Inst.EndTurn();
 
     }
 
@@ -173,6 +220,10 @@ public class CardGameEntityManager : MonoBehaviour
         if (!CanMouseInput)
             return;
 
+        // selectiEntity, targetPickEntity 둘 다 존재하면 공격한다. 바로 null, null로 만드는 기능 22.05.09 승주
+        if (selectEntity && targetPickEntity && selectEntity.attackable)
+            Attack(selectEntity, targetPickEntity);
+
         selectEntity = null;
         targetPickEntity = null;
     }
@@ -203,6 +254,111 @@ public class CardGameEntityManager : MonoBehaviour
 
         if (!existTarget)
             targetPickEntity = null;
+    }
+
+    void Attack(CardGameEntity attacker, CardGameEntity defender)
+    {
+        //_attacker가 _defender의 위치로 이동하다 원래 위치로 오는 기능(이 떄 order가 높다(z축 제일 앞쪽)) 22.05.09 승주 
+        attacker.attackable = false;
+        attacker.GetComponent<Order>().SetMostFrontOrder(true);
+
+        Sequence sequence = DOTween.Sequence()
+                .Append(attacker.transform.DOMove(defender.originPos, 0.4f)).SetEase(Ease.InSine)
+                .AppendCallback(() =>
+                {
+                    //damage 주고 받기 기능 22.05.09 승주
+
+                    //방어자의 공격력 만큼 damage를 주는 기능 22.05.09 승주
+                    attacker.Damaged(defender.attack);
+
+                    //공격자의 공격력 만큼 damage를 주는 기능 22.05.09 승주
+                    defender.Damaged(attacker.attack);
+
+                    //damage 주고 받는 기능 22.05.09 승주
+                    SpawnDamge(defender.attack, attacker.transform);
+                    SpawnDamge(attacker.attack, defender.transform);
+
+                })
+                .Append(attacker.transform.DOMove(attacker.originPos, 0.4f)).SetEase(Ease.OutSine)
+
+                //죽음 처리 기능 22.05.09 승주
+                .OnComplete(() => AttackCallback(attacker, defender));
+    }
+
+    //params 개수의 제한 없이 매개변수를 넘길 수 있는 기능 22.05.09 승주
+    void AttackCallback(params CardGameEntity[] entities)
+    {
+        //죽을 Entity 골라서 죽음 처리 기능 22.05.09 승주
+        entities[0].GetComponent<Order>().SetMostFrontOrder(false);
+
+
+        foreach (var entity in entities)
+        {
+            if (!entity.isDie || entity.isBossOrEmpty)
+                continue;
+
+            if (entity.isMine)
+                myEntities.Remove(entity);
+            else
+                otherEntities.Remove(entity);
+
+            //죽는 모션 기능 22.05.09 승주
+            Sequence sequence = DOTween.Sequence()
+                .Append(entity.transform.DOShakePosition(1.3f))
+                .Append(entity.transform.DOScale(Vector3.zero, 0.3f)).SetEase(Ease.OutCirc)
+                .OnComplete(() =>
+                {
+                    EntityAlignment(entity.isMine);
+                    Destroy(entity.gameObject);
+                });
+
+
+        }
+
+        //공격을 할 때마다 누가 죽었는 지 확인 하는 기능 22.05.09 승주
+        StartCoroutine(CheckBossDie());
+    }
+
+    IEnumerator CheckBossDie()
+    {
+        //2초뒤에
+        yield return delay2;
+
+        //myBossEntity가 죽으면 CardGameManager있는 GameOver를 false를 하면 적이 이겼다는 기능 22.05.09 승주
+        if (myBossEntity.isDie)
+            StartCoroutine(CardGameManager.Inst.GameOver(false));
+
+        //otherBossEntity가 죽으면 CardGameManager있는 GameOver를 true를 하면 내가 이겼다라는 기능 22.05.09 승주
+        if (otherBossEntity.isDie)
+            StartCoroutine(CardGameManager.Inst.GameOver(true));
+    }
+
+    //debuging을 위한 기능 22.05.09 승주
+    public void DamageBoss(bool isMine, int damage)
+    {
+        var targetBossEntity = isMine ? myBossEntity : otherBossEntity;
+        targetBossEntity.Damaged(damage);
+        StartCoroutine(CheckBossDie());
+    }
+
+    void ShowTargetPicker(bool ishow)
+    {
+        TargetPicker.SetActive(ishow);
+
+        //targetPickEntity.transform.position을 TargetPicker.transform.position에 그대로 대입하는 기능 22.05.09 승주
+        if (ExistTargetPickEntity)
+            TargetPicker.transform.position = targetPickEntity.transform.position;
+    }
+
+    //damage sprite를 damage 받은 Entity 위치에 뜰 수 있게 해주는 기능 22.05.09 승주
+    void SpawnDamge(int damage, Transform tr)
+    {
+        if (damage <= 0)
+            return;
+
+        var damageComponent = Instantiate(damagePrefab).GetComponent<CardGameDamage>();
+        damageComponent.SetupTransform(tr);
+        damageComponent.Damaged(damage);
     }
 
     public void AttackableReset(bool isMine)

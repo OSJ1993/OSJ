@@ -15,12 +15,12 @@ public class CardGameEndTrunBtn : MonoBehaviour
     {
         //CardTrunManager.OnTurnStarted가 되면 Setup을 넣어서 내trun 일 때 isActive가 true가 되고 내 trun이 아닐 때 false가 되게 하는 기능 22.05.04 승주
         Setup(false);
-        CardTrunManager.OnTurnStarted += Setup;
+        CardGameTrunManager.OnTurnStarted += Setup;
     }
 
     void OnDestroy()
     {
-        CardTrunManager.OnTurnStarted -= Setup;
+        CardGameTrunManager.OnTurnStarted -= Setup;
     }
 
     //Setup을 할 때 
