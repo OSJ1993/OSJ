@@ -66,4 +66,10 @@ public class Result : MonoBehaviour
         theCombo.ResetCombo();
     }
 
+    public void BtnReStart()
+    {
+        goUI.SetActive(false);
+        theCombo.ResetCombo();
+    }
+
 }

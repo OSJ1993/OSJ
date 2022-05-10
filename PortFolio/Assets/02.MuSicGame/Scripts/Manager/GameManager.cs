@@ -76,9 +76,6 @@ public class GameManager : MonoBehaviour
         goTitleUI.SetActive(true);
     }
 
-    public void ReStartBtn()
-    {
-        
-    }
+   
 
 }

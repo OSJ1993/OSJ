@@ -30,6 +30,7 @@ public class StageMenu : MonoBehaviour
 
 
     [SerializeField] GameObject TitleMenu = null;
+    
 
 
     //현재 어떤 곡을 선택 했는 지 담고 있을 기능 /22.04.01 by승주
@@ -94,5 +95,17 @@ public class StageMenu : MonoBehaviour
         this.gameObject.SetActive(false);
 
         
+    }
+
+    public void BtnReStart()
+    {
+        int t_bpm = songList[currentSong].bpm;
+    
+        GameManager.instance.GameStart(currentSong, t_bpm);
+        this.gameObject.SetActive(false);
+
+        
+    
+    
     }
 }
