@@ -33,7 +33,7 @@ public class NoteManager : MonoBehaviour
     void Update()
     {
         //NoteActive가 활성화 될 때만 Note를 생성시키는 기능 22.03.24 by승주
-        if (GameManager.instance.isStartGame)
+        if (MusicGameManager.instance.isStartGame)
         {
 
             //curentTime을 1초에 1씩 증가
@@ -100,7 +100,7 @@ public class NoteManager : MonoBehaviour
 
     public void RemoveNote()
     {
-        GameManager.instance.isStartGame = false;
+        MusicGameManager.instance.isStartGame = false;
 
         //나와있는 모든 Note를 파괴하는 기능 /22.03.24 by승주
         for (int i = 0; i < theTimingManager.boxNoteList.Count; i++)

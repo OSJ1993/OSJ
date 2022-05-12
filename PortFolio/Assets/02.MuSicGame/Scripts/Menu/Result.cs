@@ -61,7 +61,7 @@ public class Result : MonoBehaviour
     {
         goUI.SetActive(false);
 
-        GameManager.instance.MainMenu();
+        MusicGameManager.instance.MainMenu();
 
         theCombo.ResetCombo();
     }

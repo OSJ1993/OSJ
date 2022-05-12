@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.isStartGame)
+        if (MusicGameManager.instance.isStartGame)
         {
 
             CheckFalling();

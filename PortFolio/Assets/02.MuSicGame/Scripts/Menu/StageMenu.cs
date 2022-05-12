@@ -22,7 +22,9 @@ public class Song
 
 public class StageMenu : MonoBehaviour
 {
-    
+
+    public static StageMenu instance;
+
     [SerializeField] Song[] songList = null;
     [SerializeField] Text txtSongName = null;
     [SerializeField] Text txtSongComposer = null;
@@ -39,8 +41,12 @@ public class StageMenu : MonoBehaviour
     //시작하면 currentSong의 0번째 곡을 화면에 띄어주는 기능 /22.04.01 by승주
     void Start()
     {
+        if (instance == null) instance = this;
+
         SettingSong();
     }
+
+    
 
     //Next Button 누르면 정보가 다음 곡으로 바뀌게 만들어주는 기능 /22.04.01 by승주
     public void BtnNext()
@@ -91,8 +97,11 @@ public class StageMenu : MonoBehaviour
     {
         int t_bpm = songList[currentSong].bpm;
 
-        GameManager.instance.GameStart(currentSong,t_bpm);
+        MusicGameManager.instance.GameStart(currentSong,t_bpm);
         this.gameObject.SetActive(false);
+
+        
+        
 
         
     }
@@ -100,12 +109,14 @@ public class StageMenu : MonoBehaviour
     public void BtnReStart()
     {
         int t_bpm = songList[currentSong].bpm;
-    
-        GameManager.instance.GameStart(currentSong, t_bpm);
+
+        MusicGameManager.instance.GameStart(currentSong, t_bpm);
         this.gameObject.SetActive(false);
 
         
     
     
     }
+
+    
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class MusicGameManager : MonoBehaviour
 {
     [SerializeField] GameObject[] goGameUI = null;
 
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     
 
     //╫л╠шео
-    public static GameManager instance;
+    public static MusicGameManager instance;
 
     public bool isStartGame = false;
 
