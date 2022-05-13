@@ -28,7 +28,7 @@ TagManager:
   - Water
   - UI
   - MyCardArea
-  - 
+  - IntroBackground
   - 
   - 
   - 
@@ -62,4 +62,13 @@ TagManager:
     locked: 0
   - name: Card
     uniqueID: 2066718741
+    locked: 0
+  - name: IntroBackground
+    uniqueID: 1137376893
+    locked: 0
+  - name: IntroForeground
+    uniqueID: 3866472721
+    locked: 0
+  - name: IntroMiddleground
+    uniqueID: 143066595
     locked: 0
