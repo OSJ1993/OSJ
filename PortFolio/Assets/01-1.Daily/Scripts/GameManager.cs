@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -72,20 +72,31 @@ public class GameManager : MonoBehaviour
     //    
     //}
 
-    public  TextMeshProUGUI talkText;
+    public GameObject talkPanel;
+    public Text talkText;
     public GameObject scanObject;
 
-    void Start()
-    {
-        talkText = GetComponent<TextMeshProUGUI>();
-    }
+    //상태 저장용 변수 기능 22.05.16 승주
+    public bool isAction;
 
-    
 
     public void Action(GameObject scanObj)
     {
-        scanObject = scanObj;
-        talkText.text = "wa" + scanObject.name+ "wo.";
+
+        //UI 숨기기 &보여주기 구현 기능 22.05.16 승주
+        if (isAction)
+        {//Exit Action 기능 22.05.16 승주
+            isAction = false;
+
+        }
+        else
+        {//Enter Action 기능 22.05.16 승주
+            isAction = true;
+            scanObject = scanObj;
+            talkText.text = "이것의 이름은 \n"  + scanObject.name + "이라고 한다..";
+        }
+
+        talkPanel.SetActive(isAction);
     }
 }
 

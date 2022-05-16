@@ -33,14 +33,15 @@ public class DailyPlayerMove : MonoBehaviour
     void Update()
     {
         //player move value 기능 22.05.16 승주
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
 
         //체크 버튼 기능 22.05.16 승주
-        bool hDown = Input.GetButtonDown("Horizontal");
-        bool vDown = Input.GetButtonDown("Vertical");
-        bool hUp = Input.GetButtonUp("Horizontal");
-        bool vUp = Input.GetButtonUp("Vertical");
+        //상태 변수르 사용하여 player 이동 제한 하는 기능 22.05.16 승주
+        bool hDown = manager.isAction ? false : Input.GetButtonDown("Horizontal");
+        bool vDown = manager.isAction ? false : Input.GetButtonDown("Vertical");
+        bool hUp = manager.isAction ? false : Input.GetButtonUp("Horizontal");
+        bool vUp = manager.isAction ? false : Input.GetButtonUp("Vertical");
 
         //버튼 다운으로 수평이동 체크 기능 22.05.16 승주
         if (hDown)
