@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
     //    
     //}
 
+    public DailyTalkManager talkManager;
+    public DailyQuestManager questManager;
+
     public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
@@ -79,24 +82,65 @@ public class GameManager : MonoBehaviour
     //상태 저장용 변수 기능 22.05.16 승주
     public bool isAction;
 
+    public int talkIndex;
+
+    public bool sceneChangeNPC = false;
 
     public void Action(GameObject scanObj)
     {
-
         //UI 숨기기 &보여주기 구현 기능 22.05.16 승주
-        if (isAction)
-        {//Exit Action 기능 22.05.16 승주
+
+        //Enter Action 기능 22.05.16 승주
+        scanObject = scanObj;
+        DailyObjData objData = scanObject.GetComponent<DailyObjData>();
+        Talk(objData.id, objData.isNpc);
+
+        talkPanel.SetActive(isAction);
+    }
+
+    void Talk(int id, bool isNPC)
+    {
+        //Set Talk Data 기능 22.05.17 승주
+        int questTalkIndex = questManager.GetQusetTalkIndex(id);
+
+        string talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex);
+
+
+
+        //Talk End 기능 22.05.17 승주
+        if (talkData == null)
+        {
             isAction = false;
+
+            talkIndex = 0;
+            if(sceneChangeNPC) StartCoroutine(SceneChage());
+            return;
+        }
+
+
+        if (isNPC)
+        {
+
+            talkText.text = talkData;
 
         }
         else
-        {//Enter Action 기능 22.05.16 승주
-            isAction = true;
-            scanObject = scanObj;
-            talkText.text = "이것의 이름은 \n"  + scanObject.name + "이라고 한다..";
+        {
+            talkText.text = talkData;
+
         }
 
-        talkPanel.SetActive(isAction);
+        isAction = true;
+
+
+
+        talkIndex++;
+    }
+
+    IEnumerator SceneChage()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(3);
     }
 }
 

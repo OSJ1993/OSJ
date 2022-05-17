@@ -76,6 +76,7 @@ public class DailyPlayerMove : MonoBehaviour
         //Scan Object 기능 22.05.16 승주
         if (Input.GetButtonDown("Jump") && scanObject != null)
             manager.Action(scanObject);
+       
     }
 
     void FixedUpdate()
@@ -94,6 +95,10 @@ public class DailyPlayerMove : MonoBehaviour
         if (rayHit.collider != null)
         {
             scanObject = rayHit.collider.gameObject;
+            if (rayHit.transform.CompareTag("SceneChangeNPC"))
+            {
+                manager.sceneChangeNPC = true;
+            }
         }
 
         //앞에 사물이 없는지 확인 하는 기능 22.05.16승주

@@ -20,6 +20,7 @@ TagManager:
   - BossGameCounter
   - SwordManPlayerAtk
   - SwordManEnemyAtk
+  - SceneChangeNPC
   layers:
   - Default
   - TransparentFX
