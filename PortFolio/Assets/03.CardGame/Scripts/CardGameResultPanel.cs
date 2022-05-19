@@ -19,7 +19,12 @@ public class CardGameResultPanel : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(5);
+    }
+
+    public void MainMene()
+    {
+        SceneManager.LoadScene(2);
     }
 
     void Start() => ScaleZero();

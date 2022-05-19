@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/00.Scenes/00.0Intro.unity
     guid: 74d6699b940420b41904d3f81826428d
   - enabled: 1
-    path: Assets/00.Scenes/00.1-Loading Scene.unity
-    guid: 0e6a0d6ae0ded204c8a37a63ce22e89b
+    path: Assets/00.Scenes/00-1.SceneLoader.unity
+    guid: 1a4a5430cc0d52e44998a8137fdae630
   - enabled: 1
     path: Assets/00.Scenes/01-1.Daily.unity
     guid: 2799eb400324d0e47a602427a3ffa2f2
+  - enabled: 1
+    path: Assets/00.Scenes/01-11.DailyCom.unity
+    guid: c03834930102f754993433f82d3b1050
   - enabled: 1
     path: Assets/00.Scenes/01.MusicGame.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
@@ -28,5 +31,5 @@ EditorBuildSettings:
     guid: 5088508b30f56ba48bde69fa1a0bad6d
   - enabled: 1
     path: Assets/00.Scenes/05.Ending.unity
-    guid: 57cf72ccb2aad83458285c55bed19100
+    guid: 952cf1f8a565d744881f3e8e24825576
   m_configObjects: {}

@@ -11,7 +11,7 @@ public class IntroMainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     //판넬 오브젝트 기능 22.05.13 승주
@@ -26,7 +26,10 @@ public class IntroMainMenu : MonoBehaviour
         image = SplashObj.GetComponent<Image>();
     }
 
-
+    void SceneLoad()
+    {
+        SceneManager.LoadScene("00-1.SceneLoader");
+    }
 
 
 }

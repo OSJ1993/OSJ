@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SceneChage()
     {
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene(3);
+        yield return SceneManager.LoadSceneAsync(3);
     }
 }
 

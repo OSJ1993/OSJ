@@ -314,4 +314,9 @@ public class ScrollGameManager : MonoBehaviour
     {
         SceneManager.LoadScene("03.scrollGame");
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

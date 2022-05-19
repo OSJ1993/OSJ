@@ -30,6 +30,12 @@ public class ManGamePlayer : MonoBehaviour
 
     public GameObject gameover;
 
+
+    public GameObject reStart;
+    public GameObject mainMenu;
+
+    
+
     private void Start()
     {
         EnableMove();
@@ -106,13 +112,13 @@ public class ManGamePlayer : MonoBehaviour
                 playerAni.Play("Player_Death");
                 gameover.SetActive(true);
 
+                reStart.SetActive(true);
+                mainMenu.SetActive(true);
+
                 Invoke("GameRestart", 3f);
             }
         }
     }
 
-    void GameRestart()
-    {
-        SceneManager.LoadScene("05-1Sword ManGmae");
-    }
+    
 }

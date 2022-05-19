@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Result : MonoBehaviour
 {
@@ -61,9 +62,11 @@ public class Result : MonoBehaviour
     {
         goUI.SetActive(false);
 
-        MusicGameManager.instance.MainMenu();
+        //MusicGameManager.instance.MainMenu();
 
         theCombo.ResetCombo();
+
+        SceneManager.LoadScene(2);
     }
 
     public void BtnReStart()
