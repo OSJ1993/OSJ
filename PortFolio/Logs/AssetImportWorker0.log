@@ -1,126 +1,126 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.24f1 (79c78de19888) revision 7980941'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 16266 MB
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 8125 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-D:\Unity\2020.3.24f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-D:/Unity/github/OSJ/PortFolio
+D:/Unity/GitHub/OSJ/PortFolio
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63372
-Successfully changed project path to: D:/Unity/github/OSJ/PortFolio
-D:/Unity/github/OSJ/PortFolio
+55673
+Successfully changed project path to: D:/Unity/GitHub/OSJ/PortFolio
+D:/Unity/GitHub/OSJ/PortFolio
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 56.45 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 42.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.24f1 (79c78de19888)
-[Subsystems] Discovering subsystems at path D:/Unity/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Unity/github/OSJ/PortFolio/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity/GitHub/OSJ/PortFolio/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1060 3GB (ID=0x1b84)
+    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c81)
     Vendor:   
-    VRAM:     2988 MB
+    VRAM:     1977 MB
     Driver:   27.21.14.5671
 Initialize mono
-Mono path[0] = 'D:/Unity/2020.3.24f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Unity/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'D:/Unity/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56516
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56396
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/Unity/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: D:/Unity/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001472 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002520 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 55.88 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 41.72 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.676 seconds
+- Completed reload, in  0.539 seconds
 Domain Reload Profiling:
-	ReloadAssembly (676ms)
-		BeginReloadAssembly (57ms)
+	ReloadAssembly (539ms)
+		BeginReloadAssembly (52ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (545ms)
-			LoadAssemblies (56ms)
+		EndReloadAssembly (416ms)
+			LoadAssemblies (51ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (174ms)
+			SetupTypeCache (141ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (32ms)
-			SetupLoadedEditorAssemblies (207ms)
+			RebuildScriptCaches (28ms)
+			SetupLoadedEditorAssemblies (160ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (56ms)
-				BeforeProcessingInitializeOnLoad (18ms)
-				ProcessInitializeOnLoadAttributes (94ms)
-				ProcessInitializeOnLoadMethodAttributes (33ms)
+				RefreshPlugins (42ms)
+				BeforeProcessingInitializeOnLoad (17ms)
+				ProcessInitializeOnLoadAttributes (71ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004964 seconds.
+Registered in 0.003611 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.136 seconds
+- Completed reload, in  0.970 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1137ms)
-		BeginReloadAssembly (154ms)
+	ReloadAssembly (970ms)
+		BeginReloadAssembly (133ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (921ms)
-			LoadAssemblies (100ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (779ms)
+			LoadAssemblies (83ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (335ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (53ms)
-			SetupLoadedEditorAssemblies (332ms)
+			SetupTypeCache (282ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (285ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (221ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (3ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (184ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
-Refreshing native plugins compatible for Editor in 0.55 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2102 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 117.7 MB.
-System memory in use after: 117.8 MB.
+Unloading 2101 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2564.
-Total: 3.015500 ms (FindLiveObjects: 0.222100 ms CreateObjectMapping: 0.087900 ms MarkObjects: 2.676300 ms  DeleteObjects: 0.028100 ms)
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2539.
+Total: 2.699300 ms (FindLiveObjects: 0.166200 ms CreateObjectMapping: 0.063000 ms MarkObjects: 2.405900 ms  DeleteObjects: 0.063000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,185 +134,513 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/06_1Sword ManGmae/Models/Test!!!!!!!!!!!.obj
-  artifactKey: Guid(95b5fc977f4016b4ebb3b9d50da1a3b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/Test!!!!!!!!!!!.obj using Guid(95b5fc977f4016b4ebb3b9d50da1a3b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c7069706fdc4d72edcb171b4de47072') in 0.450118 seconds 
-  Import took 0.453657 seconds .
+  path: Assets/00.Scenes/00.0Intro.unity
+  artifactKey: Guid(74d6699b940420b41904d3f81826428d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00.Scenes/00.0Intro.unity using Guid(74d6699b940420b41904d3f81826428d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '429458f48ab2a6dbc3ba78537f27273c') in 0.021837 seconds 
+  Import took 0.038297 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4681.637413 seconds.
-  path: Assets/00.Scenes/03.scrollGame.unity
-  artifactKey: Guid(742e3954f3198854eb1faf8119202923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00.Scenes/03.scrollGame.unity using Guid(742e3954f3198854eb1faf8119202923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '799ace9f72e35641a159fd37809c82c2') in 0.029829 seconds 
-  Import took 0.086672 seconds .
+  Time since last request: 9.714406 seconds.
+  path: Assets/00.Scenes/01.MusicGame.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00.Scenes/01.MusicGame.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28e1e097b2f736deb2caaf0a9afc2b3e') in 0.028218 seconds 
+  Import took 0.031272 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.595386 seconds.
+  Time since last request: 2.265078 seconds.
   path: Assets/00.Scenes/02.CardGame.unity
   artifactKey: Guid(0d28c6a54fee7db4c87cc33b819c4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00.Scenes/02.CardGame.unity using Guid(0d28c6a54fee7db4c87cc33b819c4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a350740a965eccb22306b2453f1ec923') in 0.010359 seconds 
-  Import took 0.016684 seconds .
+Start importing Assets/00.Scenes/02.CardGame.unity using Guid(0d28c6a54fee7db4c87cc33b819c4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ea5549c598262fed2caf69f759fa3dc') in 0.005970 seconds 
+  Import took 0.022887 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.111326 seconds.
-  path: Assets/00.Scenes/01-11.DailyCom.unity
-  artifactKey: Guid(c03834930102f754993433f82d3b1050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00.Scenes/01-11.DailyCom.unity using Guid(c03834930102f754993433f82d3b1050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a5d9ab8a53940a828f6eec49b579ffe') in 0.010866 seconds 
-  Import took 0.015215 seconds .
+  Time since last request: 3.040818 seconds.
+  path: Assets/00.Scenes/03.scrollGame.unity
+  artifactKey: Guid(742e3954f3198854eb1faf8119202923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00.Scenes/03.scrollGame.unity using Guid(742e3954f3198854eb1faf8119202923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51079e22b657f185389c8c09cc0760af') in 0.018920 seconds 
+  Import took 0.037364 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 574.217094 seconds.
-  path: Assets/RPGHero/Prefabs
-  artifactKey: Guid(a2a0b3e9614ce9644bcf0df7f50794ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Prefabs using Guid(a2a0b3e9614ce9644bcf0df7f50794ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '208d7d9d4c3495aef6d5b871bef5be9c') in 0.012528 seconds 
-  Import took 0.018807 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.061905 seconds.
-  path: Assets/RPGHero/Prefabs/RPGHeroPolyart.prefab
-  artifactKey: Guid(c647a6e9ba715004ebbf4dc6d7bd1e7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Prefabs/RPGHeroPolyart.prefab using Guid(c647a6e9ba715004ebbf4dc6d7bd1e7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '742614af782aabb3fa7eea13a990e55f') in 0.240048 seconds 
-  Import took 0.246261 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.485085 seconds.
-  path: Assets/RPGHero/Prefabs/RPGHeroPBR.prefab
-  artifactKey: Guid(1543549dcdf638d488bd40cb68dd9b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Prefabs/RPGHeroPBR.prefab using Guid(1543549dcdf638d488bd40cb68dd9b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d0a9c966134295dabb7c3ebaaf6c9d4') in 0.690105 seconds 
-  Import took 0.695233 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/RPGHero/Prefabs/RPGHeroHP.prefab
-  artifactKey: Guid(c20397bf1592dc040b827e8716b0bd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Prefabs/RPGHeroHP.prefab using Guid(c20397bf1592dc040b827e8716b0bd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34ecdafbd5b938a182a48340686f4bf3') in 0.134537 seconds 
-  Import took 0.140634 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 27.834563 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaaacc1a4f00fd12689c9ca8db8f6603') in 0.130180 seconds 
-  Import took 0.136396 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000193 seconds.
-  path: Assets/RPGHero/Meshes/NewFreeRPGHeroPolyart.fbx
-  artifactKey: Guid(e4aa31f274820b94eb0d0b764e0f383b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/NewFreeRPGHeroPolyart.fbx using Guid(e4aa31f274820b94eb0d0b764e0f383b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ec2bd5c6e09135d5949d41e6b9d5ff4') in 0.035021 seconds 
-  Import took 0.039366 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/RPGHero/Meshes/NewFreeRPGHero.fbx
-  artifactKey: Guid(9ce6002518e821e43b4f97c76700fbac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/NewFreeRPGHero.fbx using Guid(9ce6002518e821e43b4f97c76700fbac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a1d81ccc98cfec2af48a162fa564fd2') in 0.029418 seconds 
-  Import took 0.036527 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000374 seconds.
-  path: Assets/RPGHero/Meshes/Shield.fbx
-  artifactKey: Guid(9d34b073abce58249a1f664619a13aaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/Shield.fbx using Guid(9d34b073abce58249a1f664619a13aaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8d6da9d18c29a7f82c04eb43a7c26fe') in 0.020497 seconds 
-  Import took 0.026257 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000201 seconds.
-  path: Assets/RPGHero/Meshes/Stage.fbx
-  artifactKey: Guid(433ba552641724b44889f4b106bec3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/Stage.fbx using Guid(433ba552641724b44889f4b106bec3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47a78191b211997196d3558e9794c01a') in 0.022210 seconds 
-  Import took 0.025949 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/RPGHero/Meshes/Sword.fbx
-  artifactKey: Guid(64564c9f5e409974297b87494cbe4731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/Sword.fbx using Guid(64564c9f5e409974297b87494cbe4731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd76b044660ac19272d1a2fe90c631a72') in 0.016950 seconds 
-  Import took 0.022952 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Assets/RPGHero/Meshes/PolyartShield.fbx
-  artifactKey: Guid(82d123ce4a1a7824bae34da0dd9e13f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/PolyartShield.fbx using Guid(82d123ce4a1a7824bae34da0dd9e13f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e790b2ee48e13cb4e4d18abc3c59f7b') in 0.017118 seconds 
-  Import took 0.022034 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000210 seconds.
-  path: Assets/RPGHero/Meshes/PolyartSword.fbx
-  artifactKey: Guid(8e748ab8b2b891145b67425cad73aebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RPGHero/Meshes/PolyartSword.fbx using Guid(8e748ab8b2b891145b67425cad73aebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d9099852d1ca88903fdc0a745215e85') in 0.020282 seconds 
-  Import took 0.024505 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 675.201964 seconds.
+  Time since last request: 1700.627868 seconds.
   path: Assets/00.Scenes/04Sword ManGmae.unity
   artifactKey: Guid(5088508b30f56ba48bde69fa1a0bad6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00.Scenes/04Sword ManGmae.unity using Guid(5088508b30f56ba48bde69fa1a0bad6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f4c613ece7845cdf7f92679e623b21c') in 0.024620 seconds 
-  Import took 0.029219 seconds .
+Start importing Assets/00.Scenes/04Sword ManGmae.unity using Guid(5088508b30f56ba48bde69fa1a0bad6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cbe19d965113f5ea1c7f2647b6e4253') in 0.007672 seconds 
+  Import took 0.030180 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 172.436867 seconds.
-  path: Assets/Meshtint Free Knight/Prefabs/Meshtint Free Knight.prefab
+  Time since last request: 3365.403114 seconds.
+  path: Assets/06_1Sword ManGmae/Meshtint Free Knight
+  artifactKey: Guid(3f07ed67997102640b001c862b739358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Meshtint Free Knight using Guid(3f07ed67997102640b001c862b739358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc116bcf86007d9da6b893bfdfa5be16') in 0.006578 seconds 
+  Import took 0.027753 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.562067 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight
+  artifactKey: Guid(3f07ed67997102640b001c862b739358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight using Guid(3f07ed67997102640b001c862b739358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d8462853895609972a38567347292ab') in 0.008051 seconds 
+  Import took 0.030225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.591599 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Prefabs
+  artifactKey: Guid(dd7ad1f08d7a33f41abc3b1b43909c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Prefabs using Guid(dd7ad1f08d7a33f41abc3b1b43909c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8015f8a8d890d9fa3efaf4a96d59453') in 0.009225 seconds 
+  Import took 0.030148 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.939928 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Prefabs/Meshtint Free Knight.prefab
   artifactKey: Guid(5b5b1958cdf88ce49989e326859b9572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshtint Free Knight/Prefabs/Meshtint Free Knight.prefab using Guid(5b5b1958cdf88ce49989e326859b9572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f94ed10da07c9121fecb1ebb473c62c') in 0.030708 seconds 
-  Import took 0.035311 seconds .
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Prefabs/Meshtint Free Knight.prefab using Guid(5b5b1958cdf88ce49989e326859b9572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f94ed10da07c9121fecb1ebb473c62c') in 0.290283 seconds 
+  Import took 0.304538 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 214.789063 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.png
-  artifactKey: Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.png using Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7475f412a57a93540dd9c7f73190bdf7') in 0.079347 seconds 
-  Import took 0.083034 seconds .
+  Time since last request: 238.680441 seconds.
+  path: Assets/06_1Sword ManGmae/Animations/SwordMan/SwordMan.controller
+  artifactKey: Guid(0329c094cf5656541b18828fe6e2fff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Animations/SwordMan/SwordMan.controller using Guid(0329c094cf5656541b18828fe6e2fff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efe9c2159fb304c9746028eb2dbb1d9c') in 0.198748 seconds 
+  Import took 0.213995 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5031.288795 seconds.
-  path: Assets/Meshtint Free Knight/FBX/Meshtint Free Knight.FBX
-  artifactKey: Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshtint Free Knight/FBX/Meshtint Free Knight.FBX using Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a3441e0493d810035ead2c4c3be0930') in 0.073678 seconds 
-  Import took 0.094562 seconds .
+  Time since last request: 40.556126 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/UI/Important!!! Read me.prefab
+  artifactKey: Guid(2eb6d9a882a95a54f97244f20bddea01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/UI/Important!!! Read me.prefab using Guid(2eb6d9a882a95a54f97244f20bddea01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f73a6652a6fc37bf9ae31b47232f7242') in 0.026011 seconds 
+  Import took 0.042551 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000233 seconds.
-  path: Assets/Meshtint Free Knight/FBX/Sword.FBX
+  Time since last request: 6.025326 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Sword.FBX
   artifactKey: Guid(17e462df654aa664683c1e9f5eed62bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshtint Free Knight/FBX/Sword.FBX using Guid(17e462df654aa664683c1e9f5eed62bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f1e04062a156a510b685226a7c97a82') in 0.024643 seconds 
-  Import took 0.030273 seconds .
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Sword.FBX using Guid(17e462df654aa664683c1e9f5eed62bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f1e04062a156a510b685226a7c97a82') in 0.106917 seconds 
+  Import took 0.110776 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Meshtint Free Knight/FBX/Shield.FBX
+  Time since last request: 0.638732 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Shield.FBX
   artifactKey: Guid(8f414378dccad1146bbee06522d6d242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshtint Free Knight/FBX/Shield.FBX using Guid(8f414378dccad1146bbee06522d6d242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c929bcf25a7a939e455ddb18c212edb') in 0.023367 seconds 
-  Import took 0.028908 seconds .
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Shield.FBX using Guid(8f414378dccad1146bbee06522d6d242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c929bcf25a7a939e455ddb18c212edb') in 0.019451 seconds 
+  Import took 0.023305 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000223 seconds.
-  path: Assets/Meshtint Free Knight/FBX/Meshtint Free Knight@Battle Idle.FBX
+  Time since last request: 0.665503 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight.FBX
+  artifactKey: Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight.FBX using Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a3441e0493d810035ead2c4c3be0930') in 0.032314 seconds 
+  Import took 0.050164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.698940 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight@Battle Idle.FBX
   artifactKey: Guid(db4eaab5d375e8844851ce3cf2165adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshtint Free Knight/FBX/Meshtint Free Knight@Battle Idle.FBX using Guid(db4eaab5d375e8844851ce3cf2165adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0bd5cd207b97ecbd61464723bae7e63') in 0.040233 seconds 
-  Import took 0.045496 seconds .
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight@Battle Idle.FBX using Guid(db4eaab5d375e8844851ce3cf2165adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0bd5cd207b97ecbd61464723bae7e63') in 0.031474 seconds 
+  Import took 0.041095 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27.329263 seconds.
+  path: Assets/06_1Sword ManGmae/Animations/SwordMan
+  artifactKey: Guid(f0e9ce4a1b1aecc43ba3f6cfb6d03928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Animations/SwordMan using Guid(f0e9ce4a1b1aecc43ba3f6cfb6d03928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b93c8f8f0678fc0ad987be6f117d0ff') in 0.002777 seconds 
+  Import took 0.031027 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.380745 seconds.
+  path: Assets/06_1Sword ManGmae/Animations/SwordMan/Player_Walk.anim
+  artifactKey: Guid(dc15eba13217b43449e9c31e88ec070f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Animations/SwordMan/Player_Walk.anim using Guid(dc15eba13217b43449e9c31e88ec070f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fab03c72959a97a852f939d4d7abe75') in 0.024602 seconds 
+  Import took 0.042973 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.906180 seconds.
+  path: Assets/06_1Sword ManGmae/Animations/SwordMan/Player_AtkA.anim
+  artifactKey: Guid(f287c37f4e952b84b842375b9d974dd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Animations/SwordMan/Player_AtkA.anim using Guid(f287c37f4e952b84b842375b9d974dd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f019452373896dcef38390ee3e180f8') in 0.020733 seconds 
+  Import took 0.024656 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.796258 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Controllers/Meshtint Free Knight.controller
+  artifactKey: Guid(d05c65343761305459dd4f72d1f51309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Controllers/Meshtint Free Knight.controller using Guid(d05c65343761305459dd4f72d1f51309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dccb03223f44cfaeb50c38edf87b2fae') in 0.003629 seconds 
+  Import took 0.025926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 333.105730 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGameControlPanel.cs
+  artifactKey: Guid(bc23adfaf7736b145ab6ab3e1aabde3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGameControlPanel.cs using Guid(bc23adfaf7736b145ab6ab3e1aabde3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58dc7bd1fefaf3faf2e1942b10a38d2f') in 0.090049 seconds 
+  Import took 0.110296 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.950199 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGameDisableObj.cs
+  artifactKey: Guid(cdcd5ecb0d6babe4fb383624a135d96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGameDisableObj.cs using Guid(cdcd5ecb0d6babe4fb383624a135d96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9058e1734993ce2b730350836b19950f') in 0.005995 seconds 
+  Import took 0.010414 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.753593 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGameEnemy.cs
+  artifactKey: Guid(5064dc44a082b024185cea4ba3e44e91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGameEnemy.cs using Guid(5064dc44a082b024185cea4ba3e44e91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e0a1e52f724d12707f48c8f2ba5abdb') in 0.007746 seconds 
+  Import took 0.047979 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.626148 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGameHitManager.cs
+  artifactKey: Guid(747493dab449b2a4c979a0c303eb9924) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGameHitManager.cs using Guid(747493dab449b2a4c979a0c303eb9924) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf2cd4666579bffb9e233f5700a5d296') in 0.005870 seconds 
+  Import took 0.010090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.965106 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGamePlayer.cs
+  artifactKey: Guid(94067eb6295c3734185ea3b9ccac0d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGamePlayer.cs using Guid(94067eb6295c3734185ea3b9ccac0d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '082efbf2901fafbc2bbf0f7bd3d3fc21') in 0.007538 seconds 
+  Import took 0.030587 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.138260 seconds.
+  path: Assets/06_1Sword ManGmae/Scripts/ManGameReStart.cs
+  artifactKey: Guid(4f8736875d461e645bb4a41758721145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts/ManGameReStart.cs using Guid(4f8736875d461e645bb4a41758721145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e05ae1d359e6fc1eee4fb307dea0253') in 0.009144 seconds 
+  Import took 0.016141 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 226.546582 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Controllers
+  artifactKey: Guid(e4487f2d525a4334f9dcdfa6f73f6be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/Controllers using Guid(e4487f2d525a4334f9dcdfa6f73f6be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e3014918c8c4964e0f1c02b184f92e1') in 0.007422 seconds 
+  Import took 0.029198 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 147.278521 seconds.
+  path: Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight.FBX
+  artifactKey: Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000Meshtint Free Knight/FBX/Meshtint Free Knight.FBX using Guid(445581dbfbbea06408d552fa1aca77fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '512221d2d75667a0fb54cb3f2a25e890') in 0.035257 seconds 
+  Import took 0.039119 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 280.101209 seconds.
+  path: Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.mtl
+  artifactKey: Guid(defa9a0c097c47f4684336b1df8b0501) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.mtl using Guid(defa9a0c097c47f4684336b1df8b0501) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d85eb7fb9461a296f5acc19dba21d15') in 0.019415 seconds 
+  Import took 0.024473 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.641730 seconds.
+  path: Assets/06_1Sword ManGmae/Animations/SwordMan/ManWin.controller
+  artifactKey: Guid(b32c4194083f3eb45b81730127a79996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Animations/SwordMan/ManWin.controller using Guid(b32c4194083f3eb45b81730127a79996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ef85bd358a1c828cd71b7010087f738') in 0.014514 seconds 
+  Import took 0.029593 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11175.660846 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Walking.fbx
+  artifactKey: Guid(a087b74802c88e643ab5a33118e0dd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Walking.fbx using Guid(a087b74802c88e643ab5a33118e0dd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59f01a1c7f1fae9717f92bef14714680') in 0.174327 seconds 
+  Import took 0.204739 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.151567 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Two Handed Sword Death.fbx
+  artifactKey: Guid(0d629b4e25a32e241a2aeeb978116b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Two Handed Sword Death.fbx using Guid(0d629b4e25a32e241a2aeeb978116b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e342d799a4801078044b3d388b09014f') in 0.049182 seconds 
+  Import took 0.052937 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.255239 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack3.fbx
+  artifactKey: Guid(3fdc4af54cf37d84fa84270a5842302d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack3.fbx using Guid(3fdc4af54cf37d84fa84270a5842302d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '345239122d44fd5a8bef8ad1d583ce49') in 0.044918 seconds 
+  Import took 0.049123 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.910434 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack2.fbx
+  artifactKey: Guid(43c91f8261b96a64daaea70548b431f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack2.fbx using Guid(43c91f8261b96a64daaea70548b431f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '679687ee4aa5c264b835feda24eca22a') in 0.040921 seconds 
+  Import took 0.045282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.619758 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1.fbx
+  artifactKey: Guid(1c1f1cb2362a2f24d8e1758f98543ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1.fbx using Guid(1c1f1cb2362a2f24d8e1758f98543ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bc76cec69fe30bfcc9e08855af4a92b') in 0.039419 seconds 
+  Import took 0.043429 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.443648 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Jump.fbx
+  artifactKey: Guid(cd59d0c7d1bc2ea40993bc8140f89d33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Jump.fbx using Guid(cd59d0c7d1bc2ea40993bc8140f89d33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e944b5738d96628b5ae345196fec4ec8') in 0.049667 seconds 
+  Import took 0.053770 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 77.352979 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1.fbx
+  artifactKey: Guid(1c1f1cb2362a2f24d8e1758f98543ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1.fbx using Guid(1c1f1cb2362a2f24d8e1758f98543ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8c6976c2e23048961af6b0b4afef94c') in 0.034775 seconds 
+  Import took 0.056807 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.939802 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack2.fbx
+  artifactKey: Guid(43c91f8261b96a64daaea70548b431f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack2.fbx using Guid(43c91f8261b96a64daaea70548b431f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a6bafabbccbbeb27bbf4a6d2123c8f5') in 0.036139 seconds 
+  Import took 0.058968 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.655115 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack3.fbx
+  artifactKey: Guid(3fdc4af54cf37d84fa84270a5842302d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack3.fbx using Guid(3fdc4af54cf37d84fa84270a5842302d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ce832ac7b25c23c614c3ab9014d96d3') in 0.037028 seconds 
+  Import took 0.054635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.819436 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Two Handed Sword Death.fbx
+  artifactKey: Guid(0d629b4e25a32e241a2aeeb978116b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Two Handed Sword Death.fbx using Guid(0d629b4e25a32e241a2aeeb978116b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4dea0d3f1b9de9e4e0029ff5e9e3ea6') in 0.037458 seconds 
+  Import took 0.042174 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.949198 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Walking.fbx
+  artifactKey: Guid(a087b74802c88e643ab5a33118e0dd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Walking.fbx using Guid(a087b74802c88e643ab5a33118e0dd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99d242ee77e23f36ee2a2a9c4d67ea5e') in 0.035219 seconds 
+  Import took 0.040058 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.418757 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Jump.fbx
+  artifactKey: Guid(cd59d0c7d1bc2ea40993bc8140f89d33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Jump.fbx using Guid(cd59d0c7d1bc2ea40993bc8140f89d33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da38913ab7101ca86b89e38d6a5bbd5d') in 0.033099 seconds 
+  Import took 0.037615 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 53.416301 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle.fbx
+  artifactKey: Guid(d202b84cfac3ac542906ece812e11a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle.fbx using Guid(d202b84cfac3ac542906ece812e11a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9833d374453ea4d6a1ed68848629b807') in 0.032979 seconds 
+  Import took 0.037428 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.972388 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle.fbx
+  artifactKey: Guid(d202b84cfac3ac542906ece812e11a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle.fbx using Guid(d202b84cfac3ac542906ece812e11a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f17a0be896c8dec00f5dcf235c5f11b') in 0.035197 seconds 
+  Import took 0.050532 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.922023 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1 1.fbx
+  artifactKey: Guid(a2c5e4f3280825d4092c183e48b63df6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Sword And Shield Attack1 1.fbx using Guid(a2c5e4f3280825d4092c183e48b63df6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be7998065235578b5d3229871bc522e9') in 0.085811 seconds 
+  Import took 0.102474 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.323301 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Meshtint Free Knight.controller
+  artifactKey: Guid(d05c65343761305459dd4f72d1f51309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Meshtint Free Knight.controller using Guid(d05c65343761305459dd4f72d1f51309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '900df8d5a8f7ed35172138a53c57a1ad') in 0.004756 seconds 
+  Import took 0.009089 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 144.385179 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/@121212.anim
+  artifactKey: Guid(ec5fcdc8a63f26d48b537dcacc7b2a3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/@121212.anim using Guid(ec5fcdc8a63f26d48b537dcacc7b2a3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e4eb87d90a53a98a3c528113063273d') in 0.007463 seconds 
+  Import took 0.012643 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.890043 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Meshtint Free Knight 1.controller
+  artifactKey: Guid(45de56c25b50f0840ae56f5222cea91d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Meshtint Free Knight 1.controller using Guid(45de56c25b50f0840ae56f5222cea91d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b419ab06001333de4299536969c077c5') in 0.021383 seconds 
+  Import took 0.025328 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 95.046762 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle 1.fbx
+  artifactKey: Guid(b63b6ca88fd5c65458145d14bc332a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/Idle 1.fbx using Guid(b63b6ca88fd5c65458145d14bc332a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '709693af1691e5eca9dcc9056a174bd8') in 0.050687 seconds 
+  Import took 0.063717 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.207152 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder
+  artifactKey: Guid(67c0482e03e4ac349821eac2c5d5106e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder using Guid(67c0482e03e4ac349821eac2c5d5106e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a41ca1ec03e81099932a3aa90bf26f21') in 0.006249 seconds 
+  Import took 0.031922 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.645107 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(c3199674f7eecc7468b1fdf1465354a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(c3199674f7eecc7468b1fdf1465354a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fb5eb1017ece84cdb4170901cb366d0') in 0.012755 seconds 
+  Import took 0.016806 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.615381 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com 1.anim
+  artifactKey: Guid(cb7c2bde042d37f48b2b6f37cf52bd0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com 1.anim using Guid(cb7c2bde042d37f48b2b6f37cf52bd0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee5d45a82fc628030f244c7a1afb95de') in 0.013502 seconds 
+  Import took 0.017875 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.073687 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Idle.anim
+  artifactKey: Guid(c3199674f7eecc7468b1fdf1465354a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Idle.anim using Guid(c3199674f7eecc7468b1fdf1465354a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a283d0a7f1bd2c4bad6019e16ab53569') in 0.011416 seconds 
+  Import took 0.016665 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.477606 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(cb14268ecee64d6479dccb843c5ba740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(cb14268ecee64d6479dccb843c5ba740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88a8f43c040b5dda58d7a77258e84880') in 0.016885 seconds 
+  Import took 0.033803 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.475740 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Jump.anim
+  artifactKey: Guid(cb14268ecee64d6479dccb843c5ba740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Jump.anim using Guid(cb14268ecee64d6479dccb843c5ba740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6021f28732110cef2e01ff870bc4b23') in 0.016499 seconds 
+  Import took 0.026920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.670642 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(5ff9c9c5e7d2b0f42bafd93e2be62f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(5ff9c9c5e7d2b0f42bafd93e2be62f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a31fb355e63e37a73677be8aa5d5990') in 0.015226 seconds 
+  Import took 0.019564 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.769054 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack1.anim
+  artifactKey: Guid(5ff9c9c5e7d2b0f42bafd93e2be62f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack1.anim using Guid(5ff9c9c5e7d2b0f42bafd93e2be62f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75ccfe72753f2cfa90cec55a2e0d8563') in 0.018039 seconds 
+  Import took 0.022162 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.221882 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(78f575e2b7946984e9ffaa4138825de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(78f575e2b7946984e9ffaa4138825de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd8741fa161a36ee4f54e9c5d73a3176') in 0.015213 seconds 
+  Import took 0.027933 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.119276 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack2.anim
+  artifactKey: Guid(78f575e2b7946984e9ffaa4138825de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack2.anim using Guid(78f575e2b7946984e9ffaa4138825de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd45a0361618e46223ae0874db674cf6') in 0.018505 seconds 
+  Import took 0.022387 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.444266 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(1b25998fe07139b44a4b6c7cddb19b93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(1b25998fe07139b44a4b6c7cddb19b93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a35366e74092333ee6c062a11418b65') in 0.020880 seconds 
+  Import took 0.024797 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.493679 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack3.anim
+  artifactKey: Guid(1b25998fe07139b44a4b6c7cddb19b93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Attack3.anim using Guid(1b25998fe07139b44a4b6c7cddb19b93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '436bf15dbad305ea28fbf26c3a027509') in 0.046369 seconds 
+  Import took 0.050173 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.660184 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(a7e4ba2b22110fa449b55e91bc79c593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(a7e4ba2b22110fa449b55e91bc79c593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a213960e4f15df364e45e3b18e70a29a') in 0.022024 seconds 
+  Import took 0.040621 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.687134 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Death.anim
+  artifactKey: Guid(a7e4ba2b22110fa449b55e91bc79c593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Death.anim using Guid(a7e4ba2b22110fa449b55e91bc79c593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b53a3da9f57ac92f980d9fae7e27c218') in 0.024764 seconds 
+  Import took 0.038564 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.207148 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim
+  artifactKey: Guid(020422fc07227594ab55f011c90f4082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/mixamo.com.anim using Guid(020422fc07227594ab55f011c90f4082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e38d186735d5df5716fd37ef363e9549') in 0.012660 seconds 
+  Import took 0.029164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.406025 seconds.
+  path: Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Warking.anim
+  artifactKey: Guid(020422fc07227594ab55f011c90f4082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/000000000Meshtint Free Knight/Controllers/New Folder/Warking.anim using Guid(020422fc07227594ab55f011c90f4082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c48fc3a53cb98eb6f6dc14b45678445b') in 0.016236 seconds 
+  Import took 0.021253 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
