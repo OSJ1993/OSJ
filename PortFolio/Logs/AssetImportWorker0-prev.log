@@ -15,11 +15,11 @@ D:/Unity/GitHub/OSJ/PortFolio
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51806
+54981
 Successfully changed project path to: D:/Unity/GitHub/OSJ/PortFolio
 D:/Unity/GitHub/OSJ/PortFolio
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 42.40 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 43.04 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.24f1 (79c78de19888)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
@@ -35,76 +35,76 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56124
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56232
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002541 seconds.
+Registered in 0.002510 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 42.32 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 40.14 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.546 seconds
+- Completed reload, in  0.536 seconds
 Domain Reload Profiling:
-	ReloadAssembly (546ms)
-		BeginReloadAssembly (52ms)
+	ReloadAssembly (536ms)
+		BeginReloadAssembly (53ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (424ms)
-			LoadAssemblies (50ms)
+		EndReloadAssembly (412ms)
+			LoadAssemblies (51ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (142ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (28ms)
-			SetupLoadedEditorAssemblies (165ms)
+			SetupLoadedEditorAssemblies (156ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (42ms)
-				BeforeProcessingInitializeOnLoad (17ms)
-				ProcessInitializeOnLoadAttributes (74ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				RefreshPlugins (40ms)
+				BeforeProcessingInitializeOnLoad (16ms)
+				ProcessInitializeOnLoadAttributes (70ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003552 seconds.
+Registered in 0.003492 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.981 seconds
+- Completed reload, in  0.991 seconds
 Domain Reload Profiling:
-	ReloadAssembly (982ms)
-		BeginReloadAssembly (135ms)
+	ReloadAssembly (991ms)
+		BeginReloadAssembly (140ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (788ms)
+		EndReloadAssembly (794ms)
 			LoadAssemblies (84ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (287ms)
+			SetupTypeCache (296ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (288ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (285ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (78ms)
-				ProcessInitializeOnLoadAttributes (186ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (185ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -113,14 +113,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.48 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2101 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 97.8 MB.
 System memory in use after: 97.9 MB.
 
 Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2539.
-Total: 2.822000 ms (FindLiveObjects: 0.181900 ms CreateObjectMapping: 0.072800 ms MarkObjects: 2.498600 ms  DeleteObjects: 0.067900 ms)
+Total: 2.766400 ms (FindLiveObjects: 0.173500 ms CreateObjectMapping: 0.067200 ms MarkObjects: 2.460900 ms  DeleteObjects: 0.063900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,241 +134,32 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/00.Scenes/04Sword ManGmae.unity
-  artifactKey: Guid(5088508b30f56ba48bde69fa1a0bad6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00.Scenes/04Sword ManGmae.unity using Guid(5088508b30f56ba48bde69fa1a0bad6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b3964dded60b9da2ea10c396ff9bbd2') in 0.014436 seconds 
-  Import took 0.017646 seconds .
+  path: Assets/06_1Sword ManGmae/Scripts
+  artifactKey: Guid(2023f0872244bcb4daaee7f9d0fb2819) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Scripts using Guid(2023f0872244bcb4daaee7f9d0fb2819) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f6569d6eb4a07980c718c38b181cbb7') in 0.006859 seconds 
+  Import took 0.026161 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 22.303413 seconds.
-  path: Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.obj
-  artifactKey: Guid(436630947539e8c4dab10d6d6d0717eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.obj using Guid(436630947539e8c4dab10d6d6d0717eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dcbe7cf8db56db36adecb35485e89fc') in 0.223329 seconds 
-  Import took 0.226919 seconds .
+  Time since last request: 0.000240 seconds.
+  path: Assets/06_1Sword ManGmae/Models
+  artifactKey: Guid(a2a70de8769dd4a488cd9051332d54b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/06_1Sword ManGmae/Models using Guid(a2a70de8769dd4a488cd9051332d54b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87d936d8e348f9c13079f729800a38f0') in 0.005591 seconds 
+  Import took 0.008918 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.286687 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.fbx
-  artifactKey: Guid(4e7b5794c7defbc47a76f49f0fd90773) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.fbx using Guid(4e7b5794c7defbc47a76f49f0fd90773) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bad4fe0c0a0e1e23b4171a4ff45137db') in 0.059564 seconds 
-  Import took 0.064254 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 399.066093 seconds.
-  path: Assets/06_1Sword ManGmae/Models/Sords.obj
-  artifactKey: Guid(847a366db21019044b810ba1742f7d9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/Sords.obj using Guid(847a366db21019044b810ba1742f7d9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd00b050370200c10ee4cf68ecff7bfa0') in 0.034972 seconds 
-  Import took 0.043030 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.770916 seconds.
+  Time since last request: 11.934677 seconds.
   path: Assets/06_1Sword ManGmae/Models/SwordMan.fbx
   artifactKey: Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/SwordMan.fbx using Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a51d0f7680438074272bf3fc97e893b') in 0.060541 seconds 
-  Import took 0.069286 seconds .
+Start importing Assets/06_1Sword ManGmae/Models/SwordMan.fbx using Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed8ae75d0c8f075b6558eafe830ad1a4') in 0.147562 seconds 
+  Import took 0.150999 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 11.383162 seconds.
-  path: Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.png
-  artifactKey: Guid(c3e088304568b48499e7fe7ffe3bd46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/thisthisSords!!!!.png using Guid(c3e088304568b48499e7fe7ffe3bd46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03d95caa77ef910dd65c9af76fd9f683') in 0.041107 seconds 
-  Import took 0.061952 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 57.508113 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '181d94ef42d378526ee962fe35146063') in 0.028944 seconds 
-  Import took 0.033061 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 54.154504 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.png
-  artifactKey: Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.png using Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc75bb9c10711be8e68a22779931be6') in 0.009974 seconds 
-  Import took 0.013802 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.835129 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.png
-  artifactKey: Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.png using Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a20480a130df405ff4577339bec69f74') in 0.015055 seconds 
-  Import took 0.031924 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.740210 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.png
-  artifactKey: Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.png using Guid(2bd707573d51f1f4985e8e289ead2350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdc4ca10832c5b63f9f40cea342db076') in 0.013481 seconds 
-  Import took 0.040976 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 18.298775 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b6ce45d6a05885d0908441b91db9600') in 0.027298 seconds 
-  Import took 0.031030 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 221.466896 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00cd963760c1f0da002d90a11238320d') in 0.034952 seconds 
-  Import took 0.038560 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 24.221984 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '674e4037fe6b6d71098b67f08d98afe3') in 0.030436 seconds 
-  Import took 0.046429 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 370.895198 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8d0db94f42230af45e85f49701ba4a2') in 0.030933 seconds 
-  Import took 0.048620 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.757024 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '552a61a4c83485465a86ff15bcf08acf') in 0.023626 seconds 
-  Import took 0.035599 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 125.890521 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed399319439069ad27d04286dc75763') in 0.023319 seconds 
-  Import took 0.047288 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.303440 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa74524edfeae9b9c4a6452197b449c2') in 0.040905 seconds 
-  Import took 0.044092 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 179.627569 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96d887c60df0caf035d846e079bbc7c1') in 0.029494 seconds 
-  Import took 0.049955 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 110.261051 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dcf6e5e7c55f455646859a498f825b4') in 0.032429 seconds 
-  Import took 0.054735 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2292.088219 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose.fbx
-  artifactKey: Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose.fbx using Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a78f67e757f170abcb248b4b66f7c17') in 0.013325 seconds 
-  Import took 0.018194 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.131949 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose.fbx
-  artifactKey: Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose.fbx using Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c4f38f72dc5991c8d97dfcc262e8f24') in 0.008596 seconds 
-  Import took 0.034296 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 70.834466 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose.fbx
-  artifactKey: Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose.fbx using Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba5a284be3e4f462c18f97b89851e2a2') in 0.006317 seconds 
-  Import took 0.023908 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.367348 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose.fbx
-  artifactKey: Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose.fbx using Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6aa174d844245fb886a1b4b179d40bb') in 0.007241 seconds 
-  Import took 0.010987 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 75.823932 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose.fbx
-  artifactKey: Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose.fbx using Guid(0f0983b9f3f9b3d459f2270521f966e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea79231449ec1a1cb86e1142e7fa59a1') in 0.009324 seconds 
-  Import took 0.022757 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 151.986755 seconds.
+  Time since last request: 11.561610 seconds.
   path: Assets/06_1Sword ManGmae/Models/SwordMan.fbx
   artifactKey: Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/SwordMan.fbx using Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db27af8ad0492df0ab17bcd6fc2cb7fa') in 0.083431 seconds 
-  Import took 0.101197 seconds .
+Start importing Assets/06_1Sword ManGmae/Models/SwordMan.fbx using Guid(14fe96c3a825884498a65fb2654eadbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a2caa3a6e466497781dd9d32279a667') in 0.040912 seconds 
+  Import took 0.044172 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 43.574549 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46d829200e1d6188aef699e91e2ee332') in 0.031737 seconds 
-  Import took 0.054844 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.179814 seconds.
-  path: Assets/06_1Sword ManGmae/Models/ManWin.obj
-  artifactKey: Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/ManWin.obj using Guid(32754bcf63689114c8d246f37fe42e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12984327b505a5d86c6672117112b7ce') in 0.021678 seconds 
-  Import took 0.041908 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 61.243508 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx
-  artifactKey: Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx using Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75cdb3955cb2f7c398dab8faa848cb41') in 0.032214 seconds 
-  Import took 0.036213 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.240715 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx
-  artifactKey: Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx using Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a160d50443f7f416611429942b3ad0b0') in 0.030219 seconds 
-  Import took 0.051736 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.513372 seconds.
-  path: Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx
-  artifactKey: Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/06_1Sword ManGmae/Models/T-Pose (1).fbx using Guid(80f531e74d98afc4e939a8834a128d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e7d942331eb3928a53506ee59b832d6') in 0.023763 seconds 
-  Import took 0.037878 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
