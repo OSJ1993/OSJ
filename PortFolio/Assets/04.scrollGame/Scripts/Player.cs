@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
+//IPointerDownHandler =터치 시작 기능     22.04.25 승주
+//IPointerUpHandler     =터치 종료 기능     22.04.25 승주
+//IDragHandler            =드래그 감지 기능  2205.25 승주
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,
+    IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-
+    //---------------------------------------------------------------------
+    public RectTransform pad;
+    public RectTransform stick;
+    //---------------------------------------------------------------------
 
     //Player가 4방향 경계에 닿았다는 걸 알려주는 기능 22.04.07 by승주
     public bool isTouchTop;
@@ -166,11 +175,11 @@ public class Player : MonoBehaviour
         }
 
         //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
-        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl) h = 0;
+        //if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl) h = 0;
 
 
         //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
-        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1 || !isControl)) v = 0;
+        //if ((isTouchTop && v == 1) || (isTouchBottom && v == -1 || !isControl)) v = 0;
 
         //Player의 현재 위치를 가져오는 기능 22.04.07 by승주
         Vector3 curPos = transform.position;
@@ -546,5 +555,20 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }
