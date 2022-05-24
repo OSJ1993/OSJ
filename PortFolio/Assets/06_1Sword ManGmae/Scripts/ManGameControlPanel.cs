@@ -137,7 +137,7 @@ public class ManGameControlPanel : MonoBehaviour,
         //enableMove가 true 일 때만 움직이게 하는 기능 22.04.29 승주
         if (player.enableMove)
         {
-            player.playerAni.Play("Player_Dash");
+            player.playerAni.Play("Jump");
 
             //player가 손가락을 민 방향을 바라보게 하고 
             player.transform.rotation = Quaternion.LookRotation(move);

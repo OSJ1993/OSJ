@@ -20,6 +20,13 @@ public class ManGameEnemy : MonoBehaviour
 
     bool enableMove;
 
+    ManSpawnManager manager;
+
+    void Start()
+    {
+        manager = FindObjectOfType<ManSpawnManager>();
+    }
+
     private void OnEnable()
     {
         EnableMove();
@@ -118,6 +125,8 @@ public class ManGameEnemy : MonoBehaviour
             //curHp가 zreo가 되서 enemy가 사라지게 하는 기능 22.04.30 승주
             if (curHp <= 0)
             {
+                
+
                 //죽었을 떄 실 DeathEffectOn 실행 시키는 기능 22.05.01 승주
                 ManGameHitManager.instance.DeathEffectOn(transform.position);
 
@@ -126,8 +135,11 @@ public class ManGameEnemy : MonoBehaviour
                 if (gameObject.name == "Boss")
                 {
                     ManSpawnManager.instance.WaveStart();
+                    manager.deathCount += 1;
                 }
             }
         }
     }
+
+    
 }

@@ -18,19 +18,30 @@ public class ManSpawnManager : MonoBehaviour
 
     public int waveStep;
 
+    public GameObject controlPanel;
+
+    public GameObject gameWin;
+
+    public GameObject reStart;
+    public GameObject mainMenu;
+
+    public GameObject wave;
+
     //enemy가 생성되는 횟수 제한 기능 22.05.01 승주
     int spawnNum;
 
+    public int deathCount;
+    public ManGameEnemy[] bosss;
 
     private void Awake()
     {
         //누구라도 쉽게 접근 하기 위해서 싱글턴 기능 22.05.01 승주
         if (instance == null) instance = this;
 
-        
+        bosss = FindObjectsOfType<ManGameEnemy>();
     }
 
-    public  void WaveStart()
+    public void WaveStart()
     {
         title.SetActive(false);
         waveText.gameObject.SetActive(false);
@@ -75,6 +86,7 @@ public class ManSpawnManager : MonoBehaviour
     }
 
 
+
     void Spawn()
     {
         for (int i = 0; i < enemy.Length; i++)
@@ -99,4 +111,42 @@ public class ManSpawnManager : MonoBehaviour
             }
         }
     }
+
+    //게임 클리어 기능 22.05.24 승주
+    void Update()
+    {
+        if (deathCount == 3)
+        {
+
+            controlPanel.SetActive(false);
+
+            gameWin.SetActive(true);
+
+            reStart.SetActive(true);
+            mainMenu.SetActive(true);
+
+
+            Invoke("GameRestart", 3f);
+
+            wave.SetActive(false);
+
+
+            for (int i = 0; i < enemy.Length; i++)
+            {
+                if (enemy[i].activeSelf)
+                {
+
+                    enemy[i].SetActive(false);
+                    boss.SetActive(false);
+
+                    return;
+                }
+            }
+        }
+
+
+
+
+    }
 }
+

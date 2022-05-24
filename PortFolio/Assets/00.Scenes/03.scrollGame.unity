@@ -4023,7 +4023,7 @@ MonoBehaviour:
   maxPower: 6
   power: 1
   maxBoom: 3
-  boom: 0
+  boom: 3
   maxShotDealy: 0.15
   curShotDelay: 0
   bulletObjA: {fileID: 2928159325310403161, guid: e287012f9e0a1cd4baea584e651c93c5, type: 3}

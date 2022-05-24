@@ -49,7 +49,7 @@ public class ManGamePlayer : MonoBehaviour
         if (comboStep == 0)
         {
             //첫번째 공격 애니메이션 재생 기능 22.04.29 승주
-            playerAni.Play("Player_AtkA");
+            playerAni.Play("Attack1");
             comboStep = 1;
             return;
         }
@@ -76,8 +76,8 @@ public class ManGamePlayer : MonoBehaviour
     //combo 애니메이션을 재생 시킬 기능 22.04.29 승주
     void ComboPlay()
     {
-        if (comboStep == 2) playerAni.Play("Player_AtkB");
-        if (comboStep == 3) playerAni.Play("Player_AtkC");
+        if (comboStep == 2) playerAni.Play("Attack2");
+        if (comboStep == 3) playerAni.Play("Attack3");
                           
     }
 
@@ -109,7 +109,7 @@ public class ManGamePlayer : MonoBehaviour
             if (curHp <= 0)
             {
                 controlPanel.SetActive(false);
-                playerAni.Play("Player_Death");
+                playerAni.Play("Death");
                 gameover.SetActive(true);
 
                 reStart.SetActive(true);
