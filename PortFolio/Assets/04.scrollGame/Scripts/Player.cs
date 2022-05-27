@@ -422,6 +422,7 @@ public class Player : MonoBehaviour
                     isTouchLeft = true;
                     break;
             }
+            Debug.Log(collision + "Collision");
         }
 
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
@@ -528,8 +529,10 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Border")
         {
+            
             switch (collision.gameObject.name)
             {
                 case "Top":
@@ -544,7 +547,13 @@ public class Player : MonoBehaviour
                 case "Left":
                     isTouchLeft = false;
                     break;
+
             }
+                    
         }
+
+        
     }
+
+
 }
