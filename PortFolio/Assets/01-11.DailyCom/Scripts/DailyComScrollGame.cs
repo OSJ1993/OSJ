@@ -7,6 +7,6 @@ public class DailyComScrollGame : MonoBehaviour
 {
     public void SeeneChange()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene("03.scrollGame");
     }
 }

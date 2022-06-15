@@ -11,7 +11,7 @@ public class IntroMainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     //판넬 오브젝트 기능 22.05.13 승주

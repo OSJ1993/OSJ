@@ -22,6 +22,8 @@ public class CardGameManager : MonoBehaviour
 
     [SerializeField] GameObject endTurnBtn;
 
+    public GameObject boSang;
+
     WaitForSeconds delay2 = new WaitForSeconds(2);
 
     void Start()
@@ -93,7 +95,23 @@ public class CardGameManager : MonoBehaviour
         yield return delay2;
 
         CardGameTrunManager.Inst.isLoading = true;
-        resultPanel.Show(isMywin ? "Winner" : "Loser");
+        //resultPanel.Show(isMywin ? "Winner" : "Loser");
+
+
+        if (isMywin == true)
+        {
+            resultPanel.Show(isMywin ? "Winner" : "Loser");
+            boSang.SetActive(true);
+            ClearManager.stageClear[1] = true;
+        }
+        else if(isMywin != true)
+        {
+            boSang.SetActive(false);
+            resultPanel.Show(isMywin ? "Wnner" : "Loser");
+
+            
+        }
+
         cameraEffect.SetGrayScale(true);
     }
 }

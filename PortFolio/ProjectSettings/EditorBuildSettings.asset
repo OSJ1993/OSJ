@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/00.Scenes/00.0Intro.unity
     guid: 74d6699b940420b41904d3f81826428d
   - enabled: 1
-    path: Assets/00.Scenes/00-1.SceneLoader.unity
-    guid: 1a4a5430cc0d52e44998a8137fdae630
-  - enabled: 1
     path: Assets/00.Scenes/01-1.Daily.unity
     guid: 2799eb400324d0e47a602427a3ffa2f2
   - enabled: 1
@@ -32,4 +29,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/05.Ending.unity
     guid: 952cf1f8a565d744881f3e8e24825576
+  - enabled: 1
+    path: Assets/00.Scenes/06.MusicGameSetting.unity
+    guid: cacf4a0b148710340aa63c0754848493
+  - enabled: 1
+    path: Assets/00.Scenes/07.CardGameSetting.unity
+    guid: a65a7d2da3a4ea54b9d604ba84b06b53
+  - enabled: 1
+    path: Assets/00.Scenes/08.ScrollGameSetting.unity
+    guid: 12bab4d756ec2224b81e1a8f2afb6d24
+  - enabled: 1
+    path: Assets/00.Scenes/09.SwordGameSetting.unity
+    guid: b753621fc1bd283438f37706c4ae496d
+  - enabled: 1
+    path: Assets/00.Scenes/10.DailyGameSetting.unity
+    guid: 6adc2b1e7915acb4595a12f8684ebc06
   m_configObjects: {}

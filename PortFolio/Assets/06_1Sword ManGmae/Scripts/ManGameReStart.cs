@@ -12,12 +12,20 @@ public class ManGameReStart : MonoBehaviour
     public void ReStart()
     {
         gameReset.SetActive(true);
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene("04Sword ManGmae");
     }
 
     public void MainMenu()
     {
         gameReset.SetActive(true);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("01-11.DailyCom");
+    }
+
+    public void YouWin()
+    {
+        gameReset.SetActive(true);
+        SceneManager.LoadScene("01-1.Daily");
+
+        ClearManager.stageClear[3] = true;
     }
 }

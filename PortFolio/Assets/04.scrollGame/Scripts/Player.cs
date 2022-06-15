@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; // 오브젝트의 터치(상호작용)와 관련된 이름 공간(라이브러리)
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private Transform characterBody;
 
+    [SerializeField]
+    private ScrollGameJoyStick moveJoystick;
+
+    [SerializeField]
+    private Transform cameraArm;
+
+    //5.27---------------------------------------------------------------------------------
+    public bool enbleMove;
+    public Rigidbody2D playerRigid;
+    //5.27---------------------------------------------------------------------------------
 
     //Player가 4방향 경계에 닿았다는 걸 알려주는 기능 22.04.07 by승주
     public bool isTouchTop;
@@ -54,8 +68,7 @@ public class Player : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    //어디를 눌렀는 지 알려주는 기능 22.04.21 by승주
-    public bool[] joyControl;
+
 
     //버튼을 눌렀는 지 알려주는 기능 22.04.21 by승주 
     public bool isControl;
@@ -101,7 +114,17 @@ public class Player : MonoBehaviour
         }
 
     }
+    //5.27---------------------------------------------------------------------------------
+    void EnableMove()
+    {
+        enbleMove = true;
+    }
 
+    void DisableMove()
+    {
+        enbleMove = false;
+    }
+    //5.27---------------------------------------------------------------------------------
     void Update()
     {
         Move();
@@ -110,13 +133,7 @@ public class Player : MonoBehaviour
         Reload();
     }
 
-    public void JoyPanel(int type)
-    {
-        for (int index = 0; index < 9; index++)
-        {
-            joyControl[index] = index == type;
-        }
-    }
+
 
     public void JoyDown()
     {
@@ -128,6 +145,9 @@ public class Player : MonoBehaviour
         isControl = false;
     }
 
+    //5.27 void Move 부분 만지는 중 
+    //애니메이션효과와 벽을 뚫어버리는 걸 막아야한다. 해결 안됬지만 우선 넘어감
+
     //Player 움직임 기능 22.04.07 by승주
     void Move()
     {
@@ -135,36 +155,27 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        if (joyControl[0] ||
-            joyControl[1] ||
-            joyControl[2] ||
-            joyControl[3] ||
-            joyControl[4] ||
-            joyControl[5] ||
-            joyControl[6] ||
-            joyControl[7] ||
-            joyControl[8]
-            )
-        {
-            //Joy control Value 22.04.21 by 승주
-            if (joyControl[0]) { h = -1; v = 1; }
-            if (joyControl[1]) { h = 0; v = 1; }
-            if (joyControl[2]) { h = 1; v = 1; }
-            if (joyControl[3]) { h = -1; v = 0; }
-            if (joyControl[4]) { h = 0; v = 0; }
-            if (joyControl[5]) { h = 1; v = 0; }
-            if (joyControl[6]) { h = -1; v = -1; }
-            if (joyControl[7]) { h = 0; v = -1; }
-            if (joyControl[8]) { h = 1; v = -1; }
+        //Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 moveInput = new Vector2(moveJoystick.horizontal, moveJoystick.vertical);
+        bool isMove = moveInput.magnitude != 0;
 
-
-        }
+        if (isMove)
         {
+            //Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+            //Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
+            //Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+
+            //characterBody.forward = lookForward; // 캐릭터가 바라보는 정면은 카메라가 바라보는 정면
+            //characterBody.forward = moveDir; // 캐릭터가 바라보는 정면은 입력된 방향에 맞춰 바라본다. 
+            //transform.position += moveDir * Time.deltaTime * 5f;
+            transform.position += new Vector3(moveJoystick.horizontal, moveJoystick.vertical, transform.position.z) * Time.deltaTime * speed;
+
 
             anim.SetInteger("Input", (int)h);
-
         }
 
+
+        //5.27---------------------------------------------------------------------------------
         //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
         if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl) h = 0;
 
@@ -172,6 +183,7 @@ public class Player : MonoBehaviour
         //플래그 변수를 사용하여 경계 이상 넘지 못하도록 값을 제한 하는 기능 22.04.07 by승주
         if ((isTouchTop && v == 1) || (isTouchBottom && v == -1 || !isControl)) v = 0;
 
+        //5.27---------------------------------------------------------------------------------
         //Player의 현재 위치를 가져오는 기능 22.04.07 by승주
         Vector3 curPos = transform.position;
 
@@ -185,7 +197,7 @@ public class Player : MonoBehaviour
         //key를 눌렀을 때 key를 땠을 때 Animation 작동 시켜주는 기능 22.04.07 by승주
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonUp("Horizontal"))
         {
-            anim.SetInteger("Input", (int)h);
+            anim.SetInteger("Input", (int)moveJoystick.horizontal);
         }
 
     }
@@ -203,7 +215,7 @@ public class Player : MonoBehaviour
     public void ButtonBDown()
     {
         isButtonB = true;
-    } 
+    }
     public void ButtonBUp()
     {
         isButtonB = false;
@@ -322,7 +334,7 @@ public class Player : MonoBehaviour
 
         //이미 폭탄을 쏘고 있는 지 확인 하기 위한 기능 22.04.11 by승주
         if (isBoomTime)
-           
+
             return;
 
         if (boom == 0)
@@ -331,12 +343,12 @@ public class Player : MonoBehaviour
         boom--;
         isBoomTime = true;
         scrollGameManager.UpdateBoomIcon(boom);
-        
+
 
 
         //boomEffect 보이게 해주는 기능 22.04.11 by승주
         boomEffect.SetActive(true);
-        
+
 
         //boom Sprite 시간차 비활성화 시키는 기능 22.04.12 by승주
         Invoke("OffBoomEffect", 3f);
@@ -379,13 +391,17 @@ public class Player : MonoBehaviour
                 enemyLogic.OnHit(1000);
 
             }
-            
+
         }
 
 
         //Boom 맞고 Enemy의 bullet 제거 22.04.11 by승주
         GameObject[] bulletsA = scrollObjectManager.GetPool("BulletEnemyA");
         GameObject[] bulletsB = scrollObjectManager.GetPool("BulletEnemyB");
+        GameObject[] bulletsC = scrollObjectManager.GetPool("BulletEnemyC");
+        GameObject[] bulletsD = scrollObjectManager.GetPool("BulletEnemyD");
+        GameObject[] bossBulletA = scrollObjectManager.GetPool("bulletBossA");
+        GameObject[] bossBulletB = scrollObjectManager.GetPool("bulletBossB");
 
         for (int index = 0; index < bulletsA.Length; index++)
             if (bulletsA[index].activeSelf)
@@ -397,6 +413,30 @@ public class Player : MonoBehaviour
             if (bulletsB[index].activeSelf)
             {
                 bulletsB[index].SetActive(false);
+
+            }
+        for (int index = 0; index < bulletsC.Length; index++)
+            if (bulletsC[index].activeSelf)
+            {
+                bulletsC[index].SetActive(false);
+
+            }
+        for (int index = 0; index < bulletsD.Length; index++)
+            if (bulletsD[index].activeSelf)
+            {
+                bulletsD[index].SetActive(false);
+
+            }
+        for (int index = 0; index < bossBulletA.Length; index++)
+            if (bossBulletA[index].activeSelf)
+            {
+                bossBulletA[index].SetActive(false);
+
+            }
+        for (int index = 0; index < bossBulletB.Length; index++)
+            if (bossBulletB[index].activeSelf)
+            {
+                bossBulletB[index].SetActive(false);
 
             }
 
@@ -422,7 +462,7 @@ public class Player : MonoBehaviour
                     isTouchLeft = true;
                     break;
             }
-            Debug.Log(collision + "Collision");
+            Debug.Log(collision + "collision");
         }
 
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
@@ -448,6 +488,11 @@ public class Player : MonoBehaviour
             //만약에 life가 zero라면 GameOver 실행 시키는 기능 22.04.11 by승주
             if (life == 0)
             {
+
+                //scrollGameManager.StageClear();
+                
+
+
                 scrollGameManager.GameOver();
             }
             //life가 zero가 아니고 life가 남아있다면 RespawnPlayer를 실행 시키는 기능  22.04.11 by승주
@@ -527,12 +572,12 @@ public class Player : MonoBehaviour
     }
 
 
+
+
     void OnTriggerExit2D(Collider2D collision)
     {
-        
         if (collision.gameObject.tag == "Border")
         {
-            
             switch (collision.gameObject.name)
             {
                 case "Top":
@@ -547,13 +592,7 @@ public class Player : MonoBehaviour
                 case "Left":
                     isTouchLeft = false;
                     break;
-
             }
-                    
         }
-
-        
     }
-
-
 }

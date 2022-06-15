@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public static bool s_canPressKey = true;
+
+    
 
     //이동
     //얼만큼 빠른 속도로 이동 시킬 지.
@@ -51,6 +54,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody myRigid;
     StatusManager theStatus;
 
+    int upDown = 0;
+    int leftRight = 0;
+
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
@@ -85,24 +91,58 @@ public class PlayerController : MonoBehaviour
 
             
             //매 프레임 마다 키가 눌렸는지 확인해야함.
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+            //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+            //{
+            //    if (canMove && s_canPressKey && !isFalling)
+            //    {
+            //        Calc();
+            
+            //        // 판정 체크.
+            //        //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
+            //        if (theTimingManager.CheckTiming())
+            //        {
+            //            //올바른 판정일 때만 움직이게.
+            //            StartAction();
+            
+            //        }
+            
+            //    }
+            //}
+            
+        }
+    }
+
+    public void ButtonInput(string buttonName)
+    {
+        switch (buttonName)
+        {
+            case "up":
+                upDown = 1;
+                break;
+            case "down":
+                upDown = -1;
+                break;
+            case "left":
+                leftRight = -1;
+                break;
+            case "right":
+                leftRight = 1;
+                break;
+        }
+
+        if (canMove && s_canPressKey && !isFalling)
+        {
+            Calc();
+
+            // 판정 체크.
+            //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
+            if (theTimingManager.CheckTiming())
             {
-                if (canMove && s_canPressKey && !isFalling)
-                {
-                    Calc();
-            
-                    // 판정 체크.
-                    //Space가 눌리면 타이밍 판정할 수 있게 체크타이밍 호출.
-                    if (theTimingManager.CheckTiming())
-                    {
-                        //올바른 판정일 때만 움직이게.
-                        StartAction();
-            
-                    }
-            
-                }
+                //올바른 판정일 때만 움직이게.
+                StartAction();
+
             }
-            
+
         }
     }
 
@@ -111,7 +151,10 @@ public class PlayerController : MonoBehaviour
     {
         //어느 방향으로 눌렸는 지 알기 위함.
         // 입력값 or 위 방향키 W키=1, or 아래 방향키 S키=-1 없을 시 =0
-        dir.Set(Input.GetAxisRaw("Vertical"), 0, Input.GetAxisRaw("Horizontal"));
+        //dir.Set(Input.GetAxisRaw("Vertical"), 0, Input.GetAxisRaw("Horizontal"));
+        dir.Set(upDown, 0, leftRight);
+        upDown = 0;
+        leftRight = 0;
 
         //이동 목표값 계산(목적지)
         destPos = transform.position + new Vector3(-dir.x, 0, dir.z);

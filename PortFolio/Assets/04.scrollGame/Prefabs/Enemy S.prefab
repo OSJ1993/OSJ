@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3638624037420336438}
   - component: {fileID: 3638624037420336434}
   - component: {fileID: 3638624037420336435}
+  - component: {fileID: 5384038477996784840}
   m_Layer: 0
   m_Name: Enemy S
   m_TagString: Enemy
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2d43999030943449857fc4184764a76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +93,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3638624037420336439}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -139,14 +140,48 @@ MonoBehaviour:
   speed: 3
   health: 1
   sprites:
-  - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
-  - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: 21300000, guid: b2d43999030943449857fc4184764a76, type: 3}
+  - {fileID: 21300000, guid: 87cf6e3eac6f48c4894d317d41565732, type: 3}
   maxShotDealy: 5
   curShotDelay: 0
-  bulletObjA: {fileID: 4304580302125582194, guid: d4ffe929dfc3fd149a49bfefa6bf16f6, type: 3}
-  bulletObjB: {fileID: 4304580302125582194, guid: a0257dcb5a0927a42a8991e112b6102b, type: 3}
-  itemCoim: {fileID: 3729577416310741014, guid: 6f30503d46d12214f9b294754014f07c, type: 3}
+  bulletObjA: {fileID: 4304580302125582194, guid: d4ffe929dfc3fd149a49bfefa6bf16f6,
+    type: 3}
+  bulletObjB: {fileID: 4304580302125582194, guid: d4ffe929dfc3fd149a49bfefa6bf16f6,
+    type: 3}
+  itemCoim: {fileID: 3729577416310741014, guid: 6f30503d46d12214f9b294754014f07c,
+    type: 3}
   itemPower: {fileID: 10073192667195321, guid: ee07fad263190b54681c7d2eb2c5457e, type: 3}
-  itemBoom: {fileID: 2729965116044051517, guid: 9c730e0823b334d4ca203dc28598b183, type: 3}
+  itemBoom: {fileID: 2729965116044051517, guid: 9c730e0823b334d4ca203dc28598b183,
+    type: 3}
   player: {fileID: 0}
+  scrollGameManager: {fileID: 0}
   scrollObjectManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
+--- !u!61 &5384038477996784840
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638624037420336439}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.42666668, y: 1.2666667}
+    newSize: {x: 0.5, y: 0.45833334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.42666668, y: 1.2666667}
+  m_EdgeRadius: 0

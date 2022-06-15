@@ -8,7 +8,7 @@ public class DailyComSwordManGame : MonoBehaviour
     public  GameObject[] game;
     public void SeeneChange()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene("04Sword ManGmae");
     }
 
     private void Update()

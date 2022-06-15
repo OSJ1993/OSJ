@@ -4,22 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Note
-  - BasicPlate
-  - Border
-  - BorderBullet
+  - Planet
   - Enemy
-  - PlayerBullet
-  - EnemyBullet
-  - Item
-  - BossGame_HitBox_Enemy
-  - BossGame_Col_EnemyAtk
-  - BossGameHitBoxPlayer
-  - BossGameDefense
-  - BossGameParrying
-  - BossGameCounter
-  - SwordManPlayerAtk
-  - SwordManEnemyAtk
+  - Bonus
+  - Projectile
+  - Score
+  - Health
+  - CoinsText
+  - Coin
+  - PlayerRay
+  - Rocket
   - SceneChangeNPC
   layers:
   - Default
@@ -28,9 +22,9 @@ TagManager:
   - 
   - Water
   - UI
-  - MyCardArea
-  - IntroBackground
   - DailyObj
+  - 
+  - 
   - 
   - 
   - 
@@ -58,18 +52,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Entity
-    uniqueID: 506296247
+  - name: Background
+    uniqueID: 1947543829
     locked: 0
-  - name: Card
-    uniqueID: 2066718741
+  - name: Planets
+    uniqueID: 4094135763
     locked: 0
-  - name: IntroBackground
-    uniqueID: 1137376893
+  - name: Projectile
+    uniqueID: 1111697911
     locked: 0
-  - name: IntroForeground
-    uniqueID: 3866472721
+  - name: Enemy
+    uniqueID: 1152134415
     locked: 0
-  - name: IntroMiddleground
-    uniqueID: 143066595
+  - name: Bonus
+    uniqueID: 689362467
+    locked: 0
+  - name: Player
+    uniqueID: 2402381985
+    locked: 0
+  - name: VFX
+    uniqueID: 738997965
     locked: 0

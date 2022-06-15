@@ -9,6 +9,6 @@ public class DailyComBtnMuSicGame : MonoBehaviour
 
    public void SeeneChange()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("01.MusicGame");
     }
 }

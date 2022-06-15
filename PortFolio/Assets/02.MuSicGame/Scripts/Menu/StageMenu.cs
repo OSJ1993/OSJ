@@ -59,7 +59,7 @@ public class StageMenu : MonoBehaviour
 
         SettingSong();
 
-
+        Debug.Log("다음으로 넘어가기");
     }
 
     //Prior Button 누르면 정보가 이전 곡으로 바뀌게 만들어주는 기능 /22.04.01 by승주
@@ -71,6 +71,8 @@ public class StageMenu : MonoBehaviour
         if (--currentSong < 0)
             currentSong = songList.Length - 1;
         SettingSong();
+
+        Debug.Log("이전으로 넘어가기");
     }
 
     //현재 곡 /22.04.01 by승주
