@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8421458170528590454, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56feada3e8ae73d4b9be511a5a27bf2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.125}
+    oldSize: {x: 1.23, y: 1.39}
     newSize: {x: 1.3333334, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,14 +149,22 @@ MonoBehaviour:
   speed: 1
   health: 1
   sprites:
-  - {fileID: -8421458170528590454, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
-  - {fileID: 3714015224569861163, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: 21300000, guid: 56feada3e8ae73d4b9be511a5a27bf2c, type: 3}
+  - {fileID: 21300000, guid: 0e47bdd95595cbe418d2ae60ddcecfdb, type: 3}
   maxShotDealy: 3.5
   curShotDelay: 0
-  bulletObjA: {fileID: 4304580302125582194, guid: d4ffe929dfc3fd149a49bfefa6bf16f6, type: 3}
-  bulletObjB: {fileID: 4304580302125582194, guid: a0257dcb5a0927a42a8991e112b6102b, type: 3}
-  itemCoim: {fileID: 3729577416310741014, guid: 6f30503d46d12214f9b294754014f07c, type: 3}
+  bulletObjA: {fileID: 4304580302125582194, guid: a0257dcb5a0927a42a8991e112b6102b,
+    type: 3}
+  bulletObjB: {fileID: 4304580302125582194, guid: a0257dcb5a0927a42a8991e112b6102b,
+    type: 3}
+  itemCoim: {fileID: 3729577416310741014, guid: 6f30503d46d12214f9b294754014f07c,
+    type: 3}
   itemPower: {fileID: 10073192667195321, guid: ee07fad263190b54681c7d2eb2c5457e, type: 3}
-  itemBoom: {fileID: 2729965116044051517, guid: 9c730e0823b334d4ca203dc28598b183, type: 3}
+  itemBoom: {fileID: 2729965116044051517, guid: 9c730e0823b334d4ca203dc28598b183,
+    type: 3}
   player: {fileID: 0}
+  scrollGameManager: {fileID: 0}
   scrollObjectManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 

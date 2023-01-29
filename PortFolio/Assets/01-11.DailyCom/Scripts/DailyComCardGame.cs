@@ -7,6 +7,6 @@ public class DailyComCardGame : MonoBehaviour
 {
     public void SeeneChange()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("02.CardGame");
     }
 }

@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    Player playerLoser;
+
     public ScrollGameManager scrollGameManager;
     public ScrollGameObjectManager scrollObjectManager;
 
@@ -42,6 +44,8 @@ public class Enemy : MonoBehaviour
 
         if (enemyName == "B")
             anim = GetComponent<Animator>();
+
+        playerLoser = GetComponent<Player>();
 
     }
 
@@ -88,7 +92,7 @@ public class Enemy : MonoBehaviour
         patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
 
         curPatternCount = 0;
-        
+
 
         switch (patternIndex)
         {
@@ -110,8 +114,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //앞으로 4발 발사 기능 
     void FireFoward()
     {
+
+        if (health <= 0) return;
 
         //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
         //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
@@ -151,16 +158,22 @@ public class Enemy : MonoBehaviour
             Invoke("Think", 3);
 
 
+
+
     }
 
+    //플레이어 방향으로 샷것 발사 기능 
     void FireShot()
     {
+
+        if (health <= 0) return;
+
         for (int index = 0; index < 5; index++)
         {
 
             //Instantiate() 매개변수 오브젝트를 생성하는 함수 22.04.07 by승주
             //bullet의 위치를 지정 해주는 기능 22.04.07 by승주
-            GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyB");
+            GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyC");
             bullet.transform.position = transform.position;
 
 
@@ -186,14 +199,19 @@ public class Enemy : MonoBehaviour
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
             Invoke("Think", 3);
+
+
     }
 
+    //부채모양으로 발사 기능 
     void FireArc()
     {
 
+        if (health <= 0) return;
+
 
         //#Fire Arc Continue Fire
-        GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyA");
+        GameObject bullet = scrollObjectManager.MakeObj("BulletEnemyD");
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
 
@@ -218,13 +236,20 @@ public class Enemy : MonoBehaviour
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
             Invoke("Think", 3);
+
+
     }
 
+    //원 형태로 전체 공격 기능
     void FireAround()
     {
+        if (health <= 0) return;
+
+
         int roundNumA = 50;
         int roundNumB = 40;
         int roundNum = curPatternCount % 2 == 0 ? roundNumA : roundNumB;
+
 
         for (int index = 0; index < roundNum; index++)
         {
@@ -238,7 +263,7 @@ public class Enemy : MonoBehaviour
 
 
             Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / roundNum)
-                                                   ,(Mathf.Sin(Mathf.PI * 2 * index / roundNum)));
+                                                   , (Mathf.Sin(Mathf.PI * 2 * index / roundNum)));
 
             rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
 
@@ -260,6 +285,8 @@ public class Enemy : MonoBehaviour
         //Pattern이 다 채워졌다면 다시 "Think"를 실행 시키는 기능 22.04.16 by승주
         else
             Invoke("Think", 3);
+
+
     }
 
 
@@ -433,8 +460,20 @@ public class Enemy : MonoBehaviour
             //Boss Kill하면 Stage Clear 기능 22.04.21 by승주
             if (enemyName == "B")
             {
-                scrollGameManager.StageEnd();
+                if (health <= 0)
+                {
+
+                   // scrollGameManager.StageClear();
+                   // Debug.Log("BossKill");
+
+                    scrollGameManager.GameWin();
+                }
             }
+            //else if (playerLoser.life <= 0)
+            //{
+            //    scrollGameManager.StageEnd();
+            //    Debug.Log("PlayerKill");
+            //}
 
         }
     }

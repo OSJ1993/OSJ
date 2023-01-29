@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class Result : MonoBehaviour
 {
     [SerializeField] GameObject goUI = null;
@@ -12,6 +13,13 @@ public class Result : MonoBehaviour
     [SerializeField] Text txtCoin = null;
     [SerializeField] Text txtScore = null;
     [SerializeField] Text txtMaxCombo = null;
+
+    GoalPlate thegoalPlate;
+
+    public GameObject boSang;
+    public GameObject btnGroup;
+
+    public GameObject inGameButton;
 
     ScoreManager theScore;
     ComboManager theCombo;
@@ -23,6 +31,8 @@ public class Result : MonoBehaviour
         theScore = FindObjectOfType<ScoreManager>();
         theCombo = FindObjectOfType<ComboManager>();
         theTiming = FindObjectOfType<TimingManager>();
+
+        thegoalPlate = GetComponent<GoalPlate>();
     }
 
     public void ShowResult()
@@ -56,6 +66,8 @@ public class Result : MonoBehaviour
 
         txtScore.text = string.Format("{0:#,##0}", t_currentScore);
         txtMaxCombo.text = string.Format("{0:#,##0}", t_maxCombo);
+
+        inGameButton.SetActive(false);
     }
 
     public void BtnMainMenu()
@@ -73,6 +85,41 @@ public class Result : MonoBehaviour
     {
         goUI.SetActive(false);
         theCombo.ResetCombo();
+        boSang.SetActive(false);
+        inGameButton.SetActive(true);
     }
+
+    //보상 얻기 위한 기능 22.06.07 승주
+    public void BtnClear()
+    {
+        btnGroup.SetActive(false);
+
+        goUI.SetActive(true);
+        if (gameObject == true)
+        {
+            boSang.SetActive(true);
+            
+        }
+        else if(gameObject == false)
+        {
+            boSang.SetActive(false);
+        }
+       
+        
+    }
+
+    public void OnClickLoadGame()
+    {
+        SceneManager.LoadScene("01-1.Daily");
+        ClearManager.stageClear[0] = true;
+        
+
+        BtnClear();
+    }
+
+
+   
+
+
 
 }

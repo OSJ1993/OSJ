@@ -18,6 +18,9 @@ public class ScrollGameManager : MonoBehaviour
 
     public Transform playerPos;
 
+    Player playerLoser;
+    Enemy enemyLoser;
+
     public string[] enemyObjs;
 
     //enmey Prefab 배열과 생성 위치 기능 22.04.07 by승주
@@ -34,6 +37,10 @@ public class ScrollGameManager : MonoBehaviour
     public Image[] lifeImage;
     public Image[] boomImage;
     public GameObject gameOverSet;
+
+    public GameObject gameWinSet;
+
+
 
     public ScrollGameObjectManager scrollObjectManager;
 
@@ -56,6 +63,9 @@ public class ScrollGameManager : MonoBehaviour
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
         StageStart();
+
+        playerLoser = GetComponent<Player>();
+        enemyLoser = GetComponent<Enemy>();
     }
 
     public void StageStart()
@@ -75,6 +85,8 @@ public class ScrollGameManager : MonoBehaviour
 
     public void StageEnd()
     {
+        
+
         //Clear UI Load 22.04.21 by승주
         clearAnim.SetTrigger("On");
 
@@ -90,10 +102,52 @@ public class ScrollGameManager : MonoBehaviour
         stage++;
 
         //구현된 Stage를 넘기면 GameOver로 ReStart 하는 기능 22.04.21 by승주
-        if (stage > 2)
-            Invoke("GameOver", 6);
-        else
-            Invoke("StageStart", 5);
+        //if (stage > 1)
+        //    Invoke("GameOver", 6);
+        //else
+        //    Invoke("StageStart", 5);
+
+       
+            if (stage > 2)
+                Invoke("GameOver", 6);
+            else
+                Invoke("StageStart", 5);
+
+           
+        
+
+        
+
+    }
+
+    public void StageClear()
+    {
+       
+        //Clear UI Load 22.04.21 by승주
+        clearAnim.SetTrigger("On");
+
+
+
+        //Fade Out 22.04.21 by승주
+        fadeAnim.SetTrigger("Out");
+
+        //Player RePos 22.04.21 by승주
+        player.transform.position = playerPos.position;
+
+        //Stage Increament 22.04.21 by승주
+        stage++;
+
+        
+            if (enemyLoser.health <= 0)
+            {
+                if (stage > 2)
+                    Invoke("GameWin", 6);
+                else
+                    Invoke("StageStart", 5);
+            }
+        
+
+       
     }
 
     // Spawn Scrtps에서 만들었던 text(메모장) 불러오는 기능 22.04.13 by승주
@@ -309,6 +363,13 @@ public class ScrollGameManager : MonoBehaviour
     {
         gameOverSet.SetActive(true);
     }
+    public void GameWin()
+    {
+        gameWinSet.SetActive(true);
+        
+        ClearManager.stageClear[2] = true;
+
+    }
 
     public void GameRetry()
     {
@@ -317,6 +378,11 @@ public class ScrollGameManager : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("01-11.DailyCom");
+    }
+    public void WinBtn()
+    {
+        SceneManager.LoadScene("01-1.Daily");
+        ClearManager.stageClear[2] = true;
     }
 }

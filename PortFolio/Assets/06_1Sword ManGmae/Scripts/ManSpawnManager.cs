@@ -115,7 +115,7 @@ public class ManSpawnManager : MonoBehaviour
     //게임 클리어 기능 22.05.24 승주
     void Update()
     {
-        if (deathCount == 3)
+        if (deathCount == 1)
         {
 
             controlPanel.SetActive(false);

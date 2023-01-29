@@ -11,16 +11,16 @@ GameObject:
   - component: {fileID: 5856501277959701866}
   - component: {fileID: 5856501277959701867}
   - component: {fileID: 5856501277959701844}
-  - component: {fileID: 5856501277959701845}
   - component: {fileID: 5856501277959701865}
   - component: {fileID: 5856501277959701864}
+  - component: {fileID: 1227691994525505220}
   m_Layer: 0
   m_Name: Enemy B
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5856501277959701866
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5856501277959701846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2192450021786810173, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67b51935d66b9764299e6dd02236e5c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,22 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &5856501277959701845
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5856501277959701846}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.75, y: 1.4}
-  m_Direction: 1
 --- !u!50 &5856501277959701865
 Rigidbody2D:
   serializedVersion: 4
@@ -157,7 +141,7 @@ MonoBehaviour:
   enemyName: B
   enemyScore: 5000
   speed: 1.5
-  health: 3000
+  health: 1
   sprites: []
   maxShotDealy: 0
   curShotDelay: 0
@@ -167,7 +151,34 @@ MonoBehaviour:
   itemPower: {fileID: 0}
   itemBoom: {fileID: 0}
   player: {fileID: 0}
+  scrollGameManager: {fileID: 0}
   scrollObjectManager: {fileID: 0}
   patternIndex: -1
   curPatternCount: 0
   maxPatternCount: 0200000003000000630000000a000000
+--- !u!61 &1227691994525505220
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856501277959701846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.17282832, y: -0.43146944}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.16, y: 5.56}
+    newSize: {x: 2.75, y: 2.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0199158, y: 3.5311813}
+  m_EdgeRadius: 0

@@ -192,6 +192,10 @@ public class StatusManager : MonoBehaviour
     //죽었는 지 안 죽었는 지 확인하는 기능 22.03.27 by승주
     public bool Isdead()
     {
+        Result result;
+        result = GetComponent<Result>();
+
+        
         return isDead;
     }
 

@@ -420,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146634860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9764704, y: 0.41176468, z: 2.7588234}
+  m_LocalPosition: {x: -0, y: 0.29, z: 0.52}
   m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
   m_Children: []
   m_Father: {fileID: 4079118292684216}
@@ -836,7 +836,6 @@ GameObject:
   - component: {fileID: 95382778294392932}
   - component: {fileID: 1164658753}
   - component: {fileID: 1164658754}
-  - component: {fileID: 8797883627548663126}
   - component: {fileID: 1164658752}
   m_Layer: 0
   m_Name: Meshtint Free Knight
@@ -900,7 +899,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.99999976, y: 1.8497707, z: 0.99999976}
-  m_Center: {x: 0, y: 0.9000699, z: 0}
+  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!54 &1164658754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -917,19 +916,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &8797883627548663126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022148595836406}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1164658752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +938,7 @@ MonoBehaviour:
   enableMove: 0
   hpBar: {fileID: 0}
   controlPanel: {fileID: 0}
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 636926569}
   gameover: {fileID: 0}
   reStart: {fileID: 0}
   mainMenu: {fileID: 0}
@@ -1425,7 +1411,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466784929565472}
-  m_LocalRotation: {x: -0.00000001789658, y: -0.000000018809457, z: 0.0033132804, w: 0.9999945}
+  m_LocalRotation: {x: -0.00000001789658, y: -0.000000018809457, z: 0.0033132804,
+    w: 0.9999945}
   m_LocalPosition: {x: -0.14683501, y: 0, z: -4.5474734e-15}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
   m_Children:
@@ -1797,7 +1784,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652277343209800}
-  m_LocalRotation: {x: -0.000000015882144, y: -0.000000062950505, z: 0.091007054, w: 0.99585027}
+  m_LocalRotation: {x: -0.000000015882144, y: -0.000000062950505, z: 0.091007054,
+    w: 0.99585027}
   m_LocalPosition: {x: -0.07058624, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Children:

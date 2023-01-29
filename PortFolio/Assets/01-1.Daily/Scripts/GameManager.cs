@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -78,6 +77,7 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
+    public GameObject helpUI;
 
     //상태 저장용 변수 기능 22.05.16 승주
     public bool isAction;
@@ -85,6 +85,31 @@ public class GameManager : MonoBehaviour
     public int talkIndex;
 
     public bool sceneChangeNPC = false;
+
+    private void Start()
+    {
+        HelpCheck();
+    }
+
+    private void HelpCheck()
+    {
+        Debug.Log("HelpCkeck In!!!");
+        // 튜토리얼의 상태가 저장된 공간을 비교하여
+        if (PlayerPrefs.GetInt("Tutorial_Start") == 0)
+        {
+            Debug.Log("최초!!!");
+            // 최초 실행이라면 헬프 UI 오픈
+            helpUI.SetActive(true);
+            PlayerPrefs.SetInt("Tutorial_Start", 1);
+
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            Debug.Log("최초가 아니야!");
+            helpUI.SetActive(false);
+        }
+    }
 
     public void Action(GameObject scanObj)
     {
@@ -140,7 +165,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SceneChage()
     {
         yield return new WaitForSeconds(0.1f);
-        yield return SceneManager.LoadSceneAsync(3);
+        yield return SceneManager.LoadSceneAsync("01-11.DailyCom");
     }
 }
 

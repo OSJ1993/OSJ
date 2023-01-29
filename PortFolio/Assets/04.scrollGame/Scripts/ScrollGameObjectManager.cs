@@ -21,9 +21,11 @@ public class ScrollGameObjectManager : MonoBehaviour
     public GameObject bulletPlayerAPrefab;
     public GameObject bulletPlayerBPrefab;
     public GameObject bulletEnemyAPrefab;
-    public GameObject bulletEnemyBPrefab;
+    public GameObject bulletEnemyBPrefab; 
     public GameObject bulletFollowerPrefab;
     public GameObject bulletBossAPrefab;
+    public GameObject bulletEnemyCPrefab;
+    public GameObject bulletEnemyDPrefab;
     public GameObject bulletBossBPrefab;
 
     public GameObject explosionPrefab;
@@ -42,6 +44,8 @@ public class ScrollGameObjectManager : MonoBehaviour
     GameObject[] bulletPlayerB;
     GameObject[] bulletEnemyA;
     GameObject[] bulletEnemyB;
+    GameObject[] bulletEnemyC;
+    GameObject[] bulletEnemyD;
     GameObject[] bulletFollower;
     GameObject[] bulletBossA;
     GameObject[] bulletBossB;
@@ -65,7 +69,9 @@ public class ScrollGameObjectManager : MonoBehaviour
         bulletPlayerA = new GameObject[100];
         bulletPlayerB = new GameObject[100];
         bulletEnemyA = new GameObject[100];
-        bulletEnemyB = new GameObject[100];
+        bulletEnemyB = new GameObject[100]; 
+        bulletEnemyC = new GameObject[100];
+        bulletEnemyD = new GameObject[100];
         bulletFollower = new GameObject[100];
         bulletBossA = new GameObject[50];
         bulletBossB = new GameObject[1000];
@@ -153,6 +159,19 @@ public class ScrollGameObjectManager : MonoBehaviour
             bulletEnemyB[index] = Instantiate(bulletEnemyBPrefab);
             bulletEnemyB[index].SetActive(false);
 
+        }   
+        for (int index = 0; index < bulletEnemyA.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.13 by승주
+            bulletEnemyC[index] = Instantiate(bulletEnemyCPrefab);
+            bulletEnemyC[index].SetActive(false);
+        }
+        for (int index = 0; index < bulletEnemyC.Length; index++)
+        {
+            //Instantiate를 하기 위해서는 Prefab이 필요하다 22.04.13 by승주
+            bulletEnemyD[index] = Instantiate(bulletEnemyDPrefab);
+            bulletEnemyD[index].SetActive(false);
+
         }  
         for (int index = 0; index < bulletFollower.Length; index++)
         {
@@ -227,6 +246,12 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletEnemyB":
                 targetPool = bulletEnemyB;
+                break; 
+            case "BulletEnemyC":
+                targetPool = bulletEnemyC;
+                break;
+            case "BulletEnemyD":
+                targetPool = bulletEnemyD;
                 break;
             case "BulletFollower":
                 targetPool = bulletFollower;
@@ -262,7 +287,7 @@ public class ScrollGameObjectManager : MonoBehaviour
         {
             //Enemy
             case "EnemyB":
-                targetPool = enemyL;
+                targetPool = enemyB;
                 break; 
             case "EnemyL":
                 targetPool = enemyL;
@@ -297,6 +322,12 @@ public class ScrollGameObjectManager : MonoBehaviour
                 break;
             case "BulletEnemyB":
                 targetPool = bulletEnemyB;
+                break;
+            case "BulletEnemyC":
+                targetPool = bulletEnemyC;
+                break;
+            case "BulletEnemyD":
+                targetPool = bulletEnemyD;
                 break;
             case "BulletFollower":
                 targetPool = bulletFollower;

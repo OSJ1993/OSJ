@@ -1,104 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    //CanvasGroup 컴포넌트를 저장할 변수 기능 22.05.19 승주
-    public CanvasGroup fadeCg;
+    GameObject SplashObj;               //판넬오브젝트
 
-    //Fade in 처리 시간 기능 22.05.19 승주
-    [Range(0.5f, 2.0f)]
-    public float fadeDuration = 1.0f;
+    Image image;                            //판넬 이미지
 
-    //호출할 씬과 씬 로드 방식을 저장할 딕셔너리 기능 22.05.19 승주
-    public Dictionary<string, LoadSceneMode> loadScenes = new Dictionary<string, LoadSceneMode>();
+    private bool checkbool = false;     //투명도 조절 논리형 변수
 
-    //호출할 씬의 정보 설정 기능 22.05.19 승주
-    void InitSceneInfo()
+
+    void Awake()
     {
-        //호출한 씬의 정보를 딕셔너리에 추가 기능 22.05.19 승주
-        loadScenes.Add("00.0Intro", LoadSceneMode.Additive);
-        loadScenes.Add("01-1.Daily", LoadSceneMode.Additive);
-        //loadScenes.Add("01.MusicGame", LoadSceneMode.Additive);
-        //loadScenes.Add("02.CardGame", LoadSceneMode.Additive);
-        //loadScenes.Add("03.scrollGame", LoadSceneMode.Additive);
-        //loadScenes.Add("04Sword ManGmae", LoadSceneMode.Additive);
-        //loadScenes.Add("05.Ending", LoadSceneMode.Additive);
-    }
 
-    IEnumerator Start()
-    {
-        InitSceneInfo();
+        SplashObj = this.gameObject;                         //스크립트 참조된 오브젝트
 
-        //처음 알파값을 설정(불투명)기능 22.05.19 승주
-        fadeCg.alpha = 1.0f;
-
-        //여러개의 씬을 코루틴으로 호출 하는 기능 22.05.19 승주
-        foreach (var _loadScene in loadScenes)
-        {
-            yield return StartCoroutine(LoadScene(_loadScene.Key, _loadScene.Value));
-        }
-
-        //Fade In 함수 호출 기능 22.05.19 승주
-        StartCoroutine(Fade(0.0f));
+        image = SplashObj.GetComponent<Image>();    //판넬오브젝트에 이미지 참조
 
     }
-
-    IEnumerator LoadScene(string sceneName, LoadSceneMode mode)
-    {
-        //비동기 방식으로 씬을 로드하고 로드가 완료될 때까지 대기하는 기능 22.05.19 승주
-        yield return SceneManager.LoadSceneAsync(sceneName, mode);
-
-        //호출된 씬을 활성화 시키는 기능 22.05.19 승주
-        Scene loadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
-        SceneManager.SetActiveScene(loadedScene);
-    }
-
-    //Fade In/Out 시키는 기능 22.05.19 승주
-    IEnumerator Fade(float finalAlpha)
-    {
-        //라이트맵이 깨지는 것을 방지하기 위해 스테이지 씬을 활성화 시키는  기능 22.05.19 승주
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("00.0Intro"));
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("01-1.Daily"));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("01.MusicGame"));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("02.CardGame"));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("03.scrollGame"));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("04Sword ManGmae"));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("05.Ending"));
-        fadeCg.blocksRaycasts = true;
-
-        //절대값 함수로 백분율을 계산 하는 기능 22.05.19 승주
-        float fadeSpeed = Mathf.Abs(fadeCg.alpha - finalAlpha) / fadeDuration;
-
-        //알파값 조정 기능 22.05.19 승주
-        while (!Mathf.Approximately(fadeCg.alpha, finalAlpha))
-        {
-            //MoveToward 함수는 Lerp 함수와 동일한 함수로 알파값으로 보간 하는 기능 22.05.19 승주
-            fadeCg.alpha = Mathf.MoveTowards(fadeCg.alpha, finalAlpha, fadeSpeed * Time.deltaTime);
-            yield return null;
-
-        }
-
-        fadeCg.blocksRaycasts = false;
-
-        //fade Inㅇ 완료된 후 SceneLoader 씬은 삭제(Unload)시키는 기능 22.05.19 승주
-        SceneManager.UnloadSceneAsync("00-1.SceneLoader");
-        //SceneManager.UnloadSceneAsync("01-1.Daily");
-        //SceneManager.UnloadSceneAsync("01.MusicGame");
-        //SceneManager.UnloadSceneAsync("02.CardGame");
-        //SceneManager.UnloadSceneAsync("03.scrollGame");
-        //SceneManager.UnloadSceneAsync("04Sword ManGmae");
-        //SceneManager.UnloadSceneAsync("05.Ending");
-        
-
-    }
-
 
 
     void Update()
     {
 
+        StartCoroutine("MainSplash");                        //코루틴    //판넬 투명도 조절
+
+        if (checkbool)                                            //만약 checkbool 이 참이면
+
+        {
+
+            Destroy(this.gameObject);                        //판넬 파괴, 삭제
+
+        }
+
     }
+
+
+
+    IEnumerator MainSplash()
+    {
+
+        Color color = image.color;                            //color 에 판넬 이미지 참조
+
+
+        for (int i = 255; i >= 0; i--)                            //for문 100번 반복 0보다 작을 때 까지
+
+        {
+
+            color.a -= Time.deltaTime * 0.001f;               //이미지 알파 값을 타임 델타 값 * 0.01
+
+
+
+            image.color = color;                                //판넬 이미지 컬러에 바뀐 알파값 참조
+
+
+
+            if (image.color.a <= 0)                        //만약 판넬 이미지 알파 값이 0보다 작으면
+
+            {
+
+                checkbool = true;                              //checkbool 참 
+
+                
+
+            }
+
+        }
+
+        yield return null;                                        //코루틴 종료
+
+    }
+
 }
+

@@ -27,7 +27,13 @@ public class GoalPlate : MonoBehaviour
             theNote.RemoveNote();
 
             theResult.ShowResult();
+
+            //보상 얻기 위한 기능 22.06.07 승주
+            theResult.boSang.SetActive(true);
+            theResult.BtnClear();
         }
+       
+        
     }
 
    
